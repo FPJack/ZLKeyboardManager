@@ -1,0 +1,27 @@
+PODS:
+  - FBSnapshotTestCase (2.1.4):
+    - FBSnapshotTestCase/SwiftSupport (= 2.1.4)
+  - FBSnapshotTestCase/Core (2.1.4)
+  - FBSnapshotTestCase/SwiftSupport (2.1.4):
+    - FBSnapshotTestCase/Core
+  - ZLKeyboardManager (0.1.0)
+
+DEPENDENCIES:
+  - FBSnapshotTestCase
+  - ZLKeyboardManager (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - FBSnapshotTestCase
+
+EXTERNAL SOURCES:
+  ZLKeyboardManager:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
+  ZLKeyboardManager: e0d5d757916ab5c3520bbdaeaaf28c8cdbb8c16b
+
+PODFILE CHECKSUM: c01ad9a30c32c1464cfab63ae2847f874389fa0b
+
+COCOAPODS: 1.16.2

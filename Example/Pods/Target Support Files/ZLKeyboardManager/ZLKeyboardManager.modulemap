@@ -1,0 +1,6 @@
+framework module ZLKeyboardManager {
+  umbrella header "ZLKeyboardManager-umbrella.h"
+
+  export *
+  module * { export * }
+}
