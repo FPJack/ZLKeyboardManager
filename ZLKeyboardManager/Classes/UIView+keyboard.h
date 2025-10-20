@@ -13,10 +13,11 @@ NS_ASSUME_NONNULL_BEGIN
 ///相对view,默认是输入框
 @property(nonatomic, weak) UIView *relativeView;
 @property(nonatomic, assign) CGRect originBounds;
-@property (nonatomic,assign)BOOL enautomAutoToolbar;
+@property (nonatomic,assign)BOOL enableAutoToolbar;
+@property (nonatomic,weak)UIView *moveContainerView;
 @end
 @interface UIView (keyboard)
-@property(nonatomic, strong) ZLKeyboardConfig *keyboardConfig;
+@property(nonatomic, strong) ZLKeyboardConfig *kfc_keyboardCfg;
 @end
 
 NS_ASSUME_NONNULL_END

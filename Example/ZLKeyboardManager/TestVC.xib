@@ -11,7 +11,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TestVC">
             <connections>
-                <outlet property="textField" destination="iog-m4-yon" id="1sv-5V-2mt"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,41 +18,14 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <subviews>
-                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="kdkakddakakdsfkadskaf" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iog-m4-yon" customClass="GMTextField">
-                    <rect key="frame" x="105.33333333333333" y="409" width="182.66666666666669" height="34"/>
-                    <color key="backgroundColor" systemColor="systemOrangeColor"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
-                </textField>
-                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wu0-1r-8iH">
-                    <rect key="frame" x="172" y="443" width="51" height="31"/>
-                </switch>
-                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="kdkakddakakdsfkadskaf" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tsb-5n-Utw" customClass="GMTextField">
-                    <rect key="frame" x="105.33333333333334" y="582" width="182.66666666666666" height="34"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" systemColor="systemOrangeColor"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
-                </textField>
-            </subviews>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-            <constraints>
-                <constraint firstItem="Wu0-1r-8iH" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="60u-eR-bPB"/>
-                <constraint firstItem="iog-m4-yon" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="L2Z-id-lW7"/>
-                <constraint firstItem="Wu0-1r-8iH" firstAttribute="top" secondItem="iog-m4-yon" secondAttribute="bottom" id="cxY-i0-u4L"/>
-                <constraint firstItem="iog-m4-yon" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ve9-e5-wLv"/>
-            </constraints>
             <point key="canvasLocation" x="102" y="21"/>
         </view>
     </objects>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

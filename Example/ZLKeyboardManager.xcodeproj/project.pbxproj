@@ -24,6 +24,8 @@
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
 		84D159FF2EA1DC0200DD1931 /* TestVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D159FD2EA1DC0200DD1931 /* TestVC.m */; };
 		84D15A002EA1DC0200DD1931 /* TestVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D159FE2EA1DC0200DD1931 /* TestVC.xib */; };
+		84D15A082EA5D57C00DD1931 /* ZLStackViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D15A062EA5D57C00DD1931 /* ZLStackViewVC.m */; };
+		84D15A092EA5D57C00DD1931 /* ZLStackViewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D15A072EA5D57C00DD1931 /* ZLStackViewVC.xib */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 		B5F27FAABA30F45ED4A0DA7E /* Pods_ZLKeyboardManager_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 604133189BBF75035854E843 /* Pods_ZLKeyboardManager_Tests.framework */; };
 /* End PBXBuildFile section */
@@ -68,6 +70,9 @@
 		84D159FC2EA1DC0200DD1931 /* TestVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestVC.h; sourceTree = "<group>"; };
 		84D159FD2EA1DC0200DD1931 /* TestVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestVC.m; sourceTree = "<group>"; };
 		84D159FE2EA1DC0200DD1931 /* TestVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestVC.xib; sourceTree = "<group>"; };
+		84D15A052EA5D57C00DD1931 /* ZLStackViewVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZLStackViewVC.h; sourceTree = "<group>"; };
+		84D15A062EA5D57C00DD1931 /* ZLStackViewVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZLStackViewVC.m; sourceTree = "<group>"; };
+		84D15A072EA5D57C00DD1931 /* ZLStackViewVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ZLStackViewVC.xib; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C3DCCFAA5E8D6B99CDFC0965 /* Pods-ZLKeyboardManager_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZLKeyboardManager_Example.debug.xcconfig"; path = "Target Support Files/Pods-ZLKeyboardManager_Example/Pods-ZLKeyboardManager_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		EA460E4D6BA21EA19499BB38 /* ZLKeyboardManager.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = ZLKeyboardManager.podspec; path = ../ZLKeyboardManager.podspec; sourceTree = "<group>"; };
@@ -145,6 +150,9 @@
 				84D159FC2EA1DC0200DD1931 /* TestVC.h */,
 				84D159FD2EA1DC0200DD1931 /* TestVC.m */,
 				84D159FE2EA1DC0200DD1931 /* TestVC.xib */,
+				84D15A052EA5D57C00DD1931 /* ZLStackViewVC.h */,
+				84D15A062EA5D57C00DD1931 /* ZLStackViewVC.m */,
+				84D15A072EA5D57C00DD1931 /* ZLStackViewVC.xib */,
 				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
@@ -290,6 +298,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84D15A092EA5D57C00DD1931 /* ZLStackViewVC.xib in Resources */,
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
 				71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */,
 				84D15A002EA1DC0200DD1931 /* TestVC.xib in Resources */,
@@ -316,10 +325,14 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-ZLKeyboardManager_Example/Pods-ZLKeyboardManager_Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
+				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/ZLKeyboardManager/ZLKeyboardManager.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZLKeyboardManager.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -398,6 +411,7 @@
 			files = (
 				84D159FF2EA1DC0200DD1931 /* TestVC.m in Sources */,
 				6003F59E195388D20070C39A /* ZLAppDelegate.m in Sources */,
+				84D15A082EA5D57C00DD1931 /* ZLStackViewVC.m in Sources */,
 				6003F5A7195388D20070C39A /* ZLViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 			);

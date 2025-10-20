@@ -17,18 +17,30 @@
     }
     return _relativeView;
 }
+- (void)setEnableAutoToolbar:(BOOL)enableAutoToolbar {
+    if ([self.view isKindOfClass:UISearchBar.class]) {
+        UISearchBar *searchBar = (UISearchBar *)self.view;
+        if (@available(iOS 13.0, *)) {
+            searchBar.searchTextField.kfc_keyboardCfg.enableAutoToolbar = enableAutoToolbar;
+        } else {
+            // Fallback on earlier versions
+        }
+    }else {
+    }
+    _enableAutoToolbar = enableAutoToolbar;
+}
 @end
 @implementation UIView (keyboard)
-- (ZLKeyboardConfig *)keyboardConfig {
+- (ZLKeyboardConfig *)kfc_keyboardCfg {
     ZLKeyboardConfig *config = objc_getAssociatedObject(self, _cmd);
     if (!config) {
         config = ZLKeyboardConfig.new;
         config.view = self;
-        self.keyboardConfig = config;
+        self.kfc_keyboardCfg = config;
     }
     return config;
 }
-- (void)setKeyboardConfig:(ZLKeyboardConfig *)keyboardConfig {
-    objc_setAssociatedObject(self, @selector(keyboardConfig), keyboardConfig, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+- (void)setKfc_keyboardCfg:(ZLKeyboardConfig *)keyboardConfig {
+    objc_setAssociatedObject(self, @selector(kfc_keyboardCfg), keyboardConfig, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 @end

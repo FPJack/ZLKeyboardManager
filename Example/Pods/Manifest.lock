@@ -4,15 +4,21 @@ PODS:
   - FBSnapshotTestCase/Core (2.1.4)
   - FBSnapshotTestCase/SwiftSupport (2.1.4):
     - FBSnapshotTestCase/Core
+  - IQKeyboardManager (6.0.5)
+  - Masonry (1.1.0)
   - ZLKeyboardManager (0.1.0)
 
 DEPENDENCIES:
   - FBSnapshotTestCase
+  - IQKeyboardManager (= 6.0.5)
+  - Masonry
   - ZLKeyboardManager (from `../`)
 
 SPEC REPOS:
   trunk:
     - FBSnapshotTestCase
+    - IQKeyboardManager
+    - Masonry
 
 EXTERNAL SOURCES:
   ZLKeyboardManager:
@@ -20,8 +26,10 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
+  IQKeyboardManager: 64c05e5d127a8a53819f33937dfe468cf051b4be
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   ZLKeyboardManager: e0d5d757916ab5c3520bbdaeaaf28c8cdbb8c16b
 
-PODFILE CHECKSUM: c01ad9a30c32c1464cfab63ae2847f874389fa0b
+PODFILE CHECKSUM: 6edbb0961ba83098d569e7ace211befe07b402ba
 
 COCOAPODS: 1.16.2

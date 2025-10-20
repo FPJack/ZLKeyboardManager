@@ -23,9 +23,7 @@
 }
 @end
 @interface ZLViewController ()
-@property (weak, nonatomic) IBOutlet UITextField *textField;
-@property (weak, nonatomic) IBOutlet UIStackView *stackView;
-@property (weak, nonatomic) IBOutlet UITextField *textField1;
+
 
 @end
 
@@ -34,11 +32,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-    self.stackView.layoutMargins = UIEdgeInsetsMake(50, 50, 50, 50);
-    self.stackView.layoutMarginsRelativeArrangement = YES;
-
-    self.stackView.spacing = 20;
     if (@available(iOS 13.0, *)) {
         UINavigationBarAppearance *appearance = [[UINavigationBarAppearance alloc] init];
         [appearance configureWithOpaqueBackground];
@@ -50,15 +43,18 @@
         self.navigationController.navigationBar.barTintColor = UIColor.orangeColor;
         self.navigationController.navigationBar.backgroundColor = UIColor.orangeColor;
     }
-    self.textField.keyboardConfig.keyboardDistanceFromRelativeView = 10;
-//    self.textField.keyboardConfig.relativeView = self.stackView;
-    
-    self.textField1.keyboardConfig.keyboardDistanceFromRelativeView = 10;
-//    self.textField1.keyboardConfig.relativeView = self.stackView;
-    ZLKeyboardManager.share.enable = YES;
-//    ZLKeyboardManager.share.enableAutoToolbar = YES;
-//    self.textField1.keyboardConfig.enautomAutoToolbar = YES;
-   
+    UIBarButtonItem *item1 = [[UIBarButtonItem alloc] initWithTitle:@"跳转" style:UIBarButtonItemStylePlain target:self action:@selector(ta:)];
+    UIBarButtonItem *item2 = [[UIBarButtonItem alloc] initWithTitle:@"stackView" style:UIBarButtonItemStylePlain target:self action:@selector(stackView:)];
+
+    self.navigationItem.rightBarButtonItems = @[item1,item2];
+}
+- (void)stackView:(id)obj {
+    [self.navigationController pushViewController:ZLStackViewVC.new animated:YES];
+
+}
+- (void)ta:(id)obj {
+    [self.navigationController pushViewController:TestVC.new animated:YES];
+
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
@@ -70,10 +66,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (IBAction)ta:(id)sender {
-    [self.navigationController pushViewController:TestVC.new animated:YES];
 
-}
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
    
 //    [self.textField resignFirstResponder];
