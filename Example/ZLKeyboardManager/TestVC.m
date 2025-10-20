@@ -29,8 +29,8 @@
 //    IQKeyboardManager.sharedManager.enable = YES;
 //    IQKeyboardManager.sharedManager.enableAutoToolbar = YES;
     
-//    IQKeyboardManager.sharedManager.enable = NO;
-//    IQKeyboardManager.sharedManager.enableAutoToolbar = NO;
+    IQKeyboardManager.sharedManager.enable = NO;
+    IQKeyboardManager.sharedManager.enableAutoToolbar = NO;
     
 //    self.navigationController.navigationBarHidden = YES;
     [self setupData];

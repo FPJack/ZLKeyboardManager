@@ -390,7 +390,7 @@ static NSHashTable<UIView *> *_tables;
 }
 - (void)addInputToobarIfRequired {
     UITextField *textField = self.currentResponder;
-    if (self.enableAutoToolbar && !textField.inputAccessoryView && textField.kfc_keyboardCfg.enableAutoToolbar) {
+    if (self.enableAutoToolbar && !textField.inputAccessoryView && !textField.kfc_keyboardCfg.enableAutoToolbar) {
         UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 44)];
         toolbar.barStyle = UIBarStyleDefault;
             // 创建灵活空间（用于将按钮推到右边）

@@ -29,6 +29,18 @@
     }
     _enableAutoToolbar = enableAutoToolbar;
 }
+- (void)setKeyboardDistanceFromRelativeView:(CGFloat)keyboardDistanceFromRelativeView {
+    if ([self.view isKindOfClass:UISearchBar.class]) {
+        UISearchBar *searchBar = (UISearchBar *)self.view;
+        if (@available(iOS 13.0, *)) {
+            searchBar.searchTextField.kfc_keyboardCfg.keyboardDistanceFromRelativeView = keyboardDistanceFromRelativeView;
+        } else {
+            // Fallback on earlier versions
+        }
+    }else {
+    }
+    _keyboardDistanceFromRelativeView = keyboardDistanceFromRelativeView;
+}
 @end
 @implementation UIView (keyboard)
 - (ZLKeyboardConfig *)kfc_keyboardCfg {
