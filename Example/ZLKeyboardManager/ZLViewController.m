@@ -10,6 +10,7 @@
 #import "TestVC.h"
 #import <ZLKeyboardManager/ZLKeyboardManager.h>
 #import <ZLKeyboardManager/UIView+keyboard.h>
+#import <MediaPlayer/MediaPlayer.h>
 @interface GMTextField : UITextField
 @end
 @implementation GMTextField
@@ -22,9 +23,9 @@
     NSLog(@"%s",__func__);
 }
 @end
-@interface ZLViewController ()
+@interface ZLViewController ()<MPMediaPickerControllerDelegate>
 
-
+@property (nonatomic, strong) MPMediaPickerController *mpc;
 @end
 
 @implementation ZLViewController
@@ -53,9 +54,47 @@
 
 }
 - (void)ta:(id)obj {
-    [self.navigationController pushViewController:TestVC.new animated:YES];
+//    [self.navigationController pushViewController:TestVC.new animated:YES];
+    
+//    MPMediaPickerController *mpc = [[MPMediaPickerController alloc]initWithMediaTypes:MPMediaTypeMusic];
+//      mpc.delegate = self;//委托
+//      mpc.prompt =@"Please select a music";//提示文字
+//    mpc.allowsPickingMultipleItems=NO;//是否允许一次选择多个
+//    self.mpc = self.mpc;
+//    [self presentViewController:mpc animated:YES completion:nil];
+//    [self presentModalViewController:mpc animated:YES];
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"标题" message:@"这是一个UIAlertController的示例。" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        // 处理点击确定按钮的逻辑
+        NSLog(@"点击了确定按钮");
+    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        // 处理点击取消按钮的逻辑
+        NSLog(@"点击了取消按钮");
+    }];
+    [alert addAction:okAction];
+    [alert addAction:cancelAction];
+    for (int i = 0 ; i < 20; i ++) {
+        [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+                    
+        }];
+    }
+   
+    
+    [self presentViewController:alert animated:YES completion:nil];
 
 }
+- (void)mediaPicker:(MPMediaPickerController *)mediaPicker didPickMediaItems:(MPMediaItemCollection *)mediaItemCollection{
+  /*insert your code*/
+    [mediaPicker dismissViewControllerAnimated:YES completion:nil];
+
+}
+-(void)mediaPickerDidCancel:(MPMediaPickerController *)mediaPicker{
+  /*insert your code*/
+    [mediaPicker dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 //    [self.textField becomeFirstResponder];

@@ -8,6 +8,11 @@
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
+@interface NSArray (keyboard)
+@property (nonnull, nonatomic, readonly, copy) NSArray<__kindof UIView*> * kfc_sortedArrayByTag;
+@property (nonnull, nonatomic, readonly, copy) NSArray<__kindof UIView*> * kfc_sortedArrayByPosition;
+@end
+
 @interface ZLKeyboardConfig : NSObject
 @property(nonatomic, assign) CGFloat keyboardDistanceFromRelativeView; // default is 10.0
 ///相对view,默认是输入框
@@ -15,6 +20,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, assign) CGRect originBounds;
 @property (nonatomic,assign)BOOL enableAutoToolbar;
 @property (nonatomic,weak)UIView *moveContainerView;
+/// 点击背景是否收起键盘，defaults is YES
+@property (nonatomic,assign)BOOL shouldResignOnTouchOutside;
+@property (nonatomic,readonly) UIViewController *viewContainingController;
 @end
 @interface UIView (keyboard)
 @property(nonatomic, strong) ZLKeyboardConfig *kfc_keyboardCfg;

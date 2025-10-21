@@ -14,5 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)share;
 @property(nonatomic, assign, getter = isEnabled) BOOL enable;
 @property(nonatomic, assign, getter = isEnableAutoToolbar) BOOL enableAutoToolbar;
+/// 点击背景是否收起键盘，defaults is YES
+@property (nonatomic,assign)BOOL shouldResignOnTouchOutside;
 @end
 NS_ASSUME_NONNULL_END

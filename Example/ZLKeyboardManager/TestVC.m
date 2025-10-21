@@ -29,8 +29,8 @@
 //    IQKeyboardManager.sharedManager.enable = YES;
 //    IQKeyboardManager.sharedManager.enableAutoToolbar = YES;
     
-    IQKeyboardManager.sharedManager.enable = NO;
-    IQKeyboardManager.sharedManager.enableAutoToolbar = NO;
+//    IQKeyboardManager.sharedManager.enable = NO;
+//    IQKeyboardManager.sharedManager.enableAutoToolbar = NO;
     
 //    self.navigationController.navigationBarHidden = YES;
     [self setupData];
@@ -133,8 +133,8 @@
     textField.delegate = self;
     [cell.contentView addSubview:textField];
 //    textField.keyboardConfig.keyboardDistanceFromRelativeView = 100;
-    textField.kfc_keyboardCfg.enableAutoToolbar = YES;
-    textField.kfc_keyboardCfg.relativeView = cell;
+    
+
     
     
     // 创建UISearchBar
@@ -144,7 +144,6 @@
     searchBar.text = self.searchBarValues[indexPath.row];
     searchBar.tag = 2000 + indexPath.row;
     searchBar.delegate = self;
-    searchBar.kfc_keyboardCfg.enableAutoToolbar = YES;
     NSLog(@"%d----%p",searchBar.kfc_keyboardCfg.enableAutoToolbar,searchBar);
     [cell.contentView addSubview:searchBar];
 
@@ -159,8 +158,7 @@
     textView.tag = 3000 + indexPath.row;
     textView.delegate = self;
     [cell.contentView addSubview:textView];
-    textView.kfc_keyboardCfg.enableAutoToolbar = YES;
-    textView.kfc_keyboardCfg.enableAutoToolbar = YES;
+  
 
     if (indexPath.item == 2) {
         self.textView = textView;

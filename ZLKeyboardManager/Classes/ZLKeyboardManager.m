@@ -8,8 +8,6 @@
 #import "ZLKeyboardManager.h"
 #import <objc/runtime.h>
 #import "UIView+keyboard.h"
-#import "NSArray+keyboard.h"
-
 #define kScreenWidth [UIScreen mainScreen].bounds.size.width
 #define kScreenHeight [UIScreen mainScreen].bounds.size.height
 static NSHashTable<UIView *> *_tables;
@@ -78,17 +76,6 @@ static NSHashTable<UIView *> *_tables;
     return obj;
 }
 @end
-@interface UISearchTextField(keyboard)
-@property (nonatomic,weak)UISearchBar *searchBar;
-@end
-@implementation UISearchTextField (keyboard)
-- (UISearchBar *)searchBar {
-    return objc_getAssociatedObject(self, _cmd);
-}
-- (void)setSearchBar:(UISearchBar *)searchBar {
-    objc_setAssociatedObject(self, @selector(searchBar), searchBar, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-@end
 @interface UISearchBar (keyboard)
 @end
 @implementation UISearchBar (keyboard)
@@ -108,101 +95,32 @@ static NSHashTable<UIView *> *_tables;
 }
 + (instancetype)_hook_alloc{
     UISearchBar *obj = [self _hook_alloc];
-    obj.searchTextField.searchBar = obj;
     [_tables addObject:obj];
     return obj;
 }
 @end
 
-
-@interface UIView (VC)
-@property (nonatomic,readonly) UIView *moveContainerView;
-@property (nonatomic,readonly) UIView *toViewControllerView;
-@property (nonatomic,readonly) UIViewController *viewContainingController;
-@property (nonatomic,assign)CGRect convertFrame;
+@interface ZLKeyboardConfig()
+@property (nonatomic,assign,readwrite)CGRect convertFrame;
 @end
-@implementation UIView (VC)
--(UIViewController*)viewContainingController
-{
-    UIResponder *nextResponder =  self;
-    do{
-        nextResponder = [nextResponder nextResponder];
-        if ([nextResponder isKindOfClass:[UIViewController class]])
-            return (UIViewController*)nextResponder;
-    } while (nextResponder);
-    return nil;
-}
--(UIViewController *)topController
-{
-    NSMutableArray<UIViewController*> *controllersHierarchy = [[NSMutableArray alloc] init];
-    
-    UIViewController *topController = self.window.rootViewController;
-    
-    if (topController)
-    {
-        [controllersHierarchy addObject:topController];
-    }
-    
-    while ([topController presentedViewController]) {
-        
-        topController = [topController presentedViewController];
-        [controllersHierarchy addObject:topController];
-    }
-    
-    UIViewController *matchController = [self viewContainingController];
-    
-    while (matchController && [controllersHierarchy containsObject:matchController] == NO)
-    {
-        do
-        {
-            matchController = (UIViewController*)[matchController nextResponder];
-            
-        } while (matchController && [matchController isKindOfClass:[UIViewController class]] == NO);
-    }
-    
-    return matchController;
-}
-- (UIView *)moveContainerView {
-    return self.kfc_keyboardCfg.moveContainerView ?: self.toViewControllerView;
-}
-- (UIView *)toViewControllerView {
-    UIViewController *vc = self.viewContainingController;
-    return vc.view;
-}
-- (void)recursiveTraverseAllSubviews:(UIView *)view {
-    for (UIView *subview in view.subviews) {
-        if ([subview isKindOfClass:UIScrollView.class]) {
-            UIScrollView *scrollView = (UIScrollView *)subview;
-            scrollView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
-            if (@available(iOS 11.0, *)) {
-                scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-            } else {
-            }
-
-        }
-        [self recursiveTraverseAllSubviews:subview];
-    }
-}
-- (CGRect )convertFrame {
-    NSValue *value = objc_getAssociatedObject(self, _cmd);
-    if (value) {
-        return [value CGRectValue];
-    }
-    return CGRectZero;
-}
-- (void)setConvertFrame:(CGRect)convertFrame {
-    NSValue *value = [NSValue valueWithCGRect:convertFrame];
-    objc_setAssociatedObject(self, @selector(convertFrame), value, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-@end
-
 
 
 @interface ZLKeyboardManager()
 @property (nonatomic,readonly) UIView *firstResponder;
 @property (nonatomic,weak) UIView *currentResponder;
+@property (nonatomic,nonatomic) UITapGestureRecognizer *tapGesture;
 @end
 @implementation ZLKeyboardManager
+- (UITapGestureRecognizer *)tapGesture {
+    if (!_tapGesture) {
+        _tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchOutside:)];
+        _tapGesture.cancelsTouchesInView = NO;
+    }
+    return _tapGesture;
+}
+- (void)touchOutside:(UITapGestureRecognizer *)tap {
+    [self.currentResponder resignFirstResponder];
+}
 + (void)load {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -220,13 +138,15 @@ static NSHashTable<UIView *> *_tables;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         share = ZLKeyboardManager.new;
-        [share addNotificationObserver];
+        share.shouldResignOnTouchOutside = YES;
+        share.enableAutoToolbar = YES;
+        share.enable = YES;
     });
     return share;
 }
-
-- (void)didBeginEditing:(NSNotification *)notification {
-//    NSLog(@"%@",notification.object);
+- (void)setEnable:(BOOL)enable {
+    _enable = enable;
+    enable ? [self addNotificationObserver] : [self removeNotificationObserver];
 }
 - (UIView *)firstResponder {
     for (UIView * view in _tables) {
@@ -236,18 +156,29 @@ static NSHashTable<UIView *> *_tables;
 }
 - (void)UIKeyboardDidShowNotification:(NSNotification *)notification {
     if (!self.isEnabled) return;
-  
 }
-
+- (void)recursiveTraverseAllSubviews:(UIView *)view {
+    for (UIView *subview in view.subviews) {
+        if ([subview isKindOfClass:UIScrollView.class]) {
+            UIScrollView *scrollView = (UIScrollView *)subview;
+            scrollView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
+            if (@available(iOS 11.0, *)) {
+                scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+            } else {
+            }
+        }
+        [self recursiveTraverseAllSubviews:subview];
+    }
+}
 - (void)UIKeyboardWillShowNotification:(NSNotification *)notification {
     if (!self.isEnabled) return;
-    
-    UIView *currentResponder = self.firstResponder;
-    UIView *moveContainerView = currentResponder.moveContainerView;
-
+    UIView *currentResponder = self.currentResponder;
+    if ([NSStringFromClass(currentResponder.class) isEqualToString:@"_UIAlertControllerTextField"]) {
+        return;
+    }
+    UIView *moveContainerView = currentResponder.kfc_keyboardCfg.moveContainerView;
     // 设置scrollView的键盘弹起时的行为
-    [moveContainerView recursiveTraverseAllSubviews:moveContainerView];
-    
+    [self recursiveTraverseAllSubviews:moveContainerView];
     
     NSDictionary *userInfo = notification.userInfo;
     CGRect keyboardFrame = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
@@ -256,7 +187,6 @@ static NSHashTable<UIView *> *_tables;
     animationDuration = animationDuration > 0 ? animationDuration : 0.25;
     UIView *relativeView = currentResponder.kfc_keyboardCfg.relativeView;
     CGRect viewFrameInWindow = [relativeView convertRect: CGRectMake(0, moveContainerView.bounds.origin.y + relativeView.bounds.origin.y, relativeView.bounds.size.width, relativeView.bounds.size.height) toView:relativeView.window];
-//    CGRect viewFrameInWindow = [relativeView.superview convertRect: currentResponder.frame toView:relativeView.window];
     CGFloat maxY = CGRectGetMaxY(viewFrameInWindow);
     CGFloat space = self.currentResponder.kfc_keyboardCfg.keyboardDistanceFromRelativeView;
     CGFloat bottomSpace = kScreenHeight - keyboardHeight - maxY - space;
@@ -296,12 +226,10 @@ static NSHashTable<UIView *> *_tables;
 }
 - (void)UIKeyboardWillHideNotification:(NSNotification *)notification {
     if (!self.isEnabled) return;
-
     [self didEndEditing];
 }
 
 - (void)addNotificationObserver {
-    
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(UIKeyboardWillShowNotification:) name:UIKeyboardWillShowNotification object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(UIKeyboardDidShowNotification:) name:UIKeyboardDidShowNotification object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(UIKeyboardWillHideNotification:) name:UIKeyboardWillHideNotification object:nil];
@@ -316,6 +244,9 @@ static NSHashTable<UIView *> *_tables;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willChangeStatusBarOrientation:) name:UIApplicationWillChangeStatusBarOrientationNotification object:[UIApplication sharedApplication]];
 
 }
+- (void)removeNotificationObserver {
+    [NSNotificationCenter.defaultCenter removeObserver:self];
+}
 - (void)willChangeStatusBarOrientation:(NSNotification*)aNotification
 {
    
@@ -326,26 +257,47 @@ static NSHashTable<UIView *> *_tables;
     if (!self.isEnabled) return;
 
     UITextField *textField = notification.object;
-    if (![self.currentResponder.viewContainingController isEqual:textField.viewContainingController]) {
+    if (![self.currentResponder.kfc_keyboardCfg.viewContainingController isEqual:textField.kfc_keyboardCfg.viewContainingController]) {
         [self didEndEditing];
     }
     self.currentResponder = textField;
     [self addInputToobarIfRequired];
+    if (textField.kfc_keyboardCfg.shouldResignOnTouchOutside && ![NSStringFromClass(textField.class) isEqualToString:@"_UIAlertControllerTextField"]) {
+        [textField.window addGestureRecognizer:self.tapGesture];
+    }else {
+        if (_tapGesture.view) {
+            [self.tapGesture.view removeGestureRecognizer:self.tapGesture];
+        }
+    }
 }
 - (void)UITextFieldTextDidEndEditingNotification:(NSNotification *)notification {
     if (!self.isEnabled) return;
+    if (_tapGesture.view) {
+        [self.tapGesture.view removeGestureRecognizer:self.tapGesture];
+    }
 }
 - (void)UITextViewTextDidBeginEditingNotification:(NSNotification *)notification {
     if (!self.isEnabled) return;
-    UITextView *textField = notification.object;
-    if (![self.currentResponder.viewContainingController isEqual:textField.viewContainingController]) {
+    UITextView *textView = notification.object;
+   
+    if (![self.currentResponder.kfc_keyboardCfg.viewContainingController isEqual:textView.kfc_keyboardCfg.viewContainingController]) {
         [self didEndEditing];
     }
-    self.currentResponder = textField;
+    self.currentResponder = textView;
     [self addInputToobarIfRequired];
+    if (textView.kfc_keyboardCfg.shouldResignOnTouchOutside) {
+        [textView.window addGestureRecognizer:self.tapGesture];
+    }else {
+        if (_tapGesture.view) {
+            [self.tapGesture.view removeGestureRecognizer:self.tapGesture];
+        }
+    }
 }
 - (void)UITextViewTextDidEndEditingNotification:(NSNotification *)notification {
     if (!self.isEnabled) return;
+    if (_tapGesture.view) {
+        [self.tapGesture.view removeGestureRecognizer:self.tapGesture];
+    }
 }
 - (void)preAction {
     NSArray *sortArr = [self allInputViews];
@@ -364,12 +316,15 @@ static NSHashTable<UIView *> *_tables;
     }
 }
 - (NSArray *)allInputViews {
-   
-    UIView *view = self.currentResponder.moveContainerView;
+    UIView *view = self.currentResponder.kfc_keyboardCfg.moveContainerView;
+    
     NSMutableArray *arr = NSMutableArray.array;
     [_tables.allObjects enumerateObjectsUsingBlock:^(UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if ([obj isDescendantOfView:view]) {
-            obj.convertFrame = [obj convertRect: obj.bounds toView:view.window];
+        if (obj.isUserInteractionEnabled
+            && !obj.hidden
+            && obj.alpha > 0.0
+            && [obj isDescendantOfView:view]) {
+            obj.kfc_keyboardCfg.convertFrame = [obj convertRect: obj.bounds toView:view.window];
             [arr addObject:obj];
         }
     }];
@@ -390,18 +345,28 @@ static NSHashTable<UIView *> *_tables;
 }
 - (void)addInputToobarIfRequired {
     UITextField *textField = self.currentResponder;
-    if (self.enableAutoToolbar && !textField.inputAccessoryView && !textField.kfc_keyboardCfg.enableAutoToolbar) {
+    if (!textField.inputAccessoryView && textField.kfc_keyboardCfg.enableAutoToolbar) {
         UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 44)];
         toolbar.barStyle = UIBarStyleDefault;
             // 创建灵活空间（用于将按钮推到右边）
         UIBarButtonItem *item1 = [[UIBarButtonItem alloc] initWithImage:[ZLKeyboardManager keyboardPreviousImage] style:UIBarButtonItemStylePlain target:self action:@selector(preAction)];
         UIBarButtonItem *item2 = [[UIBarButtonItem alloc] initWithImage:[ZLKeyboardManager keyboardNextImage] style:UIBarButtonItemStylePlain target:self action:@selector(nextAction)];
 
-        UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        UIBarButtonItem *flexibleSpace1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        UILabel *labe = UILabel.new;
+        UIView *firstResponder = self.currentResponder;
+        if ([firstResponder isKindOfClass:UITextField.class]) {
+            labe.text = ((UITextField *)firstResponder).placeholder;
+        }else if ([firstResponder isKindOfClass:UITextView.class]) {
+        }else if ([firstResponder isKindOfClass:UISearchBar.class]){
+            labe.text = ((UISearchBar *)firstResponder).placeholder;
+        }
+        UIBarButtonItem *placeholder = [[UIBarButtonItem alloc] initWithCustomView:labe];
+        UIBarButtonItem *flexibleSpace2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
             // 创建“完成”按钮
         UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneButtonTapped:)];
             // 将按钮添加到工具栏
-        toolbar.items = @[item1,item2,flexibleSpace, doneButton];
+        toolbar.items = @[item1,item2,flexibleSpace1,placeholder,flexibleSpace2,doneButton];
         textField.inputAccessoryView = toolbar;
         [textField reloadInputViews];
     }
@@ -409,7 +374,7 @@ static NSHashTable<UIView *> *_tables;
 - (void)didEndEditing {
     if (!self.isEnabled) return;
     [UIView animateWithDuration:0.25 animations:^{
-        UIView *moveContainerView = self.currentResponder.moveContainerView;
+        UIView *moveContainerView = self.currentResponder.kfc_keyboardCfg.moveContainerView;
         moveContainerView.bounds = CGRectMake(0, 0, moveContainerView.bounds.size.width, moveContainerView.bounds.size.height);
     }];
     self.currentResponder = nil;
@@ -447,7 +412,6 @@ static NSHashTable<UIView *> *_tables;
         //Support for RTL languages like Arabic, Persia etc... (Bug ID: #448)
         keyboardDownImage = [keyboardDownImage imageFlippedForRightToLeftLayoutDirection];
     }
-    
     return keyboardDownImage;
 }
 @end
