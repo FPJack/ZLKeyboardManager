@@ -16,5 +16,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, assign, getter = isEnableAutoToolbar) BOOL enableAutoToolbar;
 /// 点击背景是否收起键盘，defaults is YES
 @property (nonatomic,assign)BOOL shouldResignOnTouchOutside;
+@property (nonatomic,weak,readonly) UIView *currentResponder;
 @end
 NS_ASSUME_NONNULL_END

@@ -21,6 +21,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self.textView becomeFirstResponder];
+//    self.searchBar.hidden = YES;
     self.textView.kfc_keyboardCfg.keyboardDistanceFromRelativeView = 50;
     self.searchBar.kfc_keyboardCfg.keyboardDistanceFromRelativeView = 100;
     self.textField.kfc_keyboardCfg.keyboardDistanceFromRelativeView = 150;

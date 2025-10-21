@@ -8,6 +8,8 @@
 #import "ZLKeyboardManager.h"
 #import <objc/runtime.h>
 #import "UIView+keyboard.h"
+#import "ZLToolBar.h"
+
 #define kScreenWidth [UIScreen mainScreen].bounds.size.width
 #define kScreenHeight [UIScreen mainScreen].bounds.size.height
 static NSHashTable<UIView *> *_tables;
@@ -107,7 +109,7 @@ static NSHashTable<UIView *> *_tables;
 
 @interface ZLKeyboardManager()
 @property (nonatomic,readonly) UIView *firstResponder;
-@property (nonatomic,weak) UIView *currentResponder;
+@property (nonatomic,weak,readwrite) UIView *currentResponder;
 @property (nonatomic,nonatomic) UITapGestureRecognizer *tapGesture;
 @end
 @implementation ZLKeyboardManager
@@ -221,9 +223,7 @@ static NSHashTable<UIView *> *_tables;
         moveContainerView.bounds = CGRectMake(0, -bottomSpace, moveContainerView.bounds.size.width, moveContainerView.bounds.size.height);
     } ];
 }
-- (void)doneButtonTapped:(id)sender {
-    [self.currentResponder resignFirstResponder];
-}
+
 - (void)UIKeyboardWillHideNotification:(NSNotification *)notification {
     if (!self.isEnabled) return;
     [self didEndEditing];
@@ -299,31 +299,51 @@ static NSHashTable<UIView *> *_tables;
         [self.tapGesture.view removeGestureRecognizer:self.tapGesture];
     }
 }
-- (void)preAction {
+- (void)previousBarButtonAction:(UIBarButtonItem *)sender {
     NSArray *sortArr = [self allInputViews];
     NSInteger idx = [sortArr indexOfObject:self.currentResponder];
     if (idx != NSNotFound && idx > 0) {
         UIView *view = sortArr[idx - 1];
         [view becomeFirstResponder];
+        view.kfc_keyboardCfg.keyboardToolbar.previousBarButton.enabled = ![sortArr.firstObject isEqual:view];
     }
 }
-- (void)nextAction {
+- (void)nextBarButtonAction:(UIBarButtonItem *)sender {
     NSArray *sortArr = [self allInputViews];
     NSInteger idx = [sortArr indexOfObject:self.currentResponder];
     if (idx != NSNotFound && idx + 1 < sortArr.count) {
         UIView *view = sortArr[idx + 1];
         [view becomeFirstResponder];
+        view.kfc_keyboardCfg.keyboardToolbar.nextBarButton.enabled = ![sortArr.lastObject isEqual:view];
     }
+   
+}
+- (UISearchBar *)searchBarOfSearchTextField:(UIView *)searchTextField {
+    UIView *superView = searchTextField.superview;
+    while (superView && ![superView isKindOfClass:UISearchBar.class]) {
+        superView = superView.superview;
+    }
+    return [(UISearchBar *)superView isKindOfClass:UISearchBar.class] ? (UISearchBar *)superView : nil;
 }
 - (NSArray *)allInputViews {
-    UIView *view = self.currentResponder.kfc_keyboardCfg.moveContainerView;
+    UIView *moveContainerView = self.currentResponder.kfc_keyboardCfg.moveContainerView;
     
     NSMutableArray *arr = NSMutableArray.array;
     [_tables.allObjects enumerateObjectsUsingBlock:^(UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if (obj.isUserInteractionEnabled
+        UIView *view = [self searchBarOfSearchTextField:obj];
+        BOOL res = NO;
+        if (view) {
+            res = view.isUserInteractionEnabled
+            && !view.hidden
+            && view.alpha > 0.0
+            && [view isDescendantOfView:moveContainerView];
+        }else {
+            res = obj.isUserInteractionEnabled
             && !obj.hidden
             && obj.alpha > 0.0
-            && [obj isDescendantOfView:view]) {
+            && [obj isDescendantOfView:moveContainerView];
+        }
+        if (res) {
             obj.kfc_keyboardCfg.convertFrame = [obj convertRect: obj.bounds toView:view.window];
             [arr addObject:obj];
         }
@@ -343,32 +363,34 @@ static NSHashTable<UIView *> *_tables;
     
     return [arr kfc_sortedArrayByPosition];
 }
+- (void)doneBarButtonAction:(UIBarButtonItem *)sender {
+    [self.currentResponder resignFirstResponder];
+}
 - (void)addInputToobarIfRequired {
     UITextField *textField = self.currentResponder;
     if (!textField.inputAccessoryView && textField.kfc_keyboardCfg.enableAutoToolbar) {
-        UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 44)];
+        ZLToolBar *toolbar = [[ZLToolBar alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 44)];
         toolbar.barStyle = UIBarStyleDefault;
-            // 创建灵活空间（用于将按钮推到右边）
-        UIBarButtonItem *item1 = [[UIBarButtonItem alloc] initWithImage:[ZLKeyboardManager keyboardPreviousImage] style:UIBarButtonItemStylePlain target:self action:@selector(preAction)];
-        UIBarButtonItem *item2 = [[UIBarButtonItem alloc] initWithImage:[ZLKeyboardManager keyboardNextImage] style:UIBarButtonItemStylePlain target:self action:@selector(nextAction)];
-
-        UIBarButtonItem *flexibleSpace1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-        UILabel *labe = UILabel.new;
-        UIView *firstResponder = self.currentResponder;
-        if ([firstResponder isKindOfClass:UITextField.class]) {
-            labe.text = ((UITextField *)firstResponder).placeholder;
-        }else if ([firstResponder isKindOfClass:UITextView.class]) {
-        }else if ([firstResponder isKindOfClass:UISearchBar.class]){
-            labe.text = ((UISearchBar *)firstResponder).placeholder;
-        }
-        UIBarButtonItem *placeholder = [[UIBarButtonItem alloc] initWithCustomView:labe];
-        UIBarButtonItem *flexibleSpace2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-            // 创建“完成”按钮
-        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneButtonTapped:)];
-            // 将按钮添加到工具栏
-        toolbar.items = @[item1,item2,flexibleSpace1,placeholder,flexibleSpace2,doneButton];
         textField.inputAccessoryView = toolbar;
         [textField reloadInputViews];
+        UIView *firstResponder = self.currentResponder;
+        if ([firstResponder isKindOfClass:UITextField.class]) {
+            toolbar.titleLabel.text = ((UITextField *)firstResponder).placeholder;
+        }else if ([firstResponder isKindOfClass:UITextView.class]) {
+            
+        }else if ([firstResponder isKindOfClass:UISearchBar.class]){
+            toolbar.titleLabel.text = ((UISearchBar *)firstResponder).placeholder;
+        }
+        NSArray *sortArr = [self allInputViews];
+        if (sortArr.count <= 1) {
+            toolbar.previousBarButton.image = nil;
+            toolbar.nextBarButton.image = nil;
+        }else {
+            NSInteger idx = [sortArr indexOfObject:firstResponder];
+            toolbar.previousBarButton.enabled = !(idx == 0);
+            toolbar.nextBarButton.enabled = !(idx == sortArr.count - 1);
+        }
+        textField.kfc_keyboardCfg.keyboardToolbar = toolbar;
     }
 }
 - (void)didEndEditing {
@@ -405,11 +427,8 @@ static NSHashTable<UIView *> *_tables;
     if (keyboardDownImage == nil)
     {
         NSString *base64Data = @"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";
-        
         NSData *data = [[NSData alloc] initWithBase64EncodedString:base64Data options:NSDataBase64DecodingIgnoreUnknownCharacters];
         keyboardDownImage = [UIImage imageWithData:data scale:3];
-        
-        //Support for RTL languages like Arabic, Persia etc... (Bug ID: #448)
         keyboardDownImage = [keyboardDownImage imageFlippedForRightToLeftLayoutDirection];
     }
     return keyboardDownImage;

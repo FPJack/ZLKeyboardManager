@@ -20,6 +20,7 @@
     if (self) {
         self.shouldResignOnTouchOutside = YES;
         self.enableAutoToolbar = YES;
+        self.keyboardDistanceFromRelativeView = 0;
     }
     return self;
 }

@@ -47,5 +47,13 @@
 	</array>
 	<key>NSAppleMusicUsageDescription</key>
 	<string>这里填写你的详细说明，例如：用于播放您资料库中的音乐</string>
+	<key>NSDocumentsFolderUsageDescription</key>
+	<string>获取文件</string>
+	<key>NSDownloadsFolderUsageDescription</key>
+	<string>获取文件1</string>
+    <key>LSSupportsOpeningDocumentsInPlace</key>
+    <true/>
+    <key>UIFileSharingEnabled</key>
+    <true/>
 </dict>
 </plist>

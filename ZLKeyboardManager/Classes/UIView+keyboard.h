@@ -6,6 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZLToolBar.h"
 
 NS_ASSUME_NONNULL_BEGIN
 @interface NSArray (keyboard)
@@ -14,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 @interface ZLKeyboardConfig : NSObject
-@property(nonatomic, assign) CGFloat keyboardDistanceFromRelativeView; // default is 10.0
+@property(nonatomic, assign) CGFloat keyboardDistanceFromRelativeView; // default is 0.0
 ///相对view,默认是输入框
 @property(nonatomic, weak) UIView *relativeView;
 @property(nonatomic, assign) CGRect originBounds;
@@ -23,6 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// 点击背景是否收起键盘，defaults is YES
 @property (nonatomic,assign)BOOL shouldResignOnTouchOutside;
 @property (nonatomic,readonly) UIViewController *viewContainingController;
+@property (nonatomic, strong) ZLToolBar *keyboardToolbar;
 @end
 @interface UIView (keyboard)
 @property(nonatomic, strong) ZLKeyboardConfig *kfc_keyboardCfg;

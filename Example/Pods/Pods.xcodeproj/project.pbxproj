@@ -8,22 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		05E2B7C1DB7528A0BBEA1521BE0DBAF1 /* MASViewAttribute.h in Headers */ = {isa = PBXBuildFile; fileRef = E1664911F55968A776BA11F00D8E434D /* MASViewAttribute.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		098158FB93F076DB1AE350CF7F22AA60 /* ZLKeyboardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B0E290F2D09F33AE28D71B1B784E8EC4 /* ZLKeyboardManager.m */; };
+		07F80F94E29105CBE4DFDCCE36A22E98 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 692D29656528FA94A71ECFB8FEB6DC0B /* Foundation.framework */; };
 		0AE1FFAA4390B36294D9A3C1E9A2D181 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26BC96F34E43FA0A3AE93B3C2C4595E5 /* XCTest.framework */; };
-		0E7CB4DD6497F5D70A4FE1B44D5FA1A9 /* ZLKeyboardManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 43208F7494BFA10B29A2398AEFE7F39F /* ZLKeyboardManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		12C8FD3D06F867281B3C87497145DC65 /* FBSnapshotTestCase.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CEEB1F6C31B89937C80AD46D2ECA574 /* FBSnapshotTestCase.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1BFA175FD32EFDABC7C6EC45159CD31F /* UIView+keyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 54F756C449A4FC4EF9CEA58F428CA23E /* UIView+keyboard.m */; };
+		1B446B13886B088AAE28E7FD7CEEBB64 /* ZLKeyboardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B48FDBD525338F63EF6F17D1E98FC464 /* ZLKeyboardManager.m */; };
+		1EEB9F32C1A4FC1A9C9DECC15095611A /* ZLToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8464EB18AC379EAF29B28B585A5D89EE /* ZLToolBar.m */; };
+		244EDBF4E7B32622B0AD81D27E683B1A /* ZLKeyboardManager-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CBCDCB23DDAD596669460ACAE33870A8 /* ZLKeyboardManager-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2616CE110E77D279B0FBDC10AC94C294 /* ZLKeyboardManager-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 04050AC5647BF438EC0D1CC3B484D966 /* ZLKeyboardManager-dummy.m */; };
 		267AEE0BF1514767DD64B50559013EB3 /* FBSnapshotTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8AD9A6CFD4331B9A23C2F7983498CF3 /* FBSnapshotTestController.m */; };
-		2F93050E89E20383239B20CB822C880B /* UIView+keyboard.h in Headers */ = {isa = PBXBuildFile; fileRef = 1E9C9E6601B90D73C448C3646A7AD70C /* UIView+keyboard.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2FCA51DAE6513BC774FCCDC3868B1CBF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 692D29656528FA94A71ECFB8FEB6DC0B /* Foundation.framework */; };
 		309819AC12830F87BA5BD7AB92BD2B03 /* Pods-ZLKeyboardManager_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBD01E2ADE02C4F40FC2D9AF9C1E150 /* Pods-ZLKeyboardManager_Tests-dummy.m */; };
 		33E349E32C64A93B3CAC6A2667583E98 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E6B5E773973965C73BC40D4388B4C07 /* QuartzCore.framework */; };
+		358ED980624E2AC8D4929DCDB905D646 /* ZLKeyboardManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B5C354475409E5EA056C1E5AEDA626F6 /* ZLKeyboardManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3777A70A61ED49FCDDB07BE5F0A1C4B4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4138A0A13FF7F7B73435E87E54C56C18 /* UIKit.framework */; };
 		37B890ABDC7DD441E6AA662325D412E6 /* MASConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 66BA6286FFDDBFEF509A327789F6D690 /* MASConstraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3BF27A2A6F27DCE9645039383FCE19F0 /* FBSnapshotTestCase-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B367BF20EC952AD50F06D3171735002D /* FBSnapshotTestCase-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4571A0EA37DC84F39E3830D38A1531AB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4138A0A13FF7F7B73435E87E54C56C18 /* UIKit.framework */; };
+		492DDA389CC86A03AACC4A563C6899FE /* ZLToolBar.h in Headers */ = {isa = PBXBuildFile; fileRef = EF6A55B090432D3E9C6BBA54849BB048 /* ZLToolBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4C451475E61D8F565F7CACA06BBD5F55 /* Pods-ZLKeyboardManager_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C96C1C7DE2C4BF65D733E563B4128A /* Pods-ZLKeyboardManager_Example-dummy.m */; };
-		5294B3AD08B6A123DE2BD451D88BBE6F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 692D29656528FA94A71ECFB8FEB6DC0B /* Foundation.framework */; };
 		55D9D4D1609F1F4929E1BA1A1B562445 /* FBSnapshotTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = C43B4427803F45E5EE12A79C135ABCEE /* FBSnapshotTestCase.m */; };
 		56E800EB3B2BE8AE0BA45A30974D7920 /* Masonry-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 268C4808A7B284FD5CE12AF500644E1A /* Masonry-dummy.m */; };
 		593CC778281D0C5DAFD70A5E285DA86A /* UIImage+Compare.m in Sources */ = {isa = PBXBuildFile; fileRef = 9016A8DDB9A4258DCC8B1B3DDECA0207 /* UIImage+Compare.m */; };
@@ -40,7 +42,7 @@
 		8C6C7E25C5A24C936F81823978190E96 /* ViewController+MASAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 636796616D38EB5C7185BD684C7AE48B /* ViewController+MASAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8FD1AB468AF7F87112C3674006F6BC6E /* SwiftSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3538C14800BA6D283B6500C766E4F0D3 /* SwiftSupport.swift */; };
 		8FF7B6477BFA6E6ABA168E1417291D5F /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 823AE4B4979D09F91ADB18679CF355CD /* MASCompositeConstraint.m */; };
-		9770B76FC6850A44B8F53BBA6DDD4141 /* ZLKeyboardManager-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8473B7564A4970C63E4E154F6A094262 /* ZLKeyboardManager-dummy.m */; };
+		96128B249B90912E3A835D371BD617AB /* UIView+keyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A870A71BFF9C7198B40F8485FB832BD /* UIView+keyboard.m */; };
 		AE7B02645B8F769CA5F215EE8F7CC5B0 /* View+MASAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 602E46B1DC438E157FEFDB89FFC1FEE0 /* View+MASAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AEFB700F9EE77EE9848A8AC8C3F00A7F /* FBSnapshotTestCasePlatform.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0A71045D2C733C3BD6340095E5E033 /* FBSnapshotTestCasePlatform.m */; };
 		B59E60FBC9665FC1061B88B8E6FD9FAF /* Masonry-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 03F83E555D0CF0CB47EB4F7E712AAAE4 /* Masonry-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -53,6 +55,7 @@
 		C8D3789AFB99973FD8BFE78A2196EC83 /* Pods-ZLKeyboardManager_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CFDB450B8DA3208937502C2414DEE0E /* Pods-ZLKeyboardManager_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C8EC35DFB0945DBE2F2FF9ECFE6D9711 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 41CB974288A2892A90F9702F03E0697C /* NSLayoutConstraint+MASDebugAdditions.m */; };
 		C9E19D164C26414115CC969ED9A303C1 /* MASLayoutConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A6BCDB8B38970BAAE92CDDEBB3B20 /* MASLayoutConstraint.m */; };
+		CC8EC7AD5CFA73813B540CF1477078CF /* UIView+keyboard.h in Headers */ = {isa = PBXBuildFile; fileRef = A613A66824A246555384D5AB1A7A0A2D /* UIView+keyboard.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CE0DC4614B4FF855B2101D7F74A710AC /* UIApplication+StrictKeyWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = D9A282C53A123426D0DC6CB96D76A6B7 /* UIApplication+StrictKeyWindow.m */; };
 		CF65A6A0F5F9A6A9FBF5501610AAD758 /* FBSnapshotTestController.h in Headers */ = {isa = PBXBuildFile; fileRef = 67380272F2DF7819A336DF552AD92896 /* FBSnapshotTestController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D663837F4347AF58660EE6F7FD426ECE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 692D29656528FA94A71ECFB8FEB6DC0B /* Foundation.framework */; };
@@ -69,37 +72,36 @@
 		EC9B34262AED632D7EFB49804337648E /* Masonry.h in Headers */ = {isa = PBXBuildFile; fileRef = 05ED7991BE91B391C4F38B25354DEEB6 /* Masonry.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F6D1C960368EB1E067ABD0BFF707FC56 /* MASConstraintMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 17AAAA6DA488D5DF77D99C020E582627 /* MASConstraintMaker.m */; };
 		F822382AB9E7B343C04964B313B1743D /* UIImage+Diff.h in Headers */ = {isa = PBXBuildFile; fileRef = 2547F69451A0A27A16D11D9705986E91 /* UIImage+Diff.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		FFC285D51B43D778052E16171B03C75D /* ZLKeyboardManager-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0C9D4CA76DBBF13F27C44354D96BDF6D /* ZLKeyboardManager-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		044D97C2A0C4643BD86F7A77BF811BF8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 98A98149697C80CEF8D5772791E92E66;
-			remoteInfo = FBSnapshotTestCase;
-		};
-		23136FC5A24BC706162C27A7F708ECE0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 37D518989DBB238F0A59FF5CD7602B22;
-			remoteInfo = "Pods-ZLKeyboardManager_Example";
-		};
-		39307D1765C048E85E4C5DA34C5A65A9 /* PBXContainerItemProxy */ = {
+		4CB69760B9E5AF9EBA94DCDFAC810BCB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 0746142C3FD091C307311B81E2E7D3D0;
 			remoteInfo = ZLKeyboardManager;
 		};
-		FCF0DC4BF05709CFB84002D22687F2A5 /* PBXContainerItemProxy */ = {
+		6D368E7C7CAC9645356F3EA5780FF0E3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 37D518989DBB238F0A59FF5CD7602B22;
+			remoteInfo = "Pods-ZLKeyboardManager_Example";
+		};
+		C671D5EC9FF494E39D02DE5AD58736AC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 55AF53E6C77A10ED4985E04D74A8878E;
 			remoteInfo = Masonry;
+		};
+		F42EF9EC5371EC5A58485270C584B6B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 98A98149697C80CEF8D5772791E92E66;
+			remoteInfo = FBSnapshotTestCase;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -107,18 +109,16 @@
 		00F0062F48C9F20C81A53AC2617DF50A /* Pods-ZLKeyboardManager_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ZLKeyboardManager_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		0204C03E3631573430F1065E0C562121 /* View+MASAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "View+MASAdditions.m"; path = "Masonry/View+MASAdditions.m"; sourceTree = "<group>"; };
 		03F83E555D0CF0CB47EB4F7E712AAAE4 /* Masonry-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Masonry-umbrella.h"; sourceTree = "<group>"; };
+		04050AC5647BF438EC0D1CC3B484D966 /* ZLKeyboardManager-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ZLKeyboardManager-dummy.m"; sourceTree = "<group>"; };
 		04DBA5D9D467E921B4B19C0DDD06E742 /* Masonry.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Masonry.debug.xcconfig; sourceTree = "<group>"; };
 		05ED7991BE91B391C4F38B25354DEEB6 /* Masonry.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Masonry.h; path = Masonry/Masonry.h; sourceTree = "<group>"; };
-		07E9D0C82688C54B0EF7F869F9FFFCAD /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		08BB07DFE127A8E1AEEB1DC649EC5079 /* ZLKeyboardManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ZLKeyboardManager.release.xcconfig; sourceTree = "<group>"; };
 		0B0A71045D2C733C3BD6340095E5E033 /* FBSnapshotTestCasePlatform.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSnapshotTestCasePlatform.m; path = FBSnapshotTestCase/FBSnapshotTestCasePlatform.m; sourceTree = "<group>"; };
-		0C9D4CA76DBBF13F27C44354D96BDF6D /* ZLKeyboardManager-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ZLKeyboardManager-umbrella.h"; sourceTree = "<group>"; };
 		0D85C3E6E50008C91B87CB4DB841D90A /* FBSnapshotTestCase-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "FBSnapshotTestCase-Info.plist"; sourceTree = "<group>"; };
 		17114DFD3892053B65A519666F2B3971 /* ZLKeyboardManager */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ZLKeyboardManager; path = ZLKeyboardManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		178AF10F0B18A63A6A43BCD699793F12 /* ZLKeyboardManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ZLKeyboardManager.debug.xcconfig; sourceTree = "<group>"; };
 		17AAAA6DA488D5DF77D99C020E582627 /* MASConstraintMaker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASConstraintMaker.m; path = Masonry/MASConstraintMaker.m; sourceTree = "<group>"; };
 		184DD14C00CA1A9D3DC375878AAC19A1 /* Masonry.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Masonry.modulemap; sourceTree = "<group>"; };
 		1D0FB1357DE7D247BE34CCB29EDCCFAC /* ViewController+MASAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "ViewController+MASAdditions.m"; path = "Masonry/ViewController+MASAdditions.m"; sourceTree = "<group>"; };
-		1E9C9E6601B90D73C448C3646A7AD70C /* UIView+keyboard.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+keyboard.h"; path = "ZLKeyboardManager/Classes/UIView+keyboard.h"; sourceTree = "<group>"; };
 		1F2A6BCDB8B38970BAAE92CDDEBB3B20 /* MASLayoutConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASLayoutConstraint.m; path = Masonry/MASLayoutConstraint.m; sourceTree = "<group>"; };
 		1FFED36A657123030ABB700256D73F15 /* Masonry */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Masonry; path = Masonry.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		23F8317AB44574A73B4D0B30A0C52397 /* Pods-ZLKeyboardManager_Example */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-ZLKeyboardManager_Example"; path = Pods_ZLKeyboardManager_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -128,24 +128,24 @@
 		268C4808A7B284FD5CE12AF500644E1A /* Masonry-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Masonry-dummy.m"; sourceTree = "<group>"; };
 		26BC96F34E43FA0A3AE93B3C2C4595E5 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		27DA303DBB7E087CE9560BA4AE5D91CC /* UIImage+Diff.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Diff.m"; path = "FBSnapshotTestCase/Categories/UIImage+Diff.m"; sourceTree = "<group>"; };
+		2C0BA44B05C81E84AC11540AB53B0F6A /* ZLKeyboardManager.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = ZLKeyboardManager.modulemap; sourceTree = "<group>"; };
 		2CEEB1F6C31B89937C80AD46D2ECA574 /* FBSnapshotTestCase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSnapshotTestCase.h; path = FBSnapshotTestCase/FBSnapshotTestCase.h; sourceTree = "<group>"; };
 		351B469F82A69464763DA9A8A556D5E4 /* MASCompositeConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASCompositeConstraint.h; path = Masonry/MASCompositeConstraint.h; sourceTree = "<group>"; };
 		3538C14800BA6D283B6500C766E4F0D3 /* SwiftSupport.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftSupport.swift; path = FBSnapshotTestCase/SwiftSupport.swift; sourceTree = "<group>"; };
 		35BC17FC70F21630B7E6F63E14B47AD4 /* Pods-ZLKeyboardManager_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ZLKeyboardManager_Tests.modulemap"; sourceTree = "<group>"; };
 		38CB0D8019BB261AE5B7F306FE88A7EB /* Pods-ZLKeyboardManager_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ZLKeyboardManager_Tests-Info.plist"; sourceTree = "<group>"; };
-		3A07E51D107E9DAC374F01268B4C4435 /* ZLKeyboardManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ZLKeyboardManager.release.xcconfig; sourceTree = "<group>"; };
 		4138A0A13FF7F7B73435E87E54C56C18 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		41CB974288A2892A90F9702F03E0697C /* NSLayoutConstraint+MASDebugAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSLayoutConstraint+MASDebugAdditions.m"; path = "Masonry/NSLayoutConstraint+MASDebugAdditions.m"; sourceTree = "<group>"; };
-		43208F7494BFA10B29A2398AEFE7F39F /* ZLKeyboardManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ZLKeyboardManager.h; path = ZLKeyboardManager/Classes/ZLKeyboardManager.h; sourceTree = "<group>"; };
 		43FD0500F155110FC81738ABCFD8722E /* UIImage+Snapshot.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+Snapshot.h"; path = "FBSnapshotTestCase/Categories/UIImage+Snapshot.h"; sourceTree = "<group>"; };
+		4704526D21398F6FB000BA998E0699C8 /* ZLKeyboardManager-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ZLKeyboardManager-Info.plist"; sourceTree = "<group>"; };
 		498E8B0053FC9C12650256AC7795C1C6 /* MASViewAttribute.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASViewAttribute.m; path = Masonry/MASViewAttribute.m; sourceTree = "<group>"; };
+		4F5960D47C86C3F6A127DC0ED8361A9B /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
 		51578A1CEE9E9D26C7DF19EE8277B170 /* Masonry-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Masonry-Info.plist"; sourceTree = "<group>"; };
-		54F756C449A4FC4EF9CEA58F428CA23E /* UIView+keyboard.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView+keyboard.m"; path = "ZLKeyboardManager/Classes/UIView+keyboard.m"; sourceTree = "<group>"; };
 		57A4D0CA80FBEAEEDC64F804D743BAE1 /* Pods-ZLKeyboardManager_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ZLKeyboardManager_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		5A870A71BFF9C7198B40F8485FB832BD /* UIView+keyboard.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView+keyboard.m"; path = "ZLKeyboardManager/Classes/UIView+keyboard.m"; sourceTree = "<group>"; };
 		5C4F31330DFA99D699E4BDC8C3573D73 /* FBSnapshotTestCase */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FBSnapshotTestCase; path = FBSnapshotTestCase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E6B5E773973965C73BC40D4388B4C07 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		602E46B1DC438E157FEFDB89FFC1FEE0 /* View+MASAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "View+MASAdditions.h"; path = "Masonry/View+MASAdditions.h"; sourceTree = "<group>"; };
-		611EC727CEDFFB1839E2F3A601FD7BBE /* ZLKeyboardManager.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = ZLKeyboardManager.modulemap; sourceTree = "<group>"; };
 		636796616D38EB5C7185BD684C7AE48B /* ViewController+MASAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "ViewController+MASAdditions.h"; path = "Masonry/ViewController+MASAdditions.h"; sourceTree = "<group>"; };
 		63EE3FB54B787C64DD8BC94B656516B4 /* Pods-ZLKeyboardManager_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ZLKeyboardManager_Example.modulemap"; sourceTree = "<group>"; };
 		66BA6286FFDDBFEF509A327789F6D690 /* MASConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASConstraint.h; path = Masonry/MASConstraint.h; sourceTree = "<group>"; };
@@ -153,22 +153,22 @@
 		67380272F2DF7819A336DF552AD92896 /* FBSnapshotTestController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSnapshotTestController.h; path = FBSnapshotTestCase/FBSnapshotTestController.h; sourceTree = "<group>"; };
 		692D29656528FA94A71ECFB8FEB6DC0B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		69BBC1CE4BBFEAAF26B78146D46492D7 /* Pods-ZLKeyboardManager_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZLKeyboardManager_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		6C469F9E5531751501D10954AE8C6851 /* ZLKeyboardManager-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ZLKeyboardManager-prefix.pch"; sourceTree = "<group>"; };
 		6CFDB450B8DA3208937502C2414DEE0E /* Pods-ZLKeyboardManager_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ZLKeyboardManager_Example-umbrella.h"; sourceTree = "<group>"; };
 		73DA2B3A3C8E6F3A7D976D1C4C4BCEC9 /* FBSnapshotTestCase.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = FBSnapshotTestCase.modulemap; sourceTree = "<group>"; };
 		75B839A35A2BFBEC3479FF1552F569BC /* FBSnapshotTestCase-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FBSnapshotTestCase-dummy.m"; sourceTree = "<group>"; };
+		76B1BF7A5976FF434DC13A89C4243E54 /* ZLKeyboardManager-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ZLKeyboardManager-prefix.pch"; sourceTree = "<group>"; };
 		7731683F4BFFF04ACBB3E9BA86F1B2BA /* FBSnapshotTestCase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FBSnapshotTestCase.release.xcconfig; sourceTree = "<group>"; };
-		7B4BEFF606FE5A1799DF89FF48A0DCEB /* ZLKeyboardManager.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = ZLKeyboardManager.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		7DB422B582516827F996ECC079D68C5E /* Pods-ZLKeyboardManager_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ZLKeyboardManager_Example-frameworks.sh"; sourceTree = "<group>"; };
 		7E502E95D75F8DF19C71E7419515430D /* MASViewConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASViewConstraint.m; path = Masonry/MASViewConstraint.m; sourceTree = "<group>"; };
 		7FCD58499215DAB4D7197FCAA09BFCE5 /* Pods-ZLKeyboardManager_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZLKeyboardManager_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		823AE4B4979D09F91ADB18679CF355CD /* MASCompositeConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASCompositeConstraint.m; path = Masonry/MASCompositeConstraint.m; sourceTree = "<group>"; };
-		8473B7564A4970C63E4E154F6A094262 /* ZLKeyboardManager-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ZLKeyboardManager-dummy.m"; sourceTree = "<group>"; };
+		8464EB18AC379EAF29B28B585A5D89EE /* ZLToolBar.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ZLToolBar.m; path = ZLKeyboardManager/Classes/ZLToolBar.m; sourceTree = "<group>"; };
 		87935F013FA9E067A3CF17151C646AFF /* Pods-ZLKeyboardManager_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ZLKeyboardManager_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		8940D361FD89F610F4C862B772A33E51 /* FBSnapshotTestCasePlatform.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSnapshotTestCasePlatform.h; path = FBSnapshotTestCase/FBSnapshotTestCasePlatform.h; sourceTree = "<group>"; };
 		8EF7A30537549BE8ACF5884E55B460D3 /* Pods-ZLKeyboardManager_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ZLKeyboardManager_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		9016A8DDB9A4258DCC8B1B3DDECA0207 /* UIImage+Compare.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Compare.m"; path = "FBSnapshotTestCase/Categories/UIImage+Compare.m"; sourceTree = "<group>"; };
 		909597D5A7270BB0B845363BD757AC74 /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "View+MASShorthandAdditions.h"; path = "Masonry/View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
+		92824A5F4586B288A8F7CD485984292C /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
 		94A691C70504B82F1D79E0F50DF6B488 /* UIImage+Snapshot.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Snapshot.m"; path = "FBSnapshotTestCase/Categories/UIImage+Snapshot.m"; sourceTree = "<group>"; };
 		953D09CA7C4AEA7BF0701893620C2D19 /* Pods-ZLKeyboardManager_Tests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-ZLKeyboardManager_Tests"; path = Pods_ZLKeyboardManager_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		98E5B4DDA3A6742DA86BC33EDEB35F59 /* NSArray+MASShorthandAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+MASShorthandAdditions.h"; path = "Masonry/NSArray+MASShorthandAdditions.h"; sourceTree = "<group>"; };
@@ -176,17 +176,20 @@
 		A394C2C6ABAE5BF5090CF2AD98C696AF /* MASUtilities.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASUtilities.h; path = Masonry/MASUtilities.h; sourceTree = "<group>"; };
 		A4A12C368749FD2EEF1BB8849594446F /* MASConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASConstraint.m; path = Masonry/MASConstraint.m; sourceTree = "<group>"; };
 		A5ADEF2C33BF1C36E1F6020EA61D65B7 /* Masonry.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Masonry.release.xcconfig; sourceTree = "<group>"; };
+		A613A66824A246555384D5AB1A7A0A2D /* UIView+keyboard.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+keyboard.h"; path = "ZLKeyboardManager/Classes/UIView+keyboard.h"; sourceTree = "<group>"; };
 		A8C96C1C7DE2C4BF65D733E563B4128A /* Pods-ZLKeyboardManager_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ZLKeyboardManager_Example-dummy.m"; sourceTree = "<group>"; };
 		A8D176E819E24C5162843A6309AFBCF6 /* Pods-ZLKeyboardManager_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZLKeyboardManager_Example.release.xcconfig"; sourceTree = "<group>"; };
-		AA0F6B240AFC990CEFA933C0EE9ADACD /* ZLKeyboardManager-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ZLKeyboardManager-Info.plist"; sourceTree = "<group>"; };
-		B0E290F2D09F33AE28D71B1B784E8EC4 /* ZLKeyboardManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ZLKeyboardManager.m; path = ZLKeyboardManager/Classes/ZLKeyboardManager.m; sourceTree = "<group>"; };
+		AF3B810FF6BFA7D14B6557E3D220AB3F /* ZLKeyboardManager.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = ZLKeyboardManager.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		B17D6A5548097996EE3796656A32B6D2 /* MASLayoutConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASLayoutConstraint.h; path = Masonry/MASLayoutConstraint.h; sourceTree = "<group>"; };
 		B32DC82B087A3199F46DEE37F30C42D4 /* NSArray+MASAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+MASAdditions.h"; path = "Masonry/NSArray+MASAdditions.h"; sourceTree = "<group>"; };
 		B367BF20EC952AD50F06D3171735002D /* FBSnapshotTestCase-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FBSnapshotTestCase-umbrella.h"; sourceTree = "<group>"; };
+		B48FDBD525338F63EF6F17D1E98FC464 /* ZLKeyboardManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ZLKeyboardManager.m; path = ZLKeyboardManager/Classes/ZLKeyboardManager.m; sourceTree = "<group>"; };
+		B5C354475409E5EA056C1E5AEDA626F6 /* ZLKeyboardManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ZLKeyboardManager.h; path = ZLKeyboardManager/Classes/ZLKeyboardManager.h; sourceTree = "<group>"; };
 		BEBD01E2ADE02C4F40FC2D9AF9C1E150 /* Pods-ZLKeyboardManager_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ZLKeyboardManager_Tests-dummy.m"; sourceTree = "<group>"; };
 		BF110DE70107316228863B82A51A09D3 /* FBSnapshotTestCase-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FBSnapshotTestCase-prefix.pch"; sourceTree = "<group>"; };
 		C149E0AF3AD8BD37E81DEC365043BBCB /* Pods-ZLKeyboardManager_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZLKeyboardManager_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		C43B4427803F45E5EE12A79C135ABCEE /* FBSnapshotTestCase.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSnapshotTestCase.m; path = FBSnapshotTestCase/FBSnapshotTestCase.m; sourceTree = "<group>"; };
+		CBCDCB23DDAD596669460ACAE33870A8 /* ZLKeyboardManager-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ZLKeyboardManager-umbrella.h"; sourceTree = "<group>"; };
 		D39570D3C32595968B12039E56A71CC2 /* MASConstraint+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "MASConstraint+Private.h"; path = "Masonry/MASConstraint+Private.h"; sourceTree = "<group>"; };
 		D8AD9A6CFD4331B9A23C2F7983498CF3 /* FBSnapshotTestController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSnapshotTestController.m; path = FBSnapshotTestCase/FBSnapshotTestController.m; sourceTree = "<group>"; };
 		D9A282C53A123426D0DC6CB96D76A6B7 /* UIApplication+StrictKeyWindow.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIApplication+StrictKeyWindow.m"; path = "FBSnapshotTestCase/Categories/UIApplication+StrictKeyWindow.m"; sourceTree = "<group>"; };
@@ -196,8 +199,9 @@
 		DFE72805626641332E27A0EE2C6EF88B /* FBSnapshotTestCase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FBSnapshotTestCase.debug.xcconfig; sourceTree = "<group>"; };
 		E1664911F55968A776BA11F00D8E434D /* MASViewAttribute.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASViewAttribute.h; path = Masonry/MASViewAttribute.h; sourceTree = "<group>"; };
 		E20173728E322CA943398A88168AD012 /* UIImage+Compare.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+Compare.h"; path = "FBSnapshotTestCase/Categories/UIImage+Compare.h"; sourceTree = "<group>"; };
+		EA307F18720B6056F585A9D5B2A72AAD /* ZLKeyboardManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ZLKeyboardManager.debug.xcconfig; sourceTree = "<group>"; };
 		EDFA8CC2AD68834644662EE1AC469B03 /* NSLayoutConstraint+MASDebugAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSLayoutConstraint+MASDebugAdditions.h"; path = "Masonry/NSLayoutConstraint+MASDebugAdditions.h"; sourceTree = "<group>"; };
-		F47CC4899BB3130647A30EB693B24AAD /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		EF6A55B090432D3E9C6BBA54849BB048 /* ZLToolBar.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ZLToolBar.h; path = ZLKeyboardManager/Classes/ZLToolBar.h; sourceTree = "<group>"; };
 		F793D8588CD60BFFC82AF37C9BC308D0 /* UIApplication+StrictKeyWindow.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIApplication+StrictKeyWindow.h"; path = "FBSnapshotTestCase/Categories/UIApplication+StrictKeyWindow.h"; sourceTree = "<group>"; };
 		FCE1DDE1A00CE0531A4DF74A6C2EB5F8 /* MASViewConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASViewConstraint.h; path = Masonry/MASViewConstraint.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -239,11 +243,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CF370A70074EEC8B44BBC4CDD4496734 /* Frameworks */ = {
+		EC20DBC56D3BE12FFF1BCC5A0E30C54B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5294B3AD08B6A123DE2BD451D88BBE6F /* Foundation.framework in Frameworks */,
+				07F80F94E29105CBE4DFDCCE36A22E98 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,6 +281,32 @@
 			path = "../Target Support Files/Masonry";
 			sourceTree = "<group>";
 		};
+		30C40CE9A9125600710014B63A14575A /* ZLKeyboardManager */ = {
+			isa = PBXGroup;
+			children = (
+				A613A66824A246555384D5AB1A7A0A2D /* UIView+keyboard.h */,
+				5A870A71BFF9C7198B40F8485FB832BD /* UIView+keyboard.m */,
+				B5C354475409E5EA056C1E5AEDA626F6 /* ZLKeyboardManager.h */,
+				B48FDBD525338F63EF6F17D1E98FC464 /* ZLKeyboardManager.m */,
+				EF6A55B090432D3E9C6BBA54849BB048 /* ZLToolBar.h */,
+				8464EB18AC379EAF29B28B585A5D89EE /* ZLToolBar.m */,
+				408498D3E89F592D117F77487C01F08C /* Pod */,
+				6121908865B09B3B27E24BFC2F79A7BE /* Support Files */,
+			);
+			name = ZLKeyboardManager;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		408498D3E89F592D117F77487C01F08C /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				4F5960D47C86C3F6A127DC0ED8361A9B /* LICENSE */,
+				92824A5F4586B288A8F7CD485984292C /* README.md */,
+				AF3B810FF6BFA7D14B6557E3D220AB3F /* ZLKeyboardManager.podspec */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
 		4A62A50A353010EE22AD4E07C3F1E2CC /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -293,6 +323,21 @@
 				7157EA4D473787D51263C55784AD6FD6 /* Pods-ZLKeyboardManager_Tests */,
 			);
 			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		6121908865B09B3B27E24BFC2F79A7BE /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				2C0BA44B05C81E84AC11540AB53B0F6A /* ZLKeyboardManager.modulemap */,
+				04050AC5647BF438EC0D1CC3B484D966 /* ZLKeyboardManager-dummy.m */,
+				4704526D21398F6FB000BA998E0699C8 /* ZLKeyboardManager-Info.plist */,
+				76B1BF7A5976FF434DC13A89C4243E54 /* ZLKeyboardManager-prefix.pch */,
+				CBCDCB23DDAD596669460ACAE33870A8 /* ZLKeyboardManager-umbrella.h */,
+				EA307F18720B6056F585A9D5B2A72AAD /* ZLKeyboardManager.debug.xcconfig */,
+				08BB07DFE127A8E1AEEB1DC649EC5079 /* ZLKeyboardManager.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/ZLKeyboardManager";
 			sourceTree = "<group>";
 		};
 		7157EA4D473787D51263C55784AD6FD6 /* Pods-ZLKeyboardManager_Tests */ = {
@@ -357,16 +402,6 @@
 			path = FBSnapshotTestCase;
 			sourceTree = "<group>";
 		};
-		B786607050FDEB0B8D1567A55EAC1566 /* Pod */ = {
-			isa = PBXGroup;
-			children = (
-				07E9D0C82688C54B0EF7F869F9FFFCAD /* LICENSE */,
-				F47CC4899BB3130647A30EB693B24AAD /* README.md */,
-				7B4BEFF606FE5A1799DF89FF48A0DCEB /* ZLKeyboardManager.podspec */,
-			);
-			name = Pod;
-			sourceTree = "<group>";
-		};
 		BA4F31F07263C99FC76E66D632A59F09 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -409,26 +444,19 @@
 			path = Masonry;
 			sourceTree = "<group>";
 		};
-		CB3FCE81DD2DC05E0831A88E26BC5B14 /* Support Files */ = {
+		CA0F703EB3FE9BEA958D47F0C69C0BF0 /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				611EC727CEDFFB1839E2F3A601FD7BBE /* ZLKeyboardManager.modulemap */,
-				8473B7564A4970C63E4E154F6A094262 /* ZLKeyboardManager-dummy.m */,
-				AA0F6B240AFC990CEFA933C0EE9ADACD /* ZLKeyboardManager-Info.plist */,
-				6C469F9E5531751501D10954AE8C6851 /* ZLKeyboardManager-prefix.pch */,
-				0C9D4CA76DBBF13F27C44354D96BDF6D /* ZLKeyboardManager-umbrella.h */,
-				178AF10F0B18A63A6A43BCD699793F12 /* ZLKeyboardManager.debug.xcconfig */,
-				3A07E51D107E9DAC374F01268B4C4435 /* ZLKeyboardManager.release.xcconfig */,
+				30C40CE9A9125600710014B63A14575A /* ZLKeyboardManager */,
 			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/ZLKeyboardManager";
+			name = "Development Pods";
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
-				F5DBBE12DB4B656C21BBAC7AED5D1173 /* Development Pods */,
+				CA0F703EB3FE9BEA958D47F0C69C0BF0 /* Development Pods */,
 				BA4F31F07263C99FC76E66D632A59F09 /* Frameworks */,
 				4A62A50A353010EE22AD4E07C3F1E2CC /* Pods */,
 				1C7554E27BFD892A221B87E0D33161AE /* Products */,
@@ -453,20 +481,6 @@
 			path = "Target Support Files/Pods-ZLKeyboardManager_Example";
 			sourceTree = "<group>";
 		};
-		E73362E7B0F9B7EF7C587AF34B8A4F2C /* ZLKeyboardManager */ = {
-			isa = PBXGroup;
-			children = (
-				1E9C9E6601B90D73C448C3646A7AD70C /* UIView+keyboard.h */,
-				54F756C449A4FC4EF9CEA58F428CA23E /* UIView+keyboard.m */,
-				43208F7494BFA10B29A2398AEFE7F39F /* ZLKeyboardManager.h */,
-				B0E290F2D09F33AE28D71B1B784E8EC4 /* ZLKeyboardManager.m */,
-				B786607050FDEB0B8D1567A55EAC1566 /* Pod */,
-				CB3FCE81DD2DC05E0831A88E26BC5B14 /* Support Files */,
-			);
-			name = ZLKeyboardManager;
-			path = ../..;
-			sourceTree = "<group>";
-		};
 		F4F09DBECA9DA51BA2AFE7F9FAF7779F /* Core */ = {
 			isa = PBXGroup;
 			children = (
@@ -486,14 +500,6 @@
 				94A691C70504B82F1D79E0F50DF6B488 /* UIImage+Snapshot.m */,
 			);
 			name = Core;
-			sourceTree = "<group>";
-		};
-		F5DBBE12DB4B656C21BBAC7AED5D1173 /* Development Pods */ = {
-			isa = PBXGroup;
-			children = (
-				E73362E7B0F9B7EF7C587AF34B8A4F2C /* ZLKeyboardManager */,
-			);
-			name = "Development Pods";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -530,6 +536,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		442E919DF7E7367DA99706C2E7245FAE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC8EC7AD5CFA73813B540CF1477078CF /* UIView+keyboard.h in Headers */,
+				358ED980624E2AC8D4929DCDB905D646 /* ZLKeyboardManager.h in Headers */,
+				244EDBF4E7B32622B0AD81D27E683B1A /* ZLKeyboardManager-umbrella.h in Headers */,
+				492DDA389CC86A03AACC4A563C6899FE /* ZLToolBar.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6A11A4ED6C92ACA1C089260BA3F0C776 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -542,16 +559,6 @@
 				E4F6CF5EA1B12C55385D3CDC6BD1F4D8 /* UIImage+Compare.h in Headers */,
 				F822382AB9E7B343C04964B313B1743D /* UIImage+Diff.h in Headers */,
 				64066CA793C90CA645A6D2031654D2CC /* UIImage+Snapshot.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8D665F6E52A7C6AE65DF5F1C90204D7D /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2F93050E89E20383239B20CB822C880B /* UIView+keyboard.h in Headers */,
-				0E7CB4DD6497F5D70A4FE1B44D5FA1A9 /* ZLKeyboardManager.h in Headers */,
-				FFC285D51B43D778052E16171B03C75D /* ZLKeyboardManager-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -568,12 +575,12 @@
 /* Begin PBXNativeTarget section */
 		0746142C3FD091C307311B81E2E7D3D0 /* ZLKeyboardManager */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A1293B1D94AE596BE753727D697FC7A9 /* Build configuration list for PBXNativeTarget "ZLKeyboardManager" */;
+			buildConfigurationList = 910B3005162964A1A895ED20BDFF0A50 /* Build configuration list for PBXNativeTarget "ZLKeyboardManager" */;
 			buildPhases = (
-				8D665F6E52A7C6AE65DF5F1C90204D7D /* Headers */,
-				0932A845885B8B9697F34F7FFBCAC133 /* Sources */,
-				CF370A70074EEC8B44BBC4CDD4496734 /* Frameworks */,
-				F7FD6131492760EE601088F8114B8E1E /* Resources */,
+				442E919DF7E7367DA99706C2E7245FAE /* Headers */,
+				EA1C67044C1F3E4FC8C537FDD001A921 /* Sources */,
+				EC20DBC56D3BE12FFF1BCC5A0E30C54B /* Frameworks */,
+				8B0F9738305ADD344B540742896702E8 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -596,8 +603,8 @@
 			buildRules = (
 			);
 			dependencies = (
-				22A574FBA7DCD5D8C84A95D261C44A8D /* PBXTargetDependency */,
-				A57F9023E34C28552168D314759BD1C7 /* PBXTargetDependency */,
+				36EB5181B0DB286126B9C903A54D5AFC /* PBXTargetDependency */,
+				C3FD547D93669051A5A2D9B34ED23EB7 /* PBXTargetDependency */,
 			);
 			name = "Pods-ZLKeyboardManager_Example";
 			productName = Pods_ZLKeyboardManager_Example;
@@ -652,8 +659,8 @@
 			buildRules = (
 			);
 			dependencies = (
-				A6709F7C0B4ADF22BCE8E6D6D164B23B /* PBXTargetDependency */,
-				CFE530DA5EFE13206276341D5915E657 /* PBXTargetDependency */,
+				42A713AE6BC9B0750AB0A95CCCF49340 /* PBXTargetDependency */,
+				F20859C2F898E7166E83C7F3EAE74E41 /* PBXTargetDependency */,
 			);
 			name = "Pods-ZLKeyboardManager_Tests";
 			productName = Pods_ZLKeyboardManager_Tests;
@@ -701,6 +708,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8B0F9738305ADD344B540742896702E8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9C5CD8DC87EEF06541F462417A7CF386 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -722,26 +736,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F7FD6131492760EE601088F8114B8E1E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		0932A845885B8B9697F34F7FFBCAC133 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				1BFA175FD32EFDABC7C6EC45159CD31F /* UIView+keyboard.m in Sources */,
-				098158FB93F076DB1AE350CF7F22AA60 /* ZLKeyboardManager.m in Sources */,
-				9770B76FC6850A44B8F53BBA6DDD4141 /* ZLKeyboardManager-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		19359B190E33AA311747B7AB238B526B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -784,6 +781,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EA1C67044C1F3E4FC8C537FDD001A921 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				96128B249B90912E3A835D371BD617AB /* UIView+keyboard.m in Sources */,
+				1B446B13886B088AAE28E7FD7CEEBB64 /* ZLKeyboardManager.m in Sources */,
+				2616CE110E77D279B0FBDC10AC94C294 /* ZLKeyboardManager-dummy.m in Sources */,
+				1EEB9F32C1A4FC1A9C9DECC15095611A /* ZLToolBar.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F7A52F3E4EA618C8F7FB5B64D0C2543D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -795,68 +803,33 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		22A574FBA7DCD5D8C84A95D261C44A8D /* PBXTargetDependency */ = {
+		36EB5181B0DB286126B9C903A54D5AFC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Masonry;
 			target = 55AF53E6C77A10ED4985E04D74A8878E /* Masonry */;
-			targetProxy = FCF0DC4BF05709CFB84002D22687F2A5 /* PBXContainerItemProxy */;
+			targetProxy = C671D5EC9FF494E39D02DE5AD58736AC /* PBXContainerItemProxy */;
 		};
-		A57F9023E34C28552168D314759BD1C7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = ZLKeyboardManager;
-			target = 0746142C3FD091C307311B81E2E7D3D0 /* ZLKeyboardManager */;
-			targetProxy = 39307D1765C048E85E4C5DA34C5A65A9 /* PBXContainerItemProxy */;
-		};
-		A6709F7C0B4ADF22BCE8E6D6D164B23B /* PBXTargetDependency */ = {
+		42A713AE6BC9B0750AB0A95CCCF49340 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = FBSnapshotTestCase;
 			target = 98A98149697C80CEF8D5772791E92E66 /* FBSnapshotTestCase */;
-			targetProxy = 044D97C2A0C4643BD86F7A77BF811BF8 /* PBXContainerItemProxy */;
+			targetProxy = F42EF9EC5371EC5A58485270C584B6B0 /* PBXContainerItemProxy */;
 		};
-		CFE530DA5EFE13206276341D5915E657 /* PBXTargetDependency */ = {
+		C3FD547D93669051A5A2D9B34ED23EB7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ZLKeyboardManager;
+			target = 0746142C3FD091C307311B81E2E7D3D0 /* ZLKeyboardManager */;
+			targetProxy = 4CB69760B9E5AF9EBA94DCDFAC810BCB /* PBXContainerItemProxy */;
+		};
+		F20859C2F898E7166E83C7F3EAE74E41 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-ZLKeyboardManager_Example";
 			target = 37D518989DBB238F0A59FF5CD7602B22 /* Pods-ZLKeyboardManager_Example */;
-			targetProxy = 23136FC5A24BC706162C27A7F708ECE0 /* PBXContainerItemProxy */;
+			targetProxy = 6D368E7C7CAC9645356F3EA5780FF0E3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		0A57CF379A667E6FA6E1DE53672C7632 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 178AF10F0B18A63A6A43BCD699793F12 /* ZLKeyboardManager.debug.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_MODULE_VERIFIER = NO;
-				ENABLE_USER_SCRIPT_SANDBOXING = NO;
-				GCC_PREFIX_HEADER = "Target Support Files/ZLKeyboardManager/ZLKeyboardManager-prefix.pch";
-				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = "Target Support Files/ZLKeyboardManager/ZLKeyboardManager-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/ZLKeyboardManager/ZLKeyboardManager.modulemap";
-				PRODUCT_MODULE_NAME = ZLKeyboardManager;
-				PRODUCT_NAME = ZLKeyboardManager;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_INSTALL_OBJC_HEADER = YES;
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		0C2180F3DDCB76859E94BD9E44D69869 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 69BBC1CE4BBFEAAF26B78146D46492D7 /* Pods-ZLKeyboardManager_Example.debug.xcconfig */;
@@ -961,6 +934,77 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
+		};
+		2F5EDBC5DC01A66B4168CE4D99E7CD10 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 08BB07DFE127A8E1AEEB1DC649EC5079 /* ZLKeyboardManager.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_PREFIX_HEADER = "Target Support Files/ZLKeyboardManager/ZLKeyboardManager-prefix.pch";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "Target Support Files/ZLKeyboardManager/ZLKeyboardManager-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/ZLKeyboardManager/ZLKeyboardManager.modulemap";
+				PRODUCT_MODULE_NAME = ZLKeyboardManager;
+				PRODUCT_NAME = ZLKeyboardManager;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		3236E23955C25EBB5C72F7F0C3D277CC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EA307F18720B6056F585A9D5B2A72AAD /* ZLKeyboardManager.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_PREFIX_HEADER = "Target Support Files/ZLKeyboardManager/ZLKeyboardManager-prefix.pch";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "Target Support Files/ZLKeyboardManager/ZLKeyboardManager-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/ZLKeyboardManager/ZLKeyboardManager.modulemap";
+				PRODUCT_MODULE_NAME = ZLKeyboardManager;
+				PRODUCT_NAME = ZLKeyboardManager;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
 		};
 		37161750DD2BD1EFEE6B1E31CAE2A17D /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1163,42 +1207,6 @@
 			};
 			name = Release;
 		};
-		8E98063C67B038F0286E8CD46FD3BB98 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3A07E51D107E9DAC374F01268B4C4435 /* ZLKeyboardManager.release.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_MODULE_VERIFIER = NO;
-				ENABLE_USER_SCRIPT_SANDBOXING = NO;
-				GCC_PREFIX_HEADER = "Target Support Files/ZLKeyboardManager/ZLKeyboardManager-prefix.pch";
-				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = "Target Support Files/ZLKeyboardManager/ZLKeyboardManager-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/ZLKeyboardManager/ZLKeyboardManager.modulemap";
-				PRODUCT_MODULE_NAME = ZLKeyboardManager;
-				PRODUCT_NAME = ZLKeyboardManager;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_INSTALL_OBJC_HEADER = YES;
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		D17FE0209282875C4F6DED69A4BF1A6A /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A8D176E819E24C5162843A6309AFBCF6 /* Pods-ZLKeyboardManager_Example.release.xcconfig */;
@@ -1331,11 +1339,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A1293B1D94AE596BE753727D697FC7A9 /* Build configuration list for PBXNativeTarget "ZLKeyboardManager" */ = {
+		910B3005162964A1A895ED20BDFF0A50 /* Build configuration list for PBXNativeTarget "ZLKeyboardManager" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0A57CF379A667E6FA6E1DE53672C7632 /* Debug */,
-				8E98063C67B038F0286E8CD46FD3BB98 /* Release */,
+				3236E23955C25EBB5C72F7F0C3D277CC /* Debug */,
+				2F5EDBC5DC01A66B4168CE4D99E7CD10 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

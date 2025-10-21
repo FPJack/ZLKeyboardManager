@@ -11,6 +11,8 @@
 #import <ZLKeyboardManager/ZLKeyboardManager.h>
 #import <ZLKeyboardManager/UIView+keyboard.h>
 #import <MediaPlayer/MediaPlayer.h>
+#import <MobileCoreServices/MobileCoreServices.h>
+
 @interface GMTextField : UITextField
 @end
 @implementation GMTextField
@@ -23,7 +25,7 @@
     NSLog(@"%s",__func__);
 }
 @end
-@interface ZLViewController ()<MPMediaPickerControllerDelegate>
+@interface ZLViewController ()<MPMediaPickerControllerDelegate,UIDocumentPickerDelegate>
 
 @property (nonatomic, strong) MPMediaPickerController *mpc;
 @end
@@ -54,6 +56,11 @@
 
 }
 - (void)ta:(id)obj {
+    UIDocumentPickerViewController *picker = [[UIDocumentPickerViewController alloc] initWithDocumentTypes:@[(NSString *)kUTTypeAudio] inMode:UIDocumentPickerModeImport];
+    picker.delegate = self;
+    picker.allowsMultipleSelection = YES; // 允许多选
+        [self presentViewController:picker animated:YES completion:nil];
+    return;
 //    [self.navigationController pushViewController:TestVC.new animated:YES];
     
 //    MPMediaPickerController *mpc = [[MPMediaPickerController alloc]initWithMediaTypes:MPMediaTypeMusic];
@@ -84,6 +91,42 @@
     
     [self presentViewController:alert animated:YES completion:nil];
 
+}
+- (void)documentPicker:(UIDocumentPickerViewController *)controller didPickDocumentsAtURLs:(NSArray<NSURL *> *)urls {
+    for (NSURL *url in urls) {
+        // 确保有权限访问文件
+        BOOL accessing = [url startAccessingSecurityScopedResource];
+        [self copyFileToAppDirectory:url];
+
+        if (accessing) {
+            NSLog(@"Selected file: %@", url);
+            // 复制文件到 App 的沙盒目录（如 Documents 目录）
+            [self copyFileToAppDirectory:url];
+            [url stopAccessingSecurityScopedResource];
+        }
+    }
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+// 将文件复制到 App 沙盒目录
+- (void)copyFileToAppDirectory:(NSURL *)fileURL {
+    NSError *error;
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+    NSString *destinationPath = [documentsPath stringByAppendingPathComponent:[fileURL lastPathComponent]];
+    [fileManager removeItemAtPath:destinationPath error:nil];
+    // 复制文件
+    if ([fileManager copyItemAtURL:fileURL toURL:[NSURL fileURLWithPath:destinationPath] error:&error]) {
+        NSLog(@"File copied to: %@", destinationPath);
+        // 可以使用 AVPlayer 或其他方式处理文件
+    } else {
+        NSLog(@"Error copying file: %@", error.localizedDescription);
+    }
+}
+
+// 用户取消选择
+- (void)documentPickerWasCancelled:(UIDocumentPickerViewController *)controller {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (void)mediaPicker:(MPMediaPickerController *)mediaPicker didPickMediaItems:(MPMediaItemCollection *)mediaItemCollection{
   /*insert your code*/
