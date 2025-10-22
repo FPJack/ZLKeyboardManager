@@ -34,6 +34,11 @@
 //    IQKeyboardManager.sharedManager.enableAutoToolbar = NO;
     
 //    self.navigationController.navigationBarHidden = YES;
+//    NSMutableArray *arr = ZLKeyboardManager.share.disabledInputViewClasses;
+//    [ZLKeyboardManager.share.disabledInputViewClasses addObject:[UISearchBar class]];
+//    [ZLKeyboardManager.share.disabledInputViewClasses addObject:[UITextField class]];
+//    [ZLKeyboardManager.share.disabledInputViewClasses addObject:[UITextView class]];
+    NSLog(@"%@",ZLKeyboardManager.share.disabledInputViewClasses);
     [self setupData];
     [self setupUI];
     self.view = UIView.new;
@@ -158,6 +163,9 @@
     textView.layer.cornerRadius = 5.0;
     textView.tag = 3000 + indexPath.row;
     textView.delegate = self;
+    textView.kfc_keyboardCfg.shouldAutoHandleKeyboard = ^BOOL(UIView * _Nonnull view) {
+        return YES;
+    };
     [cell.contentView addSubview:textView];
   
 

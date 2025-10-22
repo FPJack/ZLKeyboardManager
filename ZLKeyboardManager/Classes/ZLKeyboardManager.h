@@ -25,6 +25,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,assign)BOOL shouldResignOnTouchOutside;
 @property (nonatomic,weak,readonly) UIView *currentResponder;
 /// 禁用键盘管理的输入视图类集合
-@property(nonatomic, strong) NSMutableSet<Class> *disabledInputViewClasses;
+@property(nonatomic, strong,readonly) NSMutableArray<Class> *disabledInputViewClasses;
 @end
 NS_ASSUME_NONNULL_END

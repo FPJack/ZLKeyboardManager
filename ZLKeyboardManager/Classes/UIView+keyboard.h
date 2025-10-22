@@ -21,6 +21,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, assign) CGRect originBounds;
 @property (nonatomic,assign)BOOL enableAutoToolbar;/// default is YES
 @property(nonatomic, assign, getter = isEnabled) BOOL enable;/// default is YES
+///自动处理键盘，优先级高与enable属性和ZLKeyboardManager.share.disabledInputViewClasses,前提ZLKeyboardManager.share.enable为YES
+@property(nonatomic, copy)BOOL (^shouldAutoHandleKeyboard)(UIView *view);
+
 /// 需要移动的容器view,默认是第一响应者的所属控制器的view，如果没有控制器则是所属window
 @property (nonatomic,weak)UIView *moveContainerView;
 /// 点击背景是否收起键盘，defaults is YES

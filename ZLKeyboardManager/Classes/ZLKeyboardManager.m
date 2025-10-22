@@ -111,13 +111,15 @@ static NSHashTable<UIView *> *_tables;
 @property (nonatomic,readonly) UIView *firstResponder;
 @property (nonatomic,weak,readwrite) UIView *currentResponder;
 @property (nonatomic,nonatomic) UITapGestureRecognizer *tapGesture;
+@property(nonatomic, strong,readwrite) NSMutableArray<Class> *disabledInputViewClasses;
+
 @end
 @implementation ZLKeyboardManager
-- (NSMutableSet<Class> *)disabledInputViewClasses {
-    return _disabledInputViewClasses ?: ({
-        NSMutableSet *set = NSMutableSet.set;
-        set;
-    });
+- (NSMutableArray<Class> *)disabledInputViewClasses {
+    if (!_disabledInputViewClasses) {
+        _disabledInputViewClasses = NSMutableArray.array;
+    }
+    return _disabledInputViewClasses;
 }
 - (UITapGestureRecognizer *)tapGesture {
     if (!_tapGesture) {
@@ -407,9 +409,19 @@ static NSHashTable<UIView *> *_tables;
 }
 - (BOOL)shouldHandleKeyboard{
     UIView *currentResponder = self.currentResponder;
+    if (currentResponder.kfc_keyboardCfg.shouldAutoHandleKeyboard) {
+        return currentResponder.kfc_keyboardCfg.shouldAutoHandleKeyboard(currentResponder);
+    }
     if (!currentResponder.kfc_keyboardCfg.isEnabled) return NO;
     if (self.disabledInputViewClasses.count > 0) {
-        if ([self.disabledInputViewClasses containsObject:currentResponder.class]) return NO;
+        BOOL isKindOfDisabledClass = NO;
+        for (Class cls in self.disabledInputViewClasses) {
+            if ([currentResponder isKindOfClass:cls]) {
+                isKindOfDisabledClass = YES;
+                break;
+            }
+        }
+        if (isKindOfDisabledClass) return NO;
     }
     return YES;
 }
