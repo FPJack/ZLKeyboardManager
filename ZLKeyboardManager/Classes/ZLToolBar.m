@@ -45,7 +45,10 @@
     }
     return _previousBarButton;
 }
-- (void)previousBarButtonAction:(UIBarButtonItem *)sender {
+- (void)previousBarButtonAction:(ZLBarButtonItem *)sender {
+    if ([sender isKindOfClass:ZLBarButtonItem.class] && sender.actionBK) {
+        sender.actionBK(sender);
+    }
     [ZLKeyboardManager.share performSelector:_cmd withObject:sender];
 }
 - (ZLBarButtonItem *)nextBarButton {
@@ -54,7 +57,10 @@
     }
     return _nextBarButton;
 }
-- (void)nextBarButtonAction:(UIBarButtonItem *)sender {
+- (void)nextBarButtonAction:(ZLBarButtonItem *)sender {
+    if ([sender isKindOfClass:ZLBarButtonItem.class] && sender.actionBK) {
+        sender.actionBK(sender);
+    }
     [ZLKeyboardManager.share performSelector:_cmd withObject:sender];
 }
 - (ZLBarButtonItem *)titleBarButton {
@@ -69,7 +75,10 @@
     }
     return _doneBarButton;
 }
-- (void)doneBarButtonAction:(UIBarButtonItem *)sender {
+- (void)doneBarButtonAction:(ZLBarButtonItem *)sender {
+    if ([sender isKindOfClass:ZLBarButtonItem.class] && sender.actionBK) {
+        sender.actionBK(sender);
+    }
     [ZLKeyboardManager.share performSelector:_cmd withObject:sender];
 }
 

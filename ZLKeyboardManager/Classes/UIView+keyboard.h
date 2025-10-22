@@ -19,12 +19,13 @@ NS_ASSUME_NONNULL_BEGIN
 ///相对view,默认是输入框
 @property(nonatomic, weak) UIView *relativeView;
 @property(nonatomic, assign) CGRect originBounds;
-@property (nonatomic,assign)BOOL enableAutoToolbar;
-@property(nonatomic, assign, getter = isEnabled) BOOL enable;
+@property (nonatomic,assign)BOOL enableAutoToolbar;/// default is YES
+@property(nonatomic, assign, getter = isEnabled) BOOL enable;/// default is YES
+/// 需要移动的容器view,默认是第一响应者的所属控制器的view，如果没有控制器则是所属window
 @property (nonatomic,weak)UIView *moveContainerView;
 /// 点击背景是否收起键盘，defaults is YES
 @property (nonatomic,assign)BOOL shouldResignOnTouchOutside;
-@property (nonatomic,readonly) UIViewController *viewContainingController;
+@property (nonatomic,readonly)UIViewController *viewContainingController;
 @property (nonatomic, strong) ZLToolBar *keyboardToolbar;
 @end
 @interface UIView (keyboard)

@@ -24,8 +24,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-        ZLKeyboardManager.share.enable = YES;
-    ZLKeyboardManager.share.enableAutoToolbar = YES;
+   
+//        ZLKeyboardManager.share.enable = YES;
+//    ZLKeyboardManager.share.enableAutoToolbar = YES;
 //    IQKeyboardManager.sharedManager.enable = YES;
 //    IQKeyboardManager.sharedManager.enableAutoToolbar = YES;
     

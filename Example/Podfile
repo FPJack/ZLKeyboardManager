@@ -3,8 +3,10 @@ use_frameworks!
 platform :ios, '10.0'
 
 target 'ZLKeyboardManager_Example' do
+  pod 'IQKeyboardManager' , '6.5.11'
+
   pod 'ZLKeyboardManager', :path => '../'
-#  pod 'IQKeyboardManager' , '6.0.5'
+
   pod 'Masonry'
   target 'ZLKeyboardManager_Tests' do
     inherit! :search_paths

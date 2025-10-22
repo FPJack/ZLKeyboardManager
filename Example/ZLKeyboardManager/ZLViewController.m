@@ -12,7 +12,7 @@
 #import <ZLKeyboardManager/UIView+keyboard.h>
 #import <MediaPlayer/MediaPlayer.h>
 #import <MobileCoreServices/MobileCoreServices.h>
-
+#import <IQKeyboardManager/IQKeyboardManager.h>
 @interface GMTextField : UITextField
 @end
 @implementation GMTextField
@@ -35,6 +35,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    IQKeyboardManager.sharedManager.enable = YES;
+    IQKeyboardManager.sharedManager.enableAutoToolbar = YES;
+    ZLKeyboardManager.share.enable = YES;
+
     if (@available(iOS 13.0, *)) {
         UINavigationBarAppearance *appearance = [[UINavigationBarAppearance alloc] init];
         [appearance configureWithOpaqueBackground];

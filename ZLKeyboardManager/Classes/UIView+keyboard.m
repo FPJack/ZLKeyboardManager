@@ -43,7 +43,8 @@
 }
 - (UIView *)moveContainerView {
     if (_moveContainerView) return _moveContainerView;
-    return self.viewContainingController.view;
+    UIView *view = self.viewContainingController.view;
+    return view ?: ZLKeyboardManager.share.currentResponder.window;
 }
 - (BOOL)shouldResignOnTouchOutside {
     return _shouldResignOnTouchOutside && ZLKeyboardManager.share.shouldResignOnTouchOutside;

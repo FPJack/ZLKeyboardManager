@@ -11,7 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 @interface ZLBarButtonItem : UIBarButtonItem
-
+///外部赋值，监听点击事件，点击的时候会回调出去
+@property(nonatomic,copy)void (^actionBK)(ZLBarButtonItem *sender);
 @end
 
 @interface ZLToolBar : UIToolbar

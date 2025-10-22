@@ -113,6 +113,12 @@ static NSHashTable<UIView *> *_tables;
 @property (nonatomic,nonatomic) UITapGestureRecognizer *tapGesture;
 @end
 @implementation ZLKeyboardManager
+- (NSMutableSet<Class> *)disabledInputViewClasses {
+    return _disabledInputViewClasses ?: ({
+        NSMutableSet *set = NSMutableSet.set;
+        set;
+    });
+}
 - (UITapGestureRecognizer *)tapGesture {
     if (!_tapGesture) {
         _tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchOutside:)];
@@ -127,6 +133,7 @@ static NSHashTable<UIView *> *_tables;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _tables = [NSHashTable weakObjectsHashTable];
+        //ZLKeyboardManager.share.enable = YES;
     });
 }
 - (UIView *)currentResponder {
@@ -142,7 +149,6 @@ static NSHashTable<UIView *> *_tables;
         share = ZLKeyboardManager.new;
         share.shouldResignOnTouchOutside = YES;
         share.enableAutoToolbar = YES;
-        share.enable = YES;
     });
     return share;
 }
@@ -151,13 +157,10 @@ static NSHashTable<UIView *> *_tables;
     enable ? [self addNotificationObserver] : [self removeNotificationObserver];
 }
 - (UIView *)firstResponder {
-    for (UIView * view in _tables) {
-        if (view.isFirstResponder) return view;
-    }
+    for (UIView * view in _tables) if (view.isFirstResponder) return view;
     return nil;
 }
 - (void)UIKeyboardDidShowNotification:(NSNotification *)notification {
-    if (!self.isEnabled) return;
 }
 - (void)recursiveTraverseAllSubviews:(UIView *)view {
     for (UIView *subview in view.subviews) {
@@ -173,10 +176,9 @@ static NSHashTable<UIView *> *_tables;
     }
 }
 - (void)UIKeyboardWillShowNotification:(NSNotification *)notification {
-    if (!self.isEnabled) return;
     UIView *currentResponder = self.currentResponder;
-    if (!currentResponder.kfc_keyboardCfg.isEnabled) return;
-
+    if (!self.shouldHandleKeyboard) return;
+    
     if ([NSStringFromClass(currentResponder.class) isEqualToString:@"_UIAlertControllerTextField"]) {
         return;
     }
@@ -227,13 +229,12 @@ static NSHashTable<UIView *> *_tables;
 }
 
 - (void)UIKeyboardWillHideNotification:(NSNotification *)notification {
-    if (!self.isEnabled) return;
-    if (!self.currentResponder.kfc_keyboardCfg.isEnabled) return;
     [self didEndEditing];
     if (_tapGesture.view) [self.tapGesture.view removeGestureRecognizer:self.tapGesture];
 }
 
 - (void)addNotificationObserver {
+    
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(UIKeyboardWillShowNotification:) name:UIKeyboardWillShowNotification object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(UIKeyboardDidShowNotification:) name:UIKeyboardDidShowNotification object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(UIKeyboardWillHideNotification:) name:UIKeyboardWillHideNotification object:nil];
@@ -255,17 +256,15 @@ static NSHashTable<UIView *> *_tables;
 {
    
 }
-
-
 - (void)UITextFieldTextDidBeginEditingNotification:(NSNotification *)notification {
 
     UITextField *textField = notification.object;
-    if (!textField.kfc_keyboardCfg.isEnabled) return;
-
     if (![self.currentResponder.kfc_keyboardCfg.viewContainingController isEqual:textField.kfc_keyboardCfg.viewContainingController]) {
         [self didEndEditing];
     }
     self.currentResponder = textField;
+    if (!self.shouldHandleKeyboard) return;
+
     [self addInputToobarIfRequired];
     if (textField.kfc_keyboardCfg.shouldResignOnTouchOutside && ![NSStringFromClass(textField.class) isEqualToString:@"_UIAlertControllerTextField"]) {
         [textField.window addGestureRecognizer:self.tapGesture];
@@ -276,18 +275,18 @@ static NSHashTable<UIView *> *_tables;
     }
 }
 - (void)UITextFieldTextDidEndEditingNotification:(NSNotification *)notification {
-    if (!self.isEnabled) return;
+    if (!self.shouldHandleKeyboard) return;
     if (_tapGesture.view) {
         [self.tapGesture.view removeGestureRecognizer:self.tapGesture];
     }
 }
 - (void)UITextViewTextDidBeginEditingNotification:(NSNotification *)notification {
     UITextView *textView = notification.object;
-    if (!textView.kfc_keyboardCfg.isEnabled) return;
     if (![self.currentResponder.kfc_keyboardCfg.viewContainingController isEqual:textView.kfc_keyboardCfg.viewContainingController]) {
         [self didEndEditing];
     }
     self.currentResponder = textView;
+    if (!self.shouldHandleKeyboard) return;
     [self addInputToobarIfRequired];
     if (textView.kfc_keyboardCfg.shouldResignOnTouchOutside) {
         [textView.window addGestureRecognizer:self.tapGesture];
@@ -298,7 +297,7 @@ static NSHashTable<UIView *> *_tables;
     }
 }
 - (void)UITextViewTextDidEndEditingNotification:(NSNotification *)notification {
-    if (!self.isEnabled) return;
+    if (!self.shouldHandleKeyboard) return;
     if (_tapGesture.view) {
         [self.tapGesture.view removeGestureRecognizer:self.tapGesture];
     }
@@ -320,9 +319,11 @@ static NSHashTable<UIView *> *_tables;
         [view becomeFirstResponder];
         view.kfc_keyboardCfg.keyboardToolbar.nextBarButton.enabled = ![sortArr.lastObject isEqual:view];
     }
-   
 }
 - (UISearchBar *)searchBarOfSearchTextField:(UIView *)searchTextField {
+    if ([searchTextField isKindOfClass:UITextField.class] || [searchTextField isKindOfClass:UITextView.class]){
+            return nil;
+    }
     UIView *superView = searchTextField.superview;
     while (superView && ![superView isKindOfClass:UISearchBar.class]) {
         superView = superView.superview;
@@ -331,7 +332,6 @@ static NSHashTable<UIView *> *_tables;
 }
 - (NSArray *)allInputViews {
     UIView *moveContainerView = self.currentResponder.kfc_keyboardCfg.moveContainerView;
-    
     NSMutableArray *arr = NSMutableArray.array;
     [_tables.allObjects enumerateObjectsUsingBlock:^(UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         UIView *view = [self searchBarOfSearchTextField:obj];
@@ -364,7 +364,6 @@ static NSHashTable<UIView *> *_tables;
         }];
         [arr removeObjectsInArray:searchBars];
     }
-    
     return [arr kfc_sortedArrayByPosition];
 }
 - (void)doneBarButtonAction:(UIBarButtonItem *)sender {
@@ -398,11 +397,20 @@ static NSHashTable<UIView *> *_tables;
     }
 }
 - (void)didEndEditing {
-    if (!self.isEnabled) return;
+    UIView *currentResponder = self.currentResponder;
+    if (!self.shouldHandleKeyboard) return;
     [UIView animateWithDuration:0.25 animations:^{
         UIView *moveContainerView = self.currentResponder.kfc_keyboardCfg.moveContainerView;
         moveContainerView.bounds = CGRectMake(0, 0, moveContainerView.bounds.size.width, moveContainerView.bounds.size.height);
     }];
     self.currentResponder = nil;
+}
+- (BOOL)shouldHandleKeyboard{
+    UIView *currentResponder = self.currentResponder;
+    if (!currentResponder.kfc_keyboardCfg.isEnabled) return NO;
+    if (self.disabledInputViewClasses.count > 0) {
+        if ([self.disabledInputViewClasses containsObject:currentResponder.class]) return NO;
+    }
+    return YES;
 }
 @end

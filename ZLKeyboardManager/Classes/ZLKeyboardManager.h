@@ -9,7 +9,14 @@
 #import "UIView+keyboard.h"
 
 NS_ASSUME_NONNULL_BEGIN
-
+//IQKeyboardManager使用问题
+/*
+ 1.有时键盘会闪跳，viewWillAppear设置弹出键盘会有问题
+ 2.第一响应者如果没有所属window或者所属控制器，则无法正确计算位置
+ 3.无法设置移动容器view，默认控制器的view
+ 4.无法设置键盘相对某个特定view底部的间距，默认是第一响应者底部
+ 5.无法精确到某个TextField设置是否启用键盘管理
+ */
 @interface ZLKeyboardManager : NSObject
 + (instancetype)share;
 @property(nonatomic, assign, getter = isEnabled) BOOL enable;
@@ -17,5 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// 点击背景是否收起键盘，defaults is YES
 @property (nonatomic,assign)BOOL shouldResignOnTouchOutside;
 @property (nonatomic,weak,readonly) UIView *currentResponder;
+/// 禁用键盘管理的输入视图类集合
+@property(nonatomic, strong) NSMutableSet<Class> *disabledInputViewClasses;
 @end
 NS_ASSUME_NONNULL_END
