@@ -56,13 +56,13 @@
 
 }
 - (void)ta:(id)obj {
-    UIDocumentPickerViewController *picker = [[UIDocumentPickerViewController alloc] initWithDocumentTypes:@[(NSString *)kUTTypeAudio] inMode:UIDocumentPickerModeImport];
-    picker.delegate = self;
-    picker.allowsMultipleSelection = YES; // 允许多选
-        [self presentViewController:picker animated:YES completion:nil];
+//    UIDocumentPickerViewController *picker = [[UIDocumentPickerViewController alloc] initWithDocumentTypes:@[(NSString *)kUTTypeAudio] inMode:UIDocumentPickerModeImport];
+//    picker.delegate = self;
+//    picker.allowsMultipleSelection = YES; // 允许多选
+//        [self presentViewController:picker animated:YES completion:nil];
+//    return;
+    [self.navigationController pushViewController:TestVC.new animated:YES];
     return;
-//    [self.navigationController pushViewController:TestVC.new animated:YES];
-    
 //    MPMediaPickerController *mpc = [[MPMediaPickerController alloc]initWithMediaTypes:MPMediaTypeMusic];
 //      mpc.delegate = self;//委托
 //      mpc.prompt =@"Please select a music";//提示文字

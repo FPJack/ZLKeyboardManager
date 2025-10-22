@@ -20,6 +20,7 @@
     if (self) {
         self.shouldResignOnTouchOutside = YES;
         self.enableAutoToolbar = YES;
+        self.enable = YES;
         self.keyboardDistanceFromRelativeView = 0;
     }
     return self;
@@ -49,6 +50,9 @@
 }
 - (BOOL)enableAutoToolbar {
     return _enableAutoToolbar && ZLKeyboardManager.share.enableAutoToolbar;
+}
+- (BOOL)isEnabled {
+    return ZLKeyboardManager.share.enable && _enable;
 }
 @end
 @implementation UIView (keyboard)

@@ -10,38 +10,40 @@
 NS_ASSUME_NONNULL_BEGIN
 
 
+@interface ZLBarButtonItem : UIBarButtonItem
 
+@end
 
 @interface ZLToolBar : UIToolbar
 /**
  Previous bar button of toolbar.
  */
-@property(nonnull, nonatomic, strong) UIBarButtonItem *previousBarButton;
-- (void)previousBarButtonAction:(UIBarButtonItem *)sender;
+@property(nonnull, nonatomic, strong) ZLBarButtonItem *previousBarButton;
+- (void)previousBarButtonAction:(ZLBarButtonItem *)sender;
 /**
  Next bar button of toolbar.
  */
-@property(nonnull, nonatomic, strong) UIBarButtonItem *nextBarButton;
-- (void)nextBarButtonAction:(UIBarButtonItem *)sender;
+@property(nonnull, nonatomic, strong) ZLBarButtonItem *nextBarButton;
+- (void)nextBarButtonAction:(ZLBarButtonItem *)sender;
 
 /**
  Title bar button of toolbar.
  */
-@property(nonnull, nonatomic, strong) UIBarButtonItem *titleBarButton;
+@property(nonnull, nonatomic, strong) ZLBarButtonItem *titleBarButton;
 @property (nonatomic, strong,readonly) UILabel *titleLabel;
 
 
 /**
  Done bar button of toolbar.
  */
-@property(nonnull, nonatomic, strong) UIBarButtonItem *doneBarButton;
-- (void)doneBarButtonAction:(UIBarButtonItem *)sender;
+@property(nonnull, nonatomic, strong) ZLBarButtonItem *doneBarButton;
+- (void)doneBarButtonAction:(ZLBarButtonItem *)sender;
 
 /**
  Fixed space bar button of toolbar.
  */
-@property(nonnull, nonatomic, strong) UIBarButtonItem *fixedSpaceBarButton1;
-@property(nonnull, nonatomic, strong) UIBarButtonItem *fixedSpaceBarButton2;
+@property(nonnull, nonatomic, strong) ZLBarButtonItem *fixedSpaceBarButton1;
+@property(nonnull, nonatomic, strong) ZLBarButtonItem *fixedSpaceBarButton2;
 
 
 @end

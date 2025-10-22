@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, weak) UIView *relativeView;
 @property(nonatomic, assign) CGRect originBounds;
 @property (nonatomic,assign)BOOL enableAutoToolbar;
+@property(nonatomic, assign, getter = isEnabled) BOOL enable;
 @property (nonatomic,weak)UIView *moveContainerView;
 /// 点击背景是否收起键盘，defaults is YES
 @property (nonatomic,assign)BOOL shouldResignOnTouchOutside;

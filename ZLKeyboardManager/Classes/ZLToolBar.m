@@ -7,7 +7,9 @@
 
 #import "ZLToolBar.h"
 #import "ZLKeyboardManager.h"
+@implementation ZLBarButtonItem
 
+@end
 @interface ZLToolBar()
 @property (nonatomic, strong,readwrite) UILabel *titleLabel;
 @end
@@ -37,33 +39,33 @@
     }
     return self;
 }
-- (UIBarButtonItem *)previousBarButton {
+- (ZLBarButtonItem *)previousBarButton {
     if (!_previousBarButton) {
-        _previousBarButton = [[UIBarButtonItem alloc] initWithImage:[self keyboardPreviousImage] style:UIBarButtonItemStylePlain target:self action:@selector(previousBarButtonAction:)];
+        _previousBarButton = [[ZLBarButtonItem alloc] initWithImage:[self keyboardPreviousImage] style:UIBarButtonItemStylePlain target:self action:@selector(previousBarButtonAction:)];
     }
     return _previousBarButton;
 }
 - (void)previousBarButtonAction:(UIBarButtonItem *)sender {
     [ZLKeyboardManager.share performSelector:_cmd withObject:sender];
 }
-- (UIBarButtonItem *)nextBarButton {
+- (ZLBarButtonItem *)nextBarButton {
     if (!_nextBarButton) {
-        _nextBarButton = [[UIBarButtonItem alloc] initWithImage:[self keyboardNextImage] style:UIBarButtonItemStylePlain target:self action:@selector(nextBarButtonAction:)];
+        _nextBarButton = [[ZLBarButtonItem alloc] initWithImage:[self keyboardNextImage] style:UIBarButtonItemStylePlain target:self action:@selector(nextBarButtonAction:)];
     }
     return _nextBarButton;
 }
 - (void)nextBarButtonAction:(UIBarButtonItem *)sender {
     [ZLKeyboardManager.share performSelector:_cmd withObject:sender];
 }
-- (UIBarButtonItem *)titleBarButton {
+- (ZLBarButtonItem *)titleBarButton {
     if (!_titleBarButton) {
-        _titleBarButton = [[UIBarButtonItem alloc] initWithCustomView:self.titleLabel];
+        _titleBarButton = [[ZLBarButtonItem alloc] initWithCustomView:self.titleLabel];
     }
     return _titleBarButton;
 }
-- (UIBarButtonItem *)doneBarButton {
+- (ZLBarButtonItem *)doneBarButton {
     if (!_doneBarButton) {
-        _doneBarButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(doneBarButtonAction:)];
+        _doneBarButton = [[ZLBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(doneBarButtonAction:)];
     }
     return _doneBarButton;
 }
@@ -71,15 +73,15 @@
     [ZLKeyboardManager.share performSelector:_cmd withObject:sender];
 }
 
-- (UIBarButtonItem *)fixedSpaceBarButton1 {
+- (ZLBarButtonItem *)fixedSpaceBarButton1 {
     if (!_fixedSpaceBarButton1) {
-        _fixedSpaceBarButton1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        _fixedSpaceBarButton1 = [[ZLBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     }
     return _fixedSpaceBarButton1;
 }
-- (UIBarButtonItem *)fixedSpaceBarButton2 {
+- (ZLBarButtonItem *)fixedSpaceBarButton2 {
     if (!_fixedSpaceBarButton2) {
-        _fixedSpaceBarButton2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        _fixedSpaceBarButton2 = [[ZLBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     }
     return _fixedSpaceBarButton2;
 }
