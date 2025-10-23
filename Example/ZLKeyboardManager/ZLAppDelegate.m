@@ -14,14 +14,16 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+            ZLKeyboardManager.share.enable = NO;
+
     // Override point for customization after application launch.
-    [ZLKeyboardManager.share adaptIQKeyboardManager:^{
-        ZLKeyboardManager.share.enable = NO;
-        [IQKeyboardManager.sharedManager registerAllNotifications];
-    } disable:^{
-        ZLKeyboardManager.share.enable = YES;
-        [IQKeyboardManager.sharedManager unregisterAllNotifications];
-    }];
+//    [ZLKeyboardManager.share adaptIQKeyboardManager:^{
+//        ZLKeyboardManager.share.enable = NO;
+//        [IQKeyboardManager.sharedManager registerAllNotifications];
+//    } disable:^{
+//        ZLKeyboardManager.share.enable = YES;
+//        [IQKeyboardManager.sharedManager unregisterAllNotifications];
+//    }];
 //    [ZLKeyboardManager.share.disabledInputViewClasses addObjectsFromArray:@[UITextField.class,UISearchBar.class,UITextView.class]];
     return YES;
 }

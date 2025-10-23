@@ -33,7 +33,11 @@ static NSHashTable<UIView *> *_tables;
     return YES;
 }
 @end
-
+@interface ZLKeyboardConfig()
+@property (nonatomic,assign,readwrite)CGRect convertFrame;
+- (void)becomeFirstResponder;
+- (void)resignFirstResponder;
+@end
 @interface UITextField (keyboard)
 @end
 @implementation UITextField (keyboard)
@@ -59,7 +63,9 @@ static NSHashTable<UIView *> *_tables;
 }
 - (BOOL)_hook_becomeFirstResponder {
     [self.kfc_keyboardCfg becomeFirstResponder];
-    return [self _hook_becomeFirstResponder];
+    BOOL res = [self _hook_becomeFirstResponder];
+    if (!res) [self.kfc_keyboardCfg resignFirstResponder];
+    return res;
 }
 @end
 @interface UITextView (keyboard)
@@ -86,7 +92,9 @@ static NSHashTable<UIView *> *_tables;
 }
 - (BOOL)_hook_becomeFirstResponder {
     [self.kfc_keyboardCfg becomeFirstResponder];
-    return [self _hook_becomeFirstResponder];
+    BOOL res = [self _hook_becomeFirstResponder];
+    if (!res) [self.kfc_keyboardCfg resignFirstResponder];
+    return res;
 }
 @end
 @interface UISearchBar (keyboard)
@@ -103,7 +111,6 @@ static NSHashTable<UIView *> *_tables;
 - (instancetype)_hook_initWithCoder:(NSCoder *)coder
 {
     UISearchBar *obj = [self _hook_initWithCoder:coder];
-    
     [_tables addObject:obj];
     return self;
 }
@@ -114,13 +121,13 @@ static NSHashTable<UIView *> *_tables;
 }
 - (BOOL)_hook_becomeFirstResponder {
     [self.kfc_keyboardCfg becomeFirstResponder];
-    return [self _hook_becomeFirstResponder];
+    BOOL res = [self _hook_becomeFirstResponder];
+    if (!res) [self.kfc_keyboardCfg resignFirstResponder];
+    return res;
 }
 @end
 
-@interface ZLKeyboardConfig()
-@property (nonatomic,assign,readwrite)CGRect convertFrame;
-@end
+
 
 
 @interface ZLKeyboardManager()
@@ -130,6 +137,7 @@ static NSHashTable<UIView *> *_tables;
 @property(nonatomic, strong,readwrite) NSMutableArray<Class> *disabledInputViewClasses;
 @property (nonatomic, copy,readwrite) void(^enableIQKeyboardManagerBK)(void);
 @property (nonatomic, copy,readwrite) void(^disableIQKeyboardManagerBK)(void);
+@property (nonatomic,strong)NSNumber* orignEnable;
 @end
 @implementation ZLKeyboardManager
 - (NSMutableArray<Class> *)disabledInputViewClasses {
@@ -172,6 +180,7 @@ static NSHashTable<UIView *> *_tables;
     return share;
 }
 - (void)setEnable:(BOOL)enable {
+    if (enable == _enable) return;
     _enable = enable;
     enable ? [self addNotificationObserver] : [self removeNotificationObserver];
 }
@@ -259,7 +268,6 @@ static NSHashTable<UIView *> *_tables;
 }
 
 - (void)addNotificationObserver {
-//    return;
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(UIKeyboardWillShowNotification:) name:UIKeyboardWillShowNotification object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(UIKeyboardDidShowNotification:) name:UIKeyboardDidShowNotification object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(UIKeyboardWillHideNotification:) name:UIKeyboardWillHideNotification object:nil];
@@ -499,5 +507,11 @@ static NSHashTable<UIView *> *_tables;
 - (void)adaptIQKeyboardManager:(void(^)(void))enableBK disable:(void(^)(void))disableBK{
     self.enableIQKeyboardManagerBK = enableBK;
     self.disableIQKeyboardManagerBK = disableBK;
+}
+- (void)registerAllNotifications {
+    [self addNotificationObserver];
+}
+- (void)unregisterAllNotifications{
+    [self removeNotificationObserver];
 }
 @end

@@ -8,6 +8,9 @@
 #import "UIView+keyboard.h"
 #import <objc/runtime.h>
 #import "ZLKeyboardManager.h"
+@interface ZLKeyboardManager()
+@property (nonatomic,strong)NSNumber* orignEnable;
+@end
 @interface ZLKeyboardConfig()
 @property (nonatomic,weak)UIView *view;
 @property (nonatomic,assign)CGRect convertFrame;
@@ -62,13 +65,15 @@
     self.disableIQKeyboardManagerBK = disableBK;
 }
 - (void (^)(void))enableIQKeyboardManagerBK {
-
     return _enableIQKeyboardManagerBK ?: ZLKeyboardManager.share.enableIQKeyboardManagerBK;
 }
 - (void (^)(void))disableIQKeyboardManagerBK {
     return _disableIQKeyboardManagerBK ?: ZLKeyboardManager.share.disableIQKeyboardManagerBK;
 }
 - (void)becomeFirstResponder {
+    if (!ZLKeyboardManager.share.orignEnable) {
+        ZLKeyboardManager.share.orignEnable = [NSNumber numberWithBool:ZLKeyboardManager.share.enable];
+    }
     if (self.disableIQKeyboardManager && self.disableIQKeyboardManagerBK) {
         self.disableIQKeyboardManagerBK();
     }
@@ -77,6 +82,31 @@
     if (self.disableIQKeyboardManager && self.enableIQKeyboardManagerBK) {
         self.enableIQKeyboardManagerBK();
     }
+}
+- (void)setDisableIQKeyboardManager:(BOOL)disableIQKeyboardManager {
+    _disableIQKeyboardManager = disableIQKeyboardManager;
+    Class cls = NSClassFromString(@"IQKeyboardManager");
+    if (!cls) return;
+    if (![cls respondsToSelector:@selector(sharedManager)]) return;
+    NSObject *iqManager = [cls performSelector:@selector(sharedManager)];
+    BOOL enable1 = _enable;
+    
+    [self adaptIQKeyboardManager:^{
+        SEL registerAllNotificationsSel = @selector(registerAllNotifications);
+        if ([iqManager respondsToSelector:registerAllNotificationsSel]) {
+            [iqManager performSelector:registerAllNotificationsSel];
+        }
+        self.enable = enable1;
+        ZLKeyboardManager.share.enable = ZLKeyboardManager.share.orignEnable.boolValue;
+        ZLKeyboardManager.share.orignEnable = nil;
+    } disable:^{
+        SEL unregisterAllNotificationsSel = @selector(unregisterAllNotifications);
+        if ([iqManager respondsToSelector:unregisterAllNotificationsSel]) {
+            [iqManager performSelector:unregisterAllNotificationsSel];
+        }
+        self.enable = YES;
+        ZLKeyboardManager.share.enable = YES;
+    }];
 }
 @end
 @implementation UIView (keyboard)

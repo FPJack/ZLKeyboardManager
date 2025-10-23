@@ -37,6 +37,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy,readonly) void(^disableIQKeyboardManagerBK)(void);
 /// 适配IQKeyboardManager的启用与禁用回调
 - (void)adaptIQKeyboardManager:(void(^)(void))enableBK disable:(void(^)(void))disableBK;
+- (void)registerAllNotifications;
+- (void)unregisterAllNotifications;
 
 ///收起键盘
 - (BOOL)resignFirstResponder;

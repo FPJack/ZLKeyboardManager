@@ -28,8 +28,11 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        ZLBarButtonItem  *space = [[ZLBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+        space.width = 5;
         self.items = @[
             self.previousBarButton,
+            space,
             self.nextBarButton,
             self.fixedSpaceBarButton1,
             self.titleBarButton,
