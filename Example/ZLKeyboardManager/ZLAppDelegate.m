@@ -7,12 +7,21 @@
 //
 
 #import "ZLAppDelegate.h"
+#import <IQKeyboardManager/IQKeyboardManager.h>
+#import <ZLKeyboardManager/ZLKeyboardManager.h>
 
 @implementation ZLAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    [ZLKeyboardManager.share adaptIQKeyboardManager:^{
+        [IQKeyboardManager.sharedManager registerAllNotifications];
+    } disable:^{
+        [IQKeyboardManager.sharedManager unregisterAllNotifications];
+    }];
+    ZLKeyboardManager.share.enable = YES;
+    [ZLKeyboardManager.share.disabledInputViewClasses addObjectsFromArray:@[UITextField.class,UISearchBar.class,UITextView.class]];
     return YES;
 }
 

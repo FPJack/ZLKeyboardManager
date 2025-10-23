@@ -7,6 +7,7 @@
 
 #import <Foundation/Foundation.h>
 #import "UIView+keyboard.h"
+#import "ZLToolBar.h"
 
 NS_ASSUME_NONNULL_BEGIN
 //IQKeyboardManager使用问题
@@ -31,12 +32,17 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, strong,readonly) NSMutableArray<Class> *disabledInputViewClasses;
 /// 配置启用键盘管理的输入视图类集合
 @property(nonatomic, copy) void (^toolBarConfigureBK)(ZLToolBar *toolBar);
+
+@property (nonatomic, copy,readonly) void(^enableIQKeyboardManagerBK)(void);
+@property (nonatomic, copy,readonly) void(^disableIQKeyboardManagerBK)(void);
+/// 适配IQKeyboardManager的启用与禁用回调
+- (void)adaptIQKeyboardManager:(void(^)(void))enableBK disable:(void(^)(void))disableBK;
+
 ///收起键盘
 - (BOOL)resignFirstResponder;
 /// 上一项
 - (BOOL)goPrevious;
 /// 下一项
 - (BOOL)goNext;
-
 @end
 NS_ASSUME_NONNULL_END

@@ -30,6 +30,14 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,assign)BOOL shouldResignOnTouchOutside;
 @property (nonatomic,readonly)UIViewController *viewContainingController;
 @property (nonatomic, strong) ZLToolBar *keyboardToolbar;
+///禁用IQKeyboardManager
+@property (nonatomic, assign) BOOL disableIQKeyboardManager;
+@property (nonatomic, copy,readonly) void(^enableIQKeyboardManagerBK)(void);
+@property (nonatomic, copy,readonly) void(^disableIQKeyboardManagerBK)(void);
+/// 适配IQKeyboardManager的启用与禁用回调
+- (void)adaptIQKeyboardManager:(void(^)(void))enableBK disable:(void(^)(void))disableBK;
+- (void)becomeFirstResponder;
+- (void)resignFirstResponder;
 @end
 @interface UIView (keyboard)
 @property(nonatomic, strong) ZLKeyboardConfig *kfc_keyboardCfg;

@@ -11,6 +11,8 @@
 @interface ZLKeyboardConfig()
 @property (nonatomic,weak)UIView *view;
 @property (nonatomic,assign)CGRect convertFrame;
+@property (nonatomic, copy,readwrite) void(^enableIQKeyboardManagerBK)(void);
+@property (nonatomic, copy,readwrite) void(^disableIQKeyboardManagerBK)(void);
 @end
 @implementation ZLKeyboardConfig
 @synthesize enableAutoToolbar = _enableAutoToolbar;
@@ -54,6 +56,27 @@
 }
 - (BOOL)isEnabled {
     return ZLKeyboardManager.share.enable && _enable;
+}
+- (void)adaptIQKeyboardManager:(void(^)(void))enableBK disable:(void(^)(void))disableBK{
+    self.enableIQKeyboardManagerBK = enableBK;
+    self.disableIQKeyboardManagerBK = disableBK;
+}
+- (void (^)(void))enableIQKeyboardManagerBK {
+
+    return _enableIQKeyboardManagerBK ?: ZLKeyboardManager.share.enableIQKeyboardManagerBK;
+}
+- (void (^)(void))disableIQKeyboardManagerBK {
+    return _disableIQKeyboardManagerBK ?: ZLKeyboardManager.share.disableIQKeyboardManagerBK;
+}
+- (void)becomeFirstResponder {
+    if (self.disableIQKeyboardManager && self.disableIQKeyboardManagerBK) {
+        self.disableIQKeyboardManagerBK();
+    }
+}
+- (void)resignFirstResponder {
+    if (self.disableIQKeyboardManager && self.enableIQKeyboardManagerBK) {
+        self.enableIQKeyboardManagerBK();
+    }
 }
 @end
 @implementation UIView (keyboard)

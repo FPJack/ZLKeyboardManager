@@ -42,6 +42,8 @@ static NSHashTable<UIView *> *_tables;
     dispatch_once(&onceToken, ^{
         [object_getClass((id)self) _swizzleClassMethod:@selector(alloc) with:@selector(_hook_alloc)];
         [self _swizzleClassMethod:@selector(initWithCoder:) with:@selector(_hook_initWithCoder:)];
+        [self _swizzleClassMethod:@selector(becomeFirstResponder) with:@selector(_hook_becomeFirstResponder)];
+
     });
 }
 - (instancetype)_hook_initWithCoder:(NSCoder *)coder
@@ -55,6 +57,10 @@ static NSHashTable<UIView *> *_tables;
     [_tables addObject:obj];
     return obj;
 }
+- (BOOL)_hook_becomeFirstResponder {
+    [self.kfc_keyboardCfg becomeFirstResponder];
+    return [self _hook_becomeFirstResponder];
+}
 @end
 @interface UITextView (keyboard)
 @end
@@ -64,6 +70,7 @@ static NSHashTable<UIView *> *_tables;
     dispatch_once(&onceToken, ^{
         [object_getClass((id)self) _swizzleClassMethod:@selector(alloc) with:@selector(_hook_alloc)];
         [self _swizzleClassMethod:@selector(initWithCoder:) with:@selector(_hook_initWithCoder:)];
+        [self _swizzleClassMethod:@selector(becomeFirstResponder) with:@selector(_hook_becomeFirstResponder)];
     });
 }
 - (instancetype)_hook_initWithCoder:(NSCoder *)coder
@@ -77,6 +84,10 @@ static NSHashTable<UIView *> *_tables;
     [_tables addObject:obj];
     return obj;
 }
+- (BOOL)_hook_becomeFirstResponder {
+    [self.kfc_keyboardCfg becomeFirstResponder];
+    return [self _hook_becomeFirstResponder];
+}
 @end
 @interface UISearchBar (keyboard)
 @end
@@ -86,6 +97,7 @@ static NSHashTable<UIView *> *_tables;
     dispatch_once(&onceToken, ^{
         [object_getClass((id)self) _swizzleClassMethod:@selector(alloc) with:@selector(_hook_alloc)];
         [self _swizzleClassMethod:@selector(initWithCoder:) with:@selector(_hook_initWithCoder:)];
+        [self _swizzleClassMethod:@selector(becomeFirstResponder) with:@selector(_hook_becomeFirstResponder)];
     });
 }
 - (instancetype)_hook_initWithCoder:(NSCoder *)coder
@@ -100,6 +112,10 @@ static NSHashTable<UIView *> *_tables;
     [_tables addObject:obj];
     return obj;
 }
+- (BOOL)_hook_becomeFirstResponder {
+    [self.kfc_keyboardCfg becomeFirstResponder];
+    return [self _hook_becomeFirstResponder];
+}
 @end
 
 @interface ZLKeyboardConfig()
@@ -112,7 +128,8 @@ static NSHashTable<UIView *> *_tables;
 @property (nonatomic,weak,readwrite) UIView *currentResponder;
 @property (nonatomic,nonatomic) UITapGestureRecognizer *tapGesture;
 @property(nonatomic, strong,readwrite) NSMutableArray<Class> *disabledInputViewClasses;
-
+@property (nonatomic, copy,readwrite) void(^enableIQKeyboardManagerBK)(void);
+@property (nonatomic, copy,readwrite) void(^disableIQKeyboardManagerBK)(void);
 @end
 @implementation ZLKeyboardManager
 - (NSMutableArray<Class> *)disabledInputViewClasses {
@@ -135,7 +152,7 @@ static NSHashTable<UIView *> *_tables;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _tables = [NSHashTable weakObjectsHashTable];
-        //ZLKeyboardManager.share.enable = YES;
+//        ZLKeyboardManager.share.enable = YES;
     });
 }
 - (UIView *)currentResponder {
@@ -283,9 +300,14 @@ static NSHashTable<UIView *> *_tables;
     }
 }
 - (void)UITextFieldTextDidEndEditingNotification:(NSNotification *)notification {
+    UITextField *textField = notification.object;
+    [textField.kfc_keyboardCfg resignFirstResponder];
     if (!self.shouldHandleKeyboard) return;
     if (_tapGesture.view) {
         [self.tapGesture.view removeGestureRecognizer:self.tapGesture];
+    }
+    if (![textField respondsToSelector:@selector(setInputAccessoryView:)]) {
+        return;
     }
 }
 - (void)UITextViewTextDidBeginEditingNotification:(NSNotification *)notification {
@@ -305,9 +327,14 @@ static NSHashTable<UIView *> *_tables;
     }
 }
 - (void)UITextViewTextDidEndEditingNotification:(NSNotification *)notification {
+    UITextView *textView = notification.object;
+    [textView.kfc_keyboardCfg resignFirstResponder];
     if (!self.shouldHandleKeyboard) return;
     if (_tapGesture.view) {
         [self.tapGesture.view removeGestureRecognizer:self.tapGesture];
+    }
+    if (![textView respondsToSelector:@selector(setInputAccessoryView:)]) {
+        return;
     }
 }
 
@@ -469,5 +496,8 @@ static NSHashTable<UIView *> *_tables;
     }
     return NO;
 }
-
+- (void)adaptIQKeyboardManager:(void(^)(void))enableBK disable:(void(^)(void))disableBK{
+    self.enableIQKeyboardManagerBK = enableBK;
+    self.disableIQKeyboardManagerBK = disableBK;
+}
 @end

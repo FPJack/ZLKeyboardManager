@@ -10,6 +10,27 @@
 #import <ZLKeyboardManager/ZLKeyboardManager.h>
 #import <ZLKeyboardManager/UIView+keyboard.h>
 #import <Masonry/Masonry.h>
+@interface GMTextField : UITextField
+@end
+@implementation GMTextField
+- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
+    UIView *view = [super hitTest:point withEvent:event];
+    return view;
+}
+- (BOOL)becomeFirstResponder {
+    return [super becomeFirstResponder];
+}
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    NSLog(@"");
+}
++ (instancetype)alloc {
+    return [super alloc];
+}
+- (void)dealloc
+{
+    NSLog(@"%s",__func__);
+}
+@end
 @interface TestVC ()<UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UISearchBarDelegate, UITextViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -130,7 +151,7 @@
     [cell.contentView addSubview:titleLabel];
     
     // 创建UITextField
-    UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(15, 30, CGRectGetWidth(tableView.frame) - 30, 35)];
+    GMTextField *textField = [[GMTextField alloc] initWithFrame:CGRectMake(15, 30, CGRectGetWidth(tableView.frame) - 30, 35)];
     textField.placeholder = @"请输入文本";
     textField.borderStyle = UITextBorderStyleRoundedRect;
     textField.backgroundColor = [UIColor whiteColor];
@@ -163,6 +184,7 @@
     textView.layer.cornerRadius = 5.0;
     textView.tag = 3000 + indexPath.row;
     textView.delegate = self;
+    textView.kfc_keyboardCfg.disableIQKeyboardManager = YES;
     textView.kfc_keyboardCfg.shouldAutoHandleKeyboard = ^BOOL(UIView * _Nonnull view) {
         return YES;
     };

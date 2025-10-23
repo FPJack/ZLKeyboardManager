@@ -12,18 +12,8 @@
 #import <ZLKeyboardManager/UIView+keyboard.h>
 #import <MediaPlayer/MediaPlayer.h>
 #import <MobileCoreServices/MobileCoreServices.h>
-@interface GMTextField : UITextField
-@end
-@implementation GMTextField
+#import <IQKeyboardManager/IQKeyboardManager.h>
 
-+ (instancetype)alloc {
-    return [super alloc];
-}
-- (void)dealloc
-{
-    NSLog(@"%s",__func__);
-}
-@end
 @interface ZLViewController ()<MPMediaPickerControllerDelegate,UIDocumentPickerDelegate>
 
 @property (nonatomic, strong) MPMediaPickerController *mpc;
@@ -35,8 +25,9 @@
 {
     [super viewDidLoad];
 
+
+    
    
-    ZLKeyboardManager.share.enable = YES;
 
     if (@available(iOS 13.0, *)) {
         UINavigationBarAppearance *appearance = [[UINavigationBarAppearance alloc] init];
