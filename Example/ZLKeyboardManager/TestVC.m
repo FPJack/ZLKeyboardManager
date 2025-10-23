@@ -27,8 +27,8 @@
    
 //        ZLKeyboardManager.share.enable = YES;
 //    ZLKeyboardManager.share.enableAutoToolbar = YES;
-//    IQKeyboardManager.sharedManager.enable = YES;
-//    IQKeyboardManager.sharedManager.enableAutoToolbar = YES;
+//    IQKeyboardManager.sharedManager.enable = NO;
+//    IQKeyboardManager.sharedManager.enableAutoToolbar = NO;
     
 //    IQKeyboardManager.sharedManager.enable = NO;
 //    IQKeyboardManager.sharedManager.enableAutoToolbar = NO;

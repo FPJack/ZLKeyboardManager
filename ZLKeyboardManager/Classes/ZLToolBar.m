@@ -49,7 +49,7 @@
     if ([sender isKindOfClass:ZLBarButtonItem.class] && sender.actionBK) {
         sender.actionBK(sender);
     }
-    [ZLKeyboardManager.share performSelector:_cmd withObject:sender];
+    [ZLKeyboardManager.share goPrevious];
 }
 - (ZLBarButtonItem *)nextBarButton {
     if (!_nextBarButton) {
@@ -61,7 +61,7 @@
     if ([sender isKindOfClass:ZLBarButtonItem.class] && sender.actionBK) {
         sender.actionBK(sender);
     }
-    [ZLKeyboardManager.share performSelector:_cmd withObject:sender];
+    [ZLKeyboardManager.share goNext];
 }
 - (ZLBarButtonItem *)titleBarButton {
     if (!_titleBarButton) {
@@ -71,7 +71,8 @@
 }
 - (ZLBarButtonItem *)doneBarButton {
     if (!_doneBarButton) {
-        _doneBarButton = [[ZLBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(doneBarButtonAction:)];
+        _doneBarButton =
+        [[ZLBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneBarButtonAction:)];
     }
     return _doneBarButton;
 }
@@ -79,7 +80,7 @@
     if ([sender isKindOfClass:ZLBarButtonItem.class] && sender.actionBK) {
         sender.actionBK(sender);
     }
-    [ZLKeyboardManager.share performSelector:_cmd withObject:sender];
+    [ZLKeyboardManager.share resignFirstResponder];
 }
 
 - (ZLBarButtonItem *)fixedSpaceBarButton1 {

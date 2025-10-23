@@ -201,42 +201,48 @@ static NSHashTable<UIView *> *_tables;
     if (CGRectEqualToRect(moveContainerView.kfc_keyboardCfg.originBounds, CGRectZero)) {
         moveContainerView.kfc_keyboardCfg.originBounds = moveContainerView.bounds;
     }
-    if (bottomSpace >= 0) return;
-    [UIView animateWithDuration:animationDuration animations:^{
-        BOOL shouldScrollView = NO;
-        {
-            UIView *superview = currentResponder.superview;
-            while (superview.superview && ![superview isEqual:moveContainerView]) {
-                superview = superview.superview;
-                if ([superview isKindOfClass:UIScrollView.class]) {
-                    UIScrollView *scrollView = superview;
-                    CGFloat scrollViewHeight = scrollView.frame.size.height;
-                    CGFloat space = scrollView.contentSize.height - scrollViewHeight - scrollView.contentOffset.y;
-                    if (space >= -bottomSpace) {
-                        scrollView.contentOffset = CGPointMake(scrollView.contentOffset.x, scrollView.contentOffset.y - bottomSpace);
-                        shouldScrollView = YES;
-                        break;
-                    }else if (space > 0 && space < -bottomSpace) {
-                        scrollView.contentOffset = CGPointMake(scrollView.contentOffset.x, scrollView.contentSize.height - scrollViewHeight);
-                        moveContainerView.bounds = CGRectMake(0, -bottomSpace - space, moveContainerView.bounds.size.width, moveContainerView.bounds.size.height);
-                        shouldScrollView = YES;
-                        break;
+    if (bottomSpace >= 0) {
+        
+    }else {
+        [UIView animateWithDuration:animationDuration animations:^{
+            BOOL shouldScrollView = NO;
+            {
+                UIView *superview = currentResponder.superview;
+                while (superview.superview && ![superview isEqual:moveContainerView]) {
+                    superview = superview.superview;
+                    if ([superview isKindOfClass:UIScrollView.class]) {
+                        UIScrollView *scrollView = (UIScrollView *)superview;
+                        if (!scrollView.scrollEnabled || !scrollView.userInteractionEnabled){
+                            continue;
+                        }
+                        CGFloat scrollViewHeight = scrollView.frame.size.height;
+                        CGFloat space = scrollView.contentSize.height - scrollViewHeight - scrollView.contentOffset.y;
+                        if (space >= -bottomSpace) {
+                            scrollView.contentOffset = CGPointMake(scrollView.contentOffset.x, scrollView.contentOffset.y - bottomSpace);
+                            shouldScrollView = YES;
+                            break;
+                        }else if (space > 0 && space < -bottomSpace) {
+                            scrollView.contentOffset = CGPointMake(scrollView.contentOffset.x, scrollView.contentSize.height - scrollViewHeight);
+                            moveContainerView.bounds = CGRectMake(0, -bottomSpace - space, moveContainerView.bounds.size.width, moveContainerView.bounds.size.height);
+                            shouldScrollView = YES;
+                            break;
+                        }
                     }
                 }
             }
-        }
-        if (shouldScrollView) return;
-        moveContainerView.bounds = CGRectMake(0, -bottomSpace, moveContainerView.bounds.size.width, moveContainerView.bounds.size.height);
-    } ];
+            if (shouldScrollView) return;
+            moveContainerView.bounds = CGRectMake(0, -bottomSpace, moveContainerView.bounds.size.width, moveContainerView.bounds.size.height);
+        } ];
+    }
 }
 
 - (void)UIKeyboardWillHideNotification:(NSNotification *)notification {
-    [self didEndEditing];
+    [self endEditing];
     if (_tapGesture.view) [self.tapGesture.view removeGestureRecognizer:self.tapGesture];
 }
 
 - (void)addNotificationObserver {
-    
+//    return;
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(UIKeyboardWillShowNotification:) name:UIKeyboardWillShowNotification object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(UIKeyboardDidShowNotification:) name:UIKeyboardDidShowNotification object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(UIKeyboardWillHideNotification:) name:UIKeyboardWillHideNotification object:nil];
@@ -262,7 +268,7 @@ static NSHashTable<UIView *> *_tables;
 
     UITextField *textField = notification.object;
     if (![self.currentResponder.kfc_keyboardCfg.viewContainingController isEqual:textField.kfc_keyboardCfg.viewContainingController]) {
-        [self didEndEditing];
+        [self endEditing];
     }
     self.currentResponder = textField;
     if (!self.shouldHandleKeyboard) return;
@@ -285,7 +291,7 @@ static NSHashTable<UIView *> *_tables;
 - (void)UITextViewTextDidBeginEditingNotification:(NSNotification *)notification {
     UITextView *textView = notification.object;
     if (![self.currentResponder.kfc_keyboardCfg.viewContainingController isEqual:textView.kfc_keyboardCfg.viewContainingController]) {
-        [self didEndEditing];
+        [self endEditing];
     }
     self.currentResponder = textView;
     if (!self.shouldHandleKeyboard) return;
@@ -304,24 +310,7 @@ static NSHashTable<UIView *> *_tables;
         [self.tapGesture.view removeGestureRecognizer:self.tapGesture];
     }
 }
-- (void)previousBarButtonAction:(UIBarButtonItem *)sender {
-    NSArray *sortArr = [self allInputViews];
-    NSInteger idx = [sortArr indexOfObject:self.currentResponder];
-    if (idx != NSNotFound && idx > 0) {
-        UIView *view = sortArr[idx - 1];
-        [view becomeFirstResponder];
-        view.kfc_keyboardCfg.keyboardToolbar.previousBarButton.enabled = ![sortArr.firstObject isEqual:view];
-    }
-}
-- (void)nextBarButtonAction:(UIBarButtonItem *)sender {
-    NSArray *sortArr = [self allInputViews];
-    NSInteger idx = [sortArr indexOfObject:self.currentResponder];
-    if (idx != NSNotFound && idx + 1 < sortArr.count) {
-        UIView *view = sortArr[idx + 1];
-        [view becomeFirstResponder];
-        view.kfc_keyboardCfg.keyboardToolbar.nextBarButton.enabled = ![sortArr.lastObject isEqual:view];
-    }
-}
+
 - (UISearchBar *)searchBarOfSearchTextField:(UIView *)searchTextField {
     if ([searchTextField isKindOfClass:UITextField.class] || [searchTextField isKindOfClass:UITextView.class]){
             return nil;
@@ -359,7 +348,7 @@ static NSHashTable<UIView *> *_tables;
         NSMutableArray *searchBars = NSMutableArray.array;
         [arr enumerateObjectsUsingBlock:^(UIView*  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             if ([obj isKindOfClass:UISearchTextField.class]) {
-                UISearchBar *searchBar = obj.superview;
+                UIView *searchBar = obj.superview;
                 while (![searchBar isKindOfClass:UISearchBar.class] && searchBar) searchBar = searchBar.superview;
                 if (searchBar) [searchBars addObject:searchBar];
             }
@@ -373,11 +362,17 @@ static NSHashTable<UIView *> *_tables;
 }
 - (void)addInputToobarIfRequired {
     UITextField *textField = self.currentResponder;
+    if (![textField respondsToSelector:@selector(inputAccessoryView)]) {
+        return;
+    }
     if (!textField.inputAccessoryView && textField.kfc_keyboardCfg.enableAutoToolbar) {
-        ZLToolBar *toolbar = [[ZLToolBar alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 44)];
+        ZLToolBar *toolbar = textField.kfc_keyboardCfg.keyboardToolbar;
+        toolbar = toolbar ?: [[ZLToolBar alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 44)];
         toolbar.barStyle = UIBarStyleDefault;
-        textField.inputAccessoryView = toolbar;
-        [textField reloadInputViews];
+        if (![textField respondsToSelector:@selector(setInputAccessoryView:)]) {
+            return;
+        }
+       
         UIView *firstResponder = self.currentResponder;
         if ([firstResponder isKindOfClass:UITextField.class]) {
             toolbar.titleLabel.text = ((UITextField *)firstResponder).placeholder;
@@ -396,10 +391,27 @@ static NSHashTable<UIView *> *_tables;
             toolbar.nextBarButton.enabled = !(idx == sortArr.count - 1);
         }
         textField.kfc_keyboardCfg.keyboardToolbar = toolbar;
+        if (![textField respondsToSelector:@selector(setKeyboardAppearance:)]) {
+            return;
+        }
+        if (@available(iOS 13.0, *)) {
+            if (textField.traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
+                // 黑暗模式
+                textField.keyboardAppearance = UIKeyboardAppearanceDark;
+                toolbar.barStyle = UIBarStyleBlack;
+            } else {
+                // 明亮模式
+                textField.keyboardAppearance = UIKeyboardAppearanceLight;
+                toolbar.barStyle = UIBarStyleDefault;
+            }
+            } else {
+        }
+        if (self.toolBarConfigureBK) self.toolBarConfigureBK(toolbar);
+        textField.inputAccessoryView = toolbar;
+        [textField reloadInputViews];
     }
 }
-- (void)didEndEditing {
-    UIView *currentResponder = self.currentResponder;
+- (void)endEditing {
     if (!self.shouldHandleKeyboard) return;
     [UIView animateWithDuration:0.25 animations:^{
         UIView *moveContainerView = self.currentResponder.kfc_keyboardCfg.moveContainerView;
@@ -425,4 +437,37 @@ static NSHashTable<UIView *> *_tables;
     }
     return YES;
 }
+
+- (BOOL)resignFirstResponder {
+    UIView *currentResponder = self.currentResponder;
+    [currentResponder resignFirstResponder];
+    return currentResponder != nil;
+}
+
+
+- (BOOL)goPrevious{
+    NSArray *sortArr = [self allInputViews];
+    NSInteger idx = [sortArr indexOfObject:self.currentResponder];
+    if (idx != NSNotFound && idx > 0) {
+        UIView *view = sortArr[idx - 1];
+        [view becomeFirstResponder];
+        view.kfc_keyboardCfg.keyboardToolbar.previousBarButton.enabled = ![sortArr.firstObject isEqual:view];
+        return YES;
+    }
+    return NO;
+}
+
+
+- (BOOL)goNext {
+    NSArray *sortArr = [self allInputViews];
+    NSInteger idx = [sortArr indexOfObject:self.currentResponder];
+    if (idx != NSNotFound && idx + 1 < sortArr.count) {
+        UIView *view = sortArr[idx + 1];
+        [view becomeFirstResponder];
+        view.kfc_keyboardCfg.keyboardToolbar.nextBarButton.enabled = ![sortArr.lastObject isEqual:view];
+        return YES;
+    }
+    return NO;
+}
+
 @end

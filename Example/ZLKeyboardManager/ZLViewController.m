@@ -12,7 +12,6 @@
 #import <ZLKeyboardManager/UIView+keyboard.h>
 #import <MediaPlayer/MediaPlayer.h>
 #import <MobileCoreServices/MobileCoreServices.h>
-#import <IQKeyboardManager/IQKeyboardManager.h>
 @interface GMTextField : UITextField
 @end
 @implementation GMTextField
@@ -36,8 +35,7 @@
 {
     [super viewDidLoad];
 
-    IQKeyboardManager.sharedManager.enable = YES;
-    IQKeyboardManager.sharedManager.enableAutoToolbar = YES;
+   
     ZLKeyboardManager.share.enable = YES;
 
     if (@available(iOS 13.0, *)) {

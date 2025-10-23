@@ -20,12 +20,10 @@ NS_ASSUME_NONNULL_BEGIN
  Previous bar button of toolbar.
  */
 @property(nonnull, nonatomic, strong) ZLBarButtonItem *previousBarButton;
-- (void)previousBarButtonAction:(ZLBarButtonItem *)sender;
 /**
  Next bar button of toolbar.
  */
 @property(nonnull, nonatomic, strong) ZLBarButtonItem *nextBarButton;
-- (void)nextBarButtonAction:(ZLBarButtonItem *)sender;
 
 /**
  Title bar button of toolbar.
@@ -38,7 +36,6 @@ NS_ASSUME_NONNULL_BEGIN
  Done bar button of toolbar.
  */
 @property(nonnull, nonatomic, strong) ZLBarButtonItem *doneBarButton;
-- (void)doneBarButtonAction:(ZLBarButtonItem *)sender;
 
 /**
  Fixed space bar button of toolbar.
