@@ -152,7 +152,7 @@ static NSHashTable<UIView *> *_tables;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _tables = [NSHashTable weakObjectsHashTable];
-//        ZLKeyboardManager.share.enable = YES;
+        ZLKeyboardManager.share.enable = YES;
     });
 }
 - (UIView *)currentResponder {

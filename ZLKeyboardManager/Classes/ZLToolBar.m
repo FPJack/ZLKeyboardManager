@@ -36,6 +36,7 @@
             self.fixedSpaceBarButton2,
             self.doneBarButton
         ];
+        [ZLToolBar.appearance setTintColor:UIColor.redColor];
     }
     return self;
 }

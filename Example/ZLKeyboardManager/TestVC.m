@@ -185,9 +185,9 @@
     textView.tag = 3000 + indexPath.row;
     textView.delegate = self;
     textView.kfc_keyboardCfg.disableIQKeyboardManager = YES;
-    textView.kfc_keyboardCfg.shouldAutoHandleKeyboard = ^BOOL(UIView * _Nonnull view) {
-        return YES;
-    };
+//    textView.kfc_keyboardCfg.shouldAutoHandleKeyboard = ^BOOL(UIView * _Nonnull view) {
+//        return YES;
+//    };
     [cell.contentView addSubview:textView];
   
 
