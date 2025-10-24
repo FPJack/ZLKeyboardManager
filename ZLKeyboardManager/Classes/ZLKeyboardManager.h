@@ -31,13 +31,27 @@ NS_ASSUME_NONNULL_BEGIN
 /// 禁用键盘管理的输入视图类集合
 @property(nonatomic, strong,readonly) NSMutableArray<Class> *disabledInputViewClasses;
 /// 配置启用键盘管理的输入视图类集合
-@property(nonatomic, copy) void (^toolBarConfigureBK)(ZLToolBar *toolBar);
+@property(nonatomic, copy) void (^configureToolBarBK)(ZLToolBar *toolBar);
+
+/**
+ Override the keyboardAppearance for all textField/textView. Default is NO.
+ */
+@property(nonatomic, assign) BOOL overrideKeyboardAppearance;
+
+/**
+ If overrideKeyboardAppearance is YES, then all the textField keyboardAppearance is set using this property.
+ */
+@property(nonatomic, assign) UIKeyboardAppearance keyboardAppearance;
 
 @property (nonatomic, copy,readonly) void(^enableIQKeyboardManagerBK)(void);
+
 @property (nonatomic, copy,readonly) void(^disableIQKeyboardManagerBK)(void);
+
 /// 适配IQKeyboardManager的启用与禁用回调
 - (void)adaptIQKeyboardManager:(void(^)(void))enableBK disable:(void(^)(void))disableBK;
+
 - (void)registerAllNotifications;
+
 - (void)unregisterAllNotifications;
 
 ///收起键盘

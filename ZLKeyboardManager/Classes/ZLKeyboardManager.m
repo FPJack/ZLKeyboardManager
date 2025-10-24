@@ -429,19 +429,25 @@ static NSHashTable<UIView *> *_tables;
         if (![textField respondsToSelector:@selector(setKeyboardAppearance:)]) {
             return;
         }
-        if (@available(iOS 13.0, *)) {
-            if (textField.traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
-                // 黑暗模式
-                textField.keyboardAppearance = UIKeyboardAppearanceDark;
-                toolbar.barStyle = UIBarStyleBlack;
-            } else {
-                // 明亮模式
-                textField.keyboardAppearance = UIKeyboardAppearanceLight;
-                toolbar.barStyle = UIBarStyleDefault;
+        if (self.overrideKeyboardAppearance) {
+            textField.keyboardAppearance = self.keyboardAppearance;
+        }else {
+            if (@available(iOS 13.0, *)) {
+                if (textField.traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
+                    // 黑暗模式
+                    textField.keyboardAppearance = UIKeyboardAppearanceDark;
+                } else {
+                    // 明亮模式
+                    textField.keyboardAppearance = UIKeyboardAppearanceLight;
+                }
             }
-            } else {
         }
-        if (self.toolBarConfigureBK) self.toolBarConfigureBK(toolbar);
+        if (@available(iOS 12.0, *)) {
+            toolbar.barStyle = textField.traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark ? UIBarStyleBlack : UIBarStyleDefault;
+        }
+        
+        
+        if (self.configureToolBarBK) self.configureToolBarBK(toolbar);
         textField.inputAccessoryView = toolbar;
         [textField reloadInputViews];
     }
