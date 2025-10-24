@@ -461,6 +461,7 @@ static NSHashTable<UIView *> *_tables;
     self.currentResponder = nil;
 }
 - (BOOL)shouldHandleKeyboard{
+    if ([self adapterPopViewForKeyboardAvoid]) return NO;
     UIView *currentResponder = self.currentResponder;
     if (currentResponder.kfc_keyboardCfg.shouldAutoHandleKeyboard) {
         return currentResponder.kfc_keyboardCfg.shouldAutoHandleKeyboard(currentResponder);
@@ -478,7 +479,26 @@ static NSHashTable<UIView *> *_tables;
     }
     return YES;
 }
-
+- (BOOL)adapterPopViewForKeyboardAvoid {
+    Class cls = NSClassFromString(@"GMPopBaseView");
+    if (!cls) NSClassFromString(@"ZLPopBaseView");
+    if (!cls) return NO;
+    UIView *currentResponder = self.currentResponder;
+    UIView *superview = currentResponder.superview;
+    while (superview && ![superview isKindOfClass:cls]) {
+        superview = superview.superview;
+    }
+    if ([superview isKindOfClass:cls] && [superview respondsToSelector:@selector(configObj)]) {
+        NSObject *config = [superview performSelector:@selector(configObj)];
+        if (config && [config respondsToSelector:@selector(avoidKeyboardType)]) {
+            NSNumber *type = [config performSelector:@selector(avoidKeyboardType)];
+            if (type.integerValue == 1 || type.integerValue == 2) {
+                return YES;
+            }
+        }
+    }
+    return NO;
+}
 - (BOOL)resignFirstResponder {
     UIView *currentResponder = self.currentResponder;
     [currentResponder resignFirstResponder];
