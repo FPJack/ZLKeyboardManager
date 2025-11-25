@@ -24,6 +24,8 @@ ZLKeyboardManager是一个轻量级的iOS键盘管理工具，能够自动处理
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
+
+<a href="https://github.com/FPJack/ZLKeyboardManager/blob/master/test.MP4">点击查看效果演示</a>
 ## Requirements
 
 ## Installation
