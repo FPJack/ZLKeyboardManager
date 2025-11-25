@@ -1,5 +1,5 @@
 # ZLKeyboardManager
-ZLKeyboardManager是一个轻量级的iOS键盘管理工具，能够自动处理键盘弹出时遮挡输入框的问题。它通过监听键盘通知，计算第一响应者的位置，并调整视图的位置以确保输入框始终可见。处理IQkeyboardManager平时遇到的一些问题，包括但不限于：
+ZLKeyboardManager是一个轻量级的iOS键盘管理工具，只需要导入库，无需添加一行代码就能够自动处理键盘弹出时遮挡输入框的问题。它通过监听键盘通知，计算第一响应者的位置，并调整视图的位置以确保输入框始终可见。处理IQkeyboardManager平时遇到的一些问题，包括但不限于：
 <p>
  1.有时键盘会闪跳，viewWillAppear设置弹出键盘会有问题
  <p/>
@@ -29,7 +29,7 @@ ZLKeyboardManager是一个轻量级的iOS键盘管理工具，能够自动处理
 
 
 ```ruby
-pod 'ZLKeyboardManager'
+pod 'ZLKeyboardManager' //导入默认已开启键盘管理功能
 ```
 
 开启键盘管理功能,导入库的时候默认已开启
