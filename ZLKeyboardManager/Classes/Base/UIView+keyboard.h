@@ -13,6 +13,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonnull, nonatomic, readonly, copy) NSArray<__kindof UIView*> * zl_sortedArrayByTag;
 @property (nonnull, nonatomic, readonly, copy) NSArray<__kindof UIView*> * zl_sortedArrayByPosition;
 @end
+@class ZLKeyboardConfig;
+
+@protocol ZLKeyboardProtocol <NSObject>
+@property(nonatomic, strong) ZLKeyboardConfig *keyboardCfg;
+@end
 
 @interface ZLKeyboardConfig : NSObject
 ///相对键盘顶部的view,默认是输入框
@@ -39,18 +44,15 @@ NS_ASSUME_NONNULL_BEGIN
 ///禁用IQKeyboardManager
 @property (nonatomic, assign) BOOL disableIQKeyboardManager;
 
-@property (nonatomic, copy,readonly) void(^enableIQKeyboardManagerBK)(void);
-@property (nonatomic, copy,readonly) void(^disableIQKeyboardManagerBK)(void);
-/// 适配IQKeyboardManager的启用与禁用回调
-- (void)adaptIQKeyboardManager:(void(^)(void))enableBK disable:(void(^)(void))disableBK;
+///输入库失去第一响应者回调，可以手动适配IQKeyboardManager
+@property (nonatomic, copy) void(^didResignedFirstResponder)(UIView<ZLKeyboardProtocol> *view);
+/// 输入库将要成为第一响应者回调，可以手动适配IQKeyboardManager
+@property (nonatomic, copy) void(^willBecomeFirstResponder)(UIView<ZLKeyboardProtocol> *view);
 
 @end
 
 
 
-@protocol ZLKeyboardProtocol <NSObject>
-@property(nonatomic, strong) ZLKeyboardConfig *keyboardCfg;
-@end
 @interface UITextField (ZLkeyboard)<ZLKeyboardProtocol>
 @end
 @interface UITextView (ZLkeyboard)<ZLKeyboardProtocol>

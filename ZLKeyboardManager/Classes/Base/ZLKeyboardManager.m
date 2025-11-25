@@ -16,10 +16,9 @@ static NSHashTable<UIView *> *_tables;
 @interface UIView (keyboard)
 @property(nonatomic, strong) ZLKeyboardConfig *keyboardCfg;
 @end
-@interface NSObject (method_hook)
-@end
+
 @implementation NSObject (method_hook)
-+ (BOOL)_swizzleClassMethod:(SEL)originalSel with:(SEL)newSel {
++ (BOOL)zl_swizzleClassMethod:(SEL)originalSel with:(SEL)newSel {
     Method originalMethod = class_getInstanceMethod(self, originalSel);
     Method newMethod = class_getInstanceMethod(self, newSel);
     if (!originalMethod || !newMethod) return NO;
@@ -35,6 +34,7 @@ static NSHashTable<UIView *> *_tables;
                                    class_getInstanceMethod(self, newSel));
     return YES;
 }
+
 @end
 @interface ZLKeyboardConfig()
 @property (nonatomic,assign,readwrite)CGRect convertFrame;
@@ -47,9 +47,9 @@ static NSHashTable<UIView *> *_tables;
 + (void)load {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        [object_getClass((id)self) _swizzleClassMethod:@selector(alloc) with:@selector(_hook_alloc)];
-        [self _swizzleClassMethod:@selector(initWithCoder:) with:@selector(_hook_initWithCoder:)];
-        [self _swizzleClassMethod:@selector(becomeFirstResponder) with:@selector(_hook_becomeFirstResponder)];
+        [object_getClass((id)self) zl_swizzleClassMethod:@selector(alloc) with:@selector(_hook_alloc)];
+        [self zl_swizzleClassMethod:@selector(initWithCoder:) with:@selector(_hook_initWithCoder:)];
+        [self zl_swizzleClassMethod:@selector(becomeFirstResponder) with:@selector(_hook_becomeFirstResponder)];
 
     });
 }
@@ -77,9 +77,9 @@ static NSHashTable<UIView *> *_tables;
 + (void)load {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        [object_getClass((id)self) _swizzleClassMethod:@selector(alloc) with:@selector(_hook_alloc)];
-        [self _swizzleClassMethod:@selector(initWithCoder:) with:@selector(_hook_initWithCoder:)];
-        [self _swizzleClassMethod:@selector(becomeFirstResponder) with:@selector(_hook_becomeFirstResponder)];
+        [object_getClass((id)self) zl_swizzleClassMethod:@selector(alloc) with:@selector(_hook_alloc)];
+        [self zl_swizzleClassMethod:@selector(initWithCoder:) with:@selector(_hook_initWithCoder:)];
+        [self zl_swizzleClassMethod:@selector(becomeFirstResponder) with:@selector(_hook_becomeFirstResponder)];
     });
 }
 - (instancetype)_hook_initWithCoder:(NSCoder *)coder
@@ -106,9 +106,9 @@ static NSHashTable<UIView *> *_tables;
 + (void)load {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        [object_getClass((id)self) _swizzleClassMethod:@selector(alloc) with:@selector(_hook_alloc)];
-        [self _swizzleClassMethod:@selector(initWithCoder:) with:@selector(_hook_initWithCoder:)];
-        [self _swizzleClassMethod:@selector(becomeFirstResponder) with:@selector(_hook_becomeFirstResponder)];
+        [object_getClass((id)self) zl_swizzleClassMethod:@selector(alloc) with:@selector(_hook_alloc)];
+        [self zl_swizzleClassMethod:@selector(initWithCoder:) with:@selector(_hook_initWithCoder:)];
+        [self zl_swizzleClassMethod:@selector(becomeFirstResponder) with:@selector(_hook_becomeFirstResponder)];
     });
 }
 - (instancetype)_hook_initWithCoder:(NSCoder *)coder
@@ -135,7 +135,7 @@ static NSHashTable<UIView *> *_tables;
 
 @interface ZLKeyboardManager()
 @property (nonatomic,readonly) UIView *firstResponder;
-@property (nonatomic,weak,readwrite) UIView *currentResponder;
+@property (nonatomic,weak,readwrite) UIView<ZLKeyboardProtocol> *currentResponder;
 @property (nonatomic,nonatomic) UITapGestureRecognizer *tapGesture;
 @property(nonatomic, strong,readwrite) NSMutableArray<Class> *disabledInputViewClasses;
 @property (nonatomic, copy,readwrite) void(^enableIQKeyboardManagerBK)(void);
@@ -337,6 +337,8 @@ static NSHashTable<UIView *> *_tables;
     if (![textField respondsToSelector:@selector(setInputAccessoryView:)]) {
         return;
     }
+    [self endEditing];
+
 }
 - (void)UITextViewTextDidBeginEditingNotification:(NSNotification *)notification {
     UITextView *textView = notification.object;
@@ -364,6 +366,7 @@ static NSHashTable<UIView *> *_tables;
     if (![textView respondsToSelector:@selector(setInputAccessoryView:)]) {
         return;
     }
+    [self endEditing];
 }
 
 - (UISearchBar *)searchBarOfSearchTextField:(UIView *)searchTextField {
@@ -569,10 +572,7 @@ static NSHashTable<UIView *> *_tables;
     }
     return NO;
 }
-- (void)adaptIQKeyboardManager:(void(^)(void))enableBK disable:(void(^)(void))disableBK{
-    self.enableIQKeyboardManagerBK = enableBK;
-    self.disableIQKeyboardManagerBK = disableBK;
-}
+
 - (void)registerAllNotifications {
     [self addNotificationObserver];
 }

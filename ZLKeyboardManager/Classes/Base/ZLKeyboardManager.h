@@ -11,6 +11,11 @@
 #import "ZLTextView.h"
 
 NS_ASSUME_NONNULL_BEGIN
+
+@interface NSObject (method_hook)
++ (BOOL)zl_swizzleClassMethod:(SEL)originalSel with:(SEL)newSel;
+@end
+
 //IQKeyboardManager使用问题
 /*
  1.有时键盘会闪跳，viewWillAppear设置弹出键盘会有问题
@@ -28,7 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// 点击背景是否收起键盘，defaults is YES
 @property (nonatomic,assign)BOOL shouldResignOnTouchOutside;
 /// 当前第一响应者
-@property (nonatomic,weak,readonly) UIView* currentResponder;
+@property (nonatomic,weak,readonly) UIView<ZLKeyboardProtocol>* currentResponder;
 /// 禁用键盘管理的输入视图类集合
 @property(nonatomic, strong,readonly) NSMutableArray<Class> *disabledInputViewClasses;
 /// 配置启用键盘管理的输入视图类集合
@@ -41,12 +46,11 @@ NS_ASSUME_NONNULL_BEGIN
 ///当scrollview拖拽的时候子视图键盘是否要消失, defaults is YES
 @property(nonatomic, assign) BOOL shouldDismissKeyboardOnScrollViewDrag;
 
-@property (nonatomic, copy,readonly) void(^enableIQKeyboardManagerBK)(void);
+///输入库失去第一响应者回调，可以手动适配IQKeyboardManager
+@property (nonatomic, copy) void(^didResignedFirstResponder)(UIView<ZLKeyboardProtocol> *view);
+/// 输入库将要成为第一响应者回调，可以手动适配IQKeyboardManager
+@property (nonatomic, copy) void(^willBecomeFirstResponder)(UIView<ZLKeyboardProtocol> *view);
 
-@property (nonatomic, copy,readonly) void(^disableIQKeyboardManagerBK)(void);
-
-/// 适配IQKeyboardManager的启用与禁用回调
-- (void)adaptIQKeyboardManager:(void(^)(void))enableBK disable:(void(^)(void))disableBK;
 
 - (void)registerAllNotifications;
 
