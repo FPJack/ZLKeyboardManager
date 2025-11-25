@@ -51,7 +51,11 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)idx {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@(idx.row).description forIndexPath:idx];
-
+    UITextField *textField = UITextField.new;
+    textField.keyboardCfg.enable = NO;
+    textField.keyboardCfg.relativeToKeyboardTopView = view;
+    textField.keyboardCfg.keyboardTopMargin = 10;
+    textField.keyboardCfg.moveContainerView = view
     NSString *type = self.data[idx.row];
     if ([type isEqualToString:@"textfield"]) {
         UITextField *tf = [[UITextField alloc] initWithFrame:CGRectMake(15, 10, self.view.bounds.size.width - 30, 40)];

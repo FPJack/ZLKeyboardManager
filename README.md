@@ -41,8 +41,35 @@ pod 'ZLKeyboardManager'
 ```objc
     ZLKeyboardManager.share.enable = YES;
 ```
+开启自动工具栏功能
+```objc
+    ZLKeyboardManager.share.enableAutoToolbar = YES;
+```
 
+开启点击背景收起键盘功能
+```objc
+    ZLKeyboardManager.share.shouldResignOnTouchOutside = YES;
+```
 
+单独某个输入框禁用键盘管理功能
+```objc
+    textField.keyboardCfg.enable = NO;
+```
+
+设置相对键盘顶部的view,默认是输入框
+```objc
+    textField.keyboardCfg.relativeToKeyboardTopView = view;
+```
+
+设置键盘顶部间距，默认0
+```objc
+    textField.keyboardCfg.keyboardTopMargin = 10;
+```
+
+设置需要移动的容器view,默认是第一响应者的所属控制器的view，如果没有控制器则是所属window
+```objc
+    textField.keyboardCfg.moveContainerView = view
+```
 ## Author
 
 fanpeng, peng.fan@ukelink.com
