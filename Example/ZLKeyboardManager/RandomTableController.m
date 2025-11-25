@@ -3,19 +3,19 @@
 
 @interface RandomTableController ()
 @property (nonatomic, strong) NSArray *data;
-//@property (nonatomic,strong) UITableView *tableView;
+@property (nonatomic,strong) UITableView *tableView;
 @end
 
 @implementation RandomTableController
-//- (UITableView *)tableView {
-//    if (!_tableView) {
-//        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
-//        _tableView.delegate = (id<UITableViewDelegate>)self;
-//        _tableView.dataSource = (id<UITableViewDataSource>)self;
-//        [self.view addSubview:_tableView];
-//    }
-//    return _tableView;
-//}
+- (UITableView *)tableView {
+    if (!_tableView) {
+        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+        _tableView.delegate = (id<UITableViewDelegate>)self;
+        _tableView.dataSource = (id<UITableViewDataSource>)self;
+        [self.view addSubview:_tableView];
+    }
+    return _tableView;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -66,7 +66,7 @@
         tv.text = [NSString stringWithFormat:@"UITextView-%ld",idx.row];
         [cell.contentView addSubview:tv];
         tv.placeholder = [NSString stringWithFormat:@"UITextView-%ld Placeholder",idx.row];
-        tv.keyboardCfg.enable = NO;
+//        tv.keyboardCfg.enable = NO;
 
     } else {
         UISearchBar *sb = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 60)];

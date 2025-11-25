@@ -14,8 +14,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    IQKeyboardManager.sharedManager.enable = YES;
-//    ZLKeyboardManager.share.enable = YES;
+//    IQKeyboardManager.sharedManager.enable = YES;
+    ZLKeyboardManager.share.enable = YES;
 
     // Override point for customization after application launch.
 //    [ZLKeyboardManager.share adaptIQKeyboardManager:^{

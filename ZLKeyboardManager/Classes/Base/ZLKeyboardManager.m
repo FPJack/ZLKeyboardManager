@@ -337,7 +337,6 @@ static NSHashTable<UIView *> *_tables;
     if (![textField respondsToSelector:@selector(setInputAccessoryView:)]) {
         return;
     }
-    [self endEditing];
 
 }
 - (void)UITextViewTextDidBeginEditingNotification:(NSNotification *)notification {
@@ -366,7 +365,6 @@ static NSHashTable<UIView *> *_tables;
     if (![textView respondsToSelector:@selector(setInputAccessoryView:)]) {
         return;
     }
-    [self endEditing];
 }
 
 - (UISearchBar *)searchBarOfSearchTextField:(UIView *)searchTextField {
