@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ZLKeyboardManager'
-  s.version          = '0.1.2'
+  s.version          = '0.1.3'
   s.summary          = 'A short description of ZLKeyboardManager.'
 
 # This description is used to generate tags and improve search results.
@@ -30,8 +30,13 @@ TODO: Add long description of the pod here.
 
   s.ios.deployment_target = '10.0'
 
-  s.source_files = 'ZLKeyboardManager/Classes/**/*'
-  
+  s.subspec 'Base' do |core|
+     core.source_files = 'ZLKeyboardManager/Classes/Base/**/*'
+   end
+  s.subspec 'IQAdapter' do |core|
+     core.dependency 'ZLKeyboardManager/Base'
+     core.source_files = 'ZLKeyboardManager/Classes/IQAdapter/**/*'
+   end
   # s.resource_bundles = {
   #   'ZLKeyboardManager' => ['ZLKeyboardManager/Assets/*.png']
   # }

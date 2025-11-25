@@ -14,6 +14,7 @@
 #import "ZLKeyboardManager.h"
 #import "ZLTextView.h"
 #import "ZLToolBar.h"
+#import "NSObject+IQKeyboardManagerAdapter.h"
 
 FOUNDATION_EXPORT double ZLKeyboardManagerVersionNumber;
 FOUNDATION_EXPORT const unsigned char ZLKeyboardManagerVersionString[];

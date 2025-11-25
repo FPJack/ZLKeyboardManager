@@ -54,6 +54,7 @@
     NSString *type = self.data[idx.row];
     if ([type isEqualToString:@"textfield"]) {
         UITextField *tf = [[UITextField alloc] initWithFrame:CGRectMake(15, 10, self.view.bounds.size.width - 30, 40)];
+        tf.keyboardCfg.disableIQKeyboardManager = YES;
         tf.placeholder = [NSString stringWithFormat:@"UITextField-%ld",idx.row];
         tf.borderStyle = UITextBorderStyleRoundedRect;
         [cell.contentView addSubview:tf];
@@ -65,6 +66,7 @@
         tv.text = [NSString stringWithFormat:@"UITextView-%ld",idx.row];
         [cell.contentView addSubview:tv];
         tv.placeholder = [NSString stringWithFormat:@"UITextView-%ld Placeholder",idx.row];
+        tv.keyboardCfg.enable = NO;
 
     } else {
         UISearchBar *sb = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 60)];

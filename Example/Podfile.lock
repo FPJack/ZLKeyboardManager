@@ -6,7 +6,12 @@ PODS:
     - FBSnapshotTestCase/Core
   - IQKeyboardManager (6.5.11)
   - Masonry (1.1.0)
-  - ZLKeyboardManager (0.1.1)
+  - ZLKeyboardManager (0.1.2):
+    - ZLKeyboardManager/Base (= 0.1.2)
+    - ZLKeyboardManager/IQAdapter (= 0.1.2)
+  - ZLKeyboardManager/Base (0.1.2)
+  - ZLKeyboardManager/IQAdapter (0.1.2):
+    - ZLKeyboardManager/Base
 
 DEPENDENCIES:
   - FBSnapshotTestCase
@@ -28,7 +33,7 @@ SPEC CHECKSUMS:
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
   IQKeyboardManager: ef43ce1ba1e5aaf4adf222c0a46f39761f246879
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
-  ZLKeyboardManager: aa46fd23a4e96a98c06c3e4ecdb17a1406549980
+  ZLKeyboardManager: e389b9308843826f226409c75ebfc3f349e892ce
 
 PODFILE CHECKSUM: df892cb3c644a57bfc21a9318313440093abff54
 

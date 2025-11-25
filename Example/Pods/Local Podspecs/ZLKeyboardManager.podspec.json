@@ -1,6 +1,6 @@
 {
   "name": "ZLKeyboardManager",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "summary": "A short description of ZLKeyboardManager.",
   "description": "TODO: Add long description of the pod here.",
   "homepage": "https://github.com/FPJack/ZLKeyboardManager.git",
@@ -13,10 +13,24 @@
   },
   "source": {
     "git": "https://github.com/FPJack/ZLKeyboardManager.git",
-    "tag": "0.1.1"
+    "tag": "0.1.2"
   },
   "platforms": {
     "ios": "10.0"
   },
-  "source_files": "ZLKeyboardManager/Classes/**/*"
+  "subspecs": [
+    {
+      "name": "Base",
+      "source_files": "ZLKeyboardManager/Classes/Base/**/*"
+    },
+    {
+      "name": "IQAdapter",
+      "dependencies": {
+        "ZLKeyboardManager/Base": [
+
+        ]
+      },
+      "source_files": "ZLKeyboardManager/Classes/IQAdapter/**/*"
+    }
+  ]
 }
