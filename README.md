@@ -19,18 +19,14 @@ ZLKeyboardManager是一个轻量级的iOS键盘管理工具，能够自动处理
 
 ## Example
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
 
 <p align="center">
   <img src="https://github.com/FPJack/ZLKeyboardManager/blob/master/test.GIF" width="240" alt="ZLPermission Logo">
 </p>
-## Requirements
 
-## Installation
+## 安装
 
-ZLKeyboardManager is available through [CocoaPods](https://cocoapods.org). To install
-it, simply add the following line to your Podfile:
 
 ```ruby
 pod 'ZLKeyboardManager'
