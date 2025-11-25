@@ -15,10 +15,7 @@ ZLKeyboardManager是一个轻量级的iOS键盘管理工具，能够自动处理
  <p>
  5.无法精确到某个TextField设置是否启用键盘管理
 <p/>
-[![CI Status](https://img.shields.io/travis/fanpeng/ZLKeyboardManager.svg?style=flat)](https://travis-ci.org/fanpeng/ZLKeyboardManager)
-[![Version](https://img.shields.io/cocoapods/v/ZLKeyboardManager.svg?style=flat)](https://cocoapods.org/pods/ZLKeyboardManager)
-[![License](https://img.shields.io/cocoapods/l/ZLKeyboardManager.svg?style=flat)](https://cocoapods.org/pods/ZLKeyboardManager)
-[![Platform](https://img.shields.io/cocoapods/p/ZLKeyboardManager.svg?style=flat)](https://cocoapods.org/pods/ZLKeyboardManager)
+
 
 ## Example
 
@@ -61,7 +58,7 @@ pod 'ZLKeyboardManager'
     textField.keyboardCfg.relativeToKeyboardTopView = view;
 ```
 
-设置键盘顶部间距，默认0
+设置键盘顶部间距
 ```objc
     textField.keyboardCfg.keyboardTopMargin = 10;
 ```
