@@ -7,28 +7,20 @@
 //
 
 #import "ZLViewController.h"
-#import "TestVC.h"
-#import <ZLKeyboardManager/ZLKeyboardManager.h>
-#import <ZLKeyboardManager/UIView+keyboard.h>
-#import <MediaPlayer/MediaPlayer.h>
-#import <MobileCoreServices/MobileCoreServices.h>
-#import <IQKeyboardManager/IQKeyboardManager.h>
+#import "RandomTableController.h"
+#import "RandomScrollController.h"
+#import "RandomStaticController.h"
 
-@interface ZLViewController ()<MPMediaPickerControllerDelegate,UIDocumentPickerDelegate>
+@interface ZLViewController ()
 
-@property (nonatomic, strong) MPMediaPickerController *mpc;
 @end
 
 @implementation ZLViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-
-
+    self.title = @"主页面";
     
-   
-
     if (@available(iOS 13.0, *)) {
         UINavigationBarAppearance *appearance = [[UINavigationBarAppearance alloc] init];
         [appearance configureWithOpaqueBackground];
@@ -40,116 +32,30 @@
         self.navigationController.navigationBar.barTintColor = UIColor.orangeColor;
         self.navigationController.navigationBar.backgroundColor = UIColor.orangeColor;
     }
-    UIBarButtonItem *item1 = [[UIBarButtonItem alloc] initWithTitle:@"跳转" style:UIBarButtonItemStylePlain target:self action:@selector(ta:)];
-    UIBarButtonItem *item2 = [[UIBarButtonItem alloc] initWithTitle:@"stackView" style:UIBarButtonItemStylePlain target:self action:@selector(stackView:)];
+    NSArray *titles = @[
+        @"TableView 随机控件",
+        @"ScrollView 随机控件",
+        @"静态页面随机控件"
+    ];
 
-    self.navigationItem.rightBarButtonItems = @[item1,item2];
-}
-- (void)stackView:(id)obj {
-    [self.navigationController pushViewController:ZLStackViewVC.new animated:YES];
-
-}
-- (void)ta:(id)obj {
-//    UIDocumentPickerViewController *picker = [[UIDocumentPickerViewController alloc] initWithDocumentTypes:@[(NSString *)kUTTypeAudio] inMode:UIDocumentPickerModeImport];
-//    picker.delegate = self;
-//    picker.allowsMultipleSelection = YES; // 允许多选
-//        [self presentViewController:picker animated:YES completion:nil];
-//    return;
-    [self.navigationController pushViewController:TestVC.new animated:YES];
-    return;
-//    MPMediaPickerController *mpc = [[MPMediaPickerController alloc]initWithMediaTypes:MPMediaTypeMusic];
-//      mpc.delegate = self;//委托
-//      mpc.prompt =@"Please select a music";//提示文字
-//    mpc.allowsPickingMultipleItems=NO;//是否允许一次选择多个
-//    self.mpc = self.mpc;
-//    [self presentViewController:mpc animated:YES completion:nil];
-//    [self presentModalViewController:mpc animated:YES];
-    
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"标题" message:@"这是一个UIAlertController的示例。" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        // 处理点击确定按钮的逻辑
-        NSLog(@"点击了确定按钮");
-    }];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        // 处理点击取消按钮的逻辑
-        NSLog(@"点击了取消按钮");
-    }];
-    [alert addAction:okAction];
-    [alert addAction:cancelAction];
-    for (int i = 0 ; i < 20; i ++) {
-        [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
-                    
-        }];
-    }
-   
-    
-    [self presentViewController:alert animated:YES completion:nil];
-
-}
-- (void)documentPicker:(UIDocumentPickerViewController *)controller didPickDocumentsAtURLs:(NSArray<NSURL *> *)urls {
-    for (NSURL *url in urls) {
-        // 确保有权限访问文件
-        BOOL accessing = [url startAccessingSecurityScopedResource];
-        [self copyFileToAppDirectory:url];
-
-        if (accessing) {
-            NSLog(@"Selected file: %@", url);
-            // 复制文件到 App 的沙盒目录（如 Documents 目录）
-            [self copyFileToAppDirectory:url];
-            [url stopAccessingSecurityScopedResource];
-        }
-    }
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-// 将文件复制到 App 沙盒目录
-- (void)copyFileToAppDirectory:(NSURL *)fileURL {
-    NSError *error;
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
-    NSString *destinationPath = [documentsPath stringByAppendingPathComponent:[fileURL lastPathComponent]];
-    [fileManager removeItemAtPath:destinationPath error:nil];
-    // 复制文件
-    if ([fileManager copyItemAtURL:fileURL toURL:[NSURL fileURLWithPath:destinationPath] error:&error]) {
-        NSLog(@"File copied to: %@", destinationPath);
-        // 可以使用 AVPlayer 或其他方式处理文件
-    } else {
-        NSLog(@"Error copying file: %@", error.localizedDescription);
+    for (int i = 0; i < titles.count; i++) {
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeSystem];
+        btn.frame = CGRectMake(40, 150 + i * 80, self.view.bounds.size.width - 80, 60);
+        btn.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1];
+        btn.layer.cornerRadius = 8;
+        btn.tag = i + 1;
+        [btn setTitle:titles[i] forState:UIControlStateNormal];
+        [btn addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:btn];
     }
 }
 
-// 用户取消选择
-- (void)documentPickerWasCancelled:(UIDocumentPickerViewController *)controller {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-- (void)mediaPicker:(MPMediaPickerController *)mediaPicker didPickMediaItems:(MPMediaItemCollection *)mediaItemCollection{
-  /*insert your code*/
-    [mediaPicker dismissViewControllerAnimated:YES completion:nil];
+- (void)click:(UIButton *)sender {
+    UIViewController *vc;
+    if (sender.tag == 1) vc = [RandomTableController new];
+    else if (sender.tag == 2) vc = [RandomScrollController new];
+    else vc = [RandomStaticController new];
 
-}
--(void)mediaPickerDidCancel:(MPMediaPickerController *)mediaPicker{
-  /*insert your code*/
-    [mediaPicker dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-//    [self.textField becomeFirstResponder];
-//    self.view.bounds = CGRectMake(0, 200, 375, 667);
-}
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-   
-//    [self.textField resignFirstResponder];
-//    [self.textField1 reloadInputViews];
-//
-    
-    [self.view endEditing:YES];
-    [self.view resignFirstResponder];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 @end

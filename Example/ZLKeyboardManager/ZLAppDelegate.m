@@ -7,14 +7,14 @@
 //
 
 #import "ZLAppDelegate.h"
-#import <IQKeyboardManager/IQKeyboardManager.h>
+//#import <IQKeyboardManager/IQKeyboardManager.h>
 #import <ZLKeyboardManager/ZLKeyboardManager.h>
 
 @implementation ZLAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-            ZLKeyboardManager.share.enable = NO;
+    ZLKeyboardManager.share.enable = YES;
 
     // Override point for customization after application launch.
 //    [ZLKeyboardManager.share adaptIQKeyboardManager:^{

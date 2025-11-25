@@ -8,6 +8,7 @@
 #import <Foundation/Foundation.h>
 #import "UIView+keyboard.h"
 #import "ZLToolBar.h"
+#import "ZLTextView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 //IQKeyboardManager使用问题
@@ -27,21 +28,18 @@ NS_ASSUME_NONNULL_BEGIN
 /// 点击背景是否收起键盘，defaults is YES
 @property (nonatomic,assign)BOOL shouldResignOnTouchOutside;
 /// 当前第一响应者
-@property (nonatomic,weak,readonly) UIView *currentResponder;
+@property (nonatomic,weak,readonly) UIView* currentResponder;
 /// 禁用键盘管理的输入视图类集合
 @property(nonatomic, strong,readonly) NSMutableArray<Class> *disabledInputViewClasses;
 /// 配置启用键盘管理的输入视图类集合
 @property(nonatomic, copy) void (^configureToolBarBK)(ZLToolBar *toolBar);
-
-/**
- Override the keyboardAppearance for all textField/textView. Default is NO.
- */
+///是否需要重写键盘外观
 @property(nonatomic, assign) BOOL overrideKeyboardAppearance;
-
-/**
- If overrideKeyboardAppearance is YES, then all the textField keyboardAppearance is set using this property.
- */
+///overrideKeyboardAppearance为YES，则所有输入框的keyboardAppearance都使用此属性设置
 @property(nonatomic, assign) UIKeyboardAppearance keyboardAppearance;
+
+///当scrollview拖拽的时候子视图键盘是否要消失, defaults is YES
+@property(nonatomic, assign) BOOL shouldDismissKeyboardOnScrollViewDrag;
 
 @property (nonatomic, copy,readonly) void(^enableIQKeyboardManagerBK)(void);
 
@@ -53,7 +51,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)registerAllNotifications;
 
 - (void)unregisterAllNotifications;
-
 ///收起键盘
 - (BOOL)resignFirstResponder;
 /// 上一项

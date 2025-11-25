@@ -7,8 +7,7 @@
 //
 
 @import UIKit;
-#import "TestVC.h"
 
-@interface ZLViewController : TestVC
+@interface ZLViewController : UIViewController
 
 @end

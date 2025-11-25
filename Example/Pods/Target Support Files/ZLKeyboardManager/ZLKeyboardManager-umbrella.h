@@ -12,6 +12,7 @@
 
 #import "UIView+keyboard.h"
 #import "ZLKeyboardManager.h"
+#import "ZLTextView.h"
 #import "ZLToolBar.h"
 
 FOUNDATION_EXPORT double ZLKeyboardManagerVersionNumber;

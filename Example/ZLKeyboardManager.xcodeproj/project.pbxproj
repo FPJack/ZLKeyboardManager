@@ -22,10 +22,9 @@
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
-		84D159FF2EA1DC0200DD1931 /* TestVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D159FD2EA1DC0200DD1931 /* TestVC.m */; };
-		84D15A002EA1DC0200DD1931 /* TestVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D159FE2EA1DC0200DD1931 /* TestVC.xib */; };
-		84D15A082EA5D57C00DD1931 /* ZLStackViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D15A062EA5D57C00DD1931 /* ZLStackViewVC.m */; };
-		84D15A092EA5D57C00DD1931 /* ZLStackViewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D15A072EA5D57C00DD1931 /* ZLStackViewVC.xib */; };
+		8432B2EC2ED4432B00617EFB /* RandomTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8432B2EB2ED4432B00617EFB /* RandomTableController.m */; };
+		8432B2EF2ED4435800617EFB /* RandomScrollController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8432B2EE2ED4435800617EFB /* RandomScrollController.m */; };
+		8432B2F22ED4439800617EFB /* RandomStaticController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8432B2F12ED4439800617EFB /* RandomStaticController.m */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 		B5F27FAABA30F45ED4A0DA7E /* Pods_ZLKeyboardManager_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 604133189BBF75035854E843 /* Pods_ZLKeyboardManager_Tests.framework */; };
 /* End PBXBuildFile section */
@@ -68,12 +67,12 @@
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		78BC1EC7ABEC512AB38ECD13 /* Pods-ZLKeyboardManager_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZLKeyboardManager_Tests.debug.xcconfig"; path = "Target Support Files/Pods-ZLKeyboardManager_Tests/Pods-ZLKeyboardManager_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		8400FCFF2EAA1C8600470D26 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
-		84D159FC2EA1DC0200DD1931 /* TestVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestVC.h; sourceTree = "<group>"; };
-		84D159FD2EA1DC0200DD1931 /* TestVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestVC.m; sourceTree = "<group>"; };
-		84D159FE2EA1DC0200DD1931 /* TestVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestVC.xib; sourceTree = "<group>"; };
-		84D15A052EA5D57C00DD1931 /* ZLStackViewVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZLStackViewVC.h; sourceTree = "<group>"; };
-		84D15A062EA5D57C00DD1931 /* ZLStackViewVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZLStackViewVC.m; sourceTree = "<group>"; };
-		84D15A072EA5D57C00DD1931 /* ZLStackViewVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ZLStackViewVC.xib; sourceTree = "<group>"; };
+		8432B2EA2ED4432B00617EFB /* RandomTableController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RandomTableController.h; sourceTree = "<group>"; };
+		8432B2EB2ED4432B00617EFB /* RandomTableController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RandomTableController.m; sourceTree = "<group>"; };
+		8432B2ED2ED4435800617EFB /* RandomScrollController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RandomScrollController.h; sourceTree = "<group>"; };
+		8432B2EE2ED4435800617EFB /* RandomScrollController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RandomScrollController.m; sourceTree = "<group>"; };
+		8432B2F02ED4439800617EFB /* RandomStaticController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RandomStaticController.h; sourceTree = "<group>"; };
+		8432B2F12ED4439800617EFB /* RandomStaticController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RandomStaticController.m; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C3DCCFAA5E8D6B99CDFC0965 /* Pods-ZLKeyboardManager_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZLKeyboardManager_Example.debug.xcconfig"; path = "Target Support Files/Pods-ZLKeyboardManager_Example/Pods-ZLKeyboardManager_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		EA460E4D6BA21EA19499BB38 /* ZLKeyboardManager.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = ZLKeyboardManager.podspec; path = ../ZLKeyboardManager.podspec; sourceTree = "<group>"; };
@@ -148,12 +147,12 @@
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
 				6003F5A5195388D20070C39A /* ZLViewController.h */,
 				6003F5A6195388D20070C39A /* ZLViewController.m */,
-				84D159FC2EA1DC0200DD1931 /* TestVC.h */,
-				84D159FD2EA1DC0200DD1931 /* TestVC.m */,
-				84D159FE2EA1DC0200DD1931 /* TestVC.xib */,
-				84D15A052EA5D57C00DD1931 /* ZLStackViewVC.h */,
-				84D15A062EA5D57C00DD1931 /* ZLStackViewVC.m */,
-				84D15A072EA5D57C00DD1931 /* ZLStackViewVC.xib */,
+				8432B2EA2ED4432B00617EFB /* RandomTableController.h */,
+				8432B2EB2ED4432B00617EFB /* RandomTableController.m */,
+				8432B2ED2ED4435800617EFB /* RandomScrollController.h */,
+				8432B2EE2ED4435800617EFB /* RandomScrollController.m */,
+				8432B2F02ED4439800617EFB /* RandomStaticController.h */,
+				8432B2F12ED4439800617EFB /* RandomStaticController.m */,
 				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
@@ -300,10 +299,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84D15A092EA5D57C00DD1931 /* ZLStackViewVC.xib in Resources */,
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
 				71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */,
-				84D15A002EA1DC0200DD1931 /* TestVC.xib in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 			);
@@ -327,13 +324,11 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-ZLKeyboardManager_Example/Pods-ZLKeyboardManager_Example-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/ZLKeyboardManager/ZLKeyboardManager.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZLKeyboardManager.framework",
 			);
@@ -411,11 +406,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84D159FF2EA1DC0200DD1931 /* TestVC.m in Sources */,
 				6003F59E195388D20070C39A /* ZLAppDelegate.m in Sources */,
-				84D15A082EA5D57C00DD1931 /* ZLStackViewVC.m in Sources */,
 				6003F5A7195388D20070C39A /* ZLViewController.m in Sources */,
+				8432B2F22ED4439800617EFB /* RandomStaticController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
+				8432B2EF2ED4435800617EFB /* RandomScrollController.m in Sources */,
+				8432B2EC2ED4432B00617EFB /* RandomTableController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
