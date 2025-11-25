@@ -28,7 +28,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        [ZLToolBar.appearance setTintColor:UIColor.systemRedColor];
+        [ZLToolBar.appearance setTintColor:UIColor.systemBlueColor];
 
         ZLBarButtonItem  *space = [[ZLBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
         space.width = 5;

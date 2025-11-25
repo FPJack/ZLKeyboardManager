@@ -55,6 +55,7 @@
     if ([type isEqualToString:@"textfield"]) {
         UITextField *tf = [[UITextField alloc] initWithFrame:CGRectMake(15, 10, self.view.bounds.size.width - 30, 40)];
         tf.keyboardCfg.disableIQKeyboardManager = YES;
+        tf.keyboardCfg.relativeToKeyboardTopView = cell;
         tf.placeholder = [NSString stringWithFormat:@"UITextField-%ld",idx.row];
         tf.borderStyle = UITextBorderStyleRoundedRect;
         [cell.contentView addSubview:tf];
