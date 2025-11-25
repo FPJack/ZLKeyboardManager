@@ -28,6 +28,8 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        [ZLToolBar.appearance setTintColor:UIColor.systemBlueColor];
+
         ZLBarButtonItem  *space = [[ZLBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
         space.width = 5;
         self.items = @[
@@ -39,7 +41,6 @@
             self.fixedSpaceBarButton2,
             self.doneBarButton
         ];
-        [ZLToolBar.appearance setTintColor:UIColor.redColor];
     }
     return self;
 }
