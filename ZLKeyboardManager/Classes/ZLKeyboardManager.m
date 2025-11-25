@@ -488,10 +488,8 @@ static NSHashTable<UIView *> *_tables;
     if (!self.shouldHandleKeyboard) return;
     [UIView animateWithDuration:0.25 animations:^{
         UIView *moveContainerView = self.currentResponder.keyboardCfg.moveContainerView;
-        NSLog(@"end-originBounds - %@", NSStringFromCGRect(moveContainerView.bounds));
-
-//        moveContainerView.bounds = CGRectMake(0, 0, moveContainerView.bounds.size.width, moveContainerView.bounds.size.height);
-        moveContainerView.bounds= moveContainerView.keyboardCfg.originBounds;
+        moveContainerView.bounds = CGRectMake(0, 0, moveContainerView.bounds.size.width, moveContainerView.bounds.size.height);
+//        moveContainerView.bounds= moveContainerView.keyboardCfg.originBounds;
     }];
     self.currentResponder = nil;
 }

@@ -75,7 +75,7 @@
 		8432B2F12ED4439800617EFB /* RandomStaticController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RandomStaticController.m; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C3DCCFAA5E8D6B99CDFC0965 /* Pods-ZLKeyboardManager_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZLKeyboardManager_Example.debug.xcconfig"; path = "Target Support Files/Pods-ZLKeyboardManager_Example/Pods-ZLKeyboardManager_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		EA460E4D6BA21EA19499BB38 /* ZLKeyboardManager.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = ZLKeyboardManager.podspec; path = ../ZLKeyboardManager.podspec; sourceTree = "<group>"; };
+		EA460E4D6BA21EA19499BB38 /* ZLKeyboardManager.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = ZLKeyboardManager.podspec; path = ../ZLKeyboardManager.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		FB21ADBC7186CCDC39F93305 /* Pods-ZLKeyboardManager_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZLKeyboardManager_Tests.release.xcconfig"; path = "Target Support Files/Pods-ZLKeyboardManager_Tests/Pods-ZLKeyboardManager_Tests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -324,11 +324,13 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-ZLKeyboardManager_Example/Pods-ZLKeyboardManager_Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/ZLKeyboardManager/ZLKeyboardManager.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZLKeyboardManager.framework",
 			);

@@ -32,9 +32,9 @@ ZLKeyboardManager是一个轻量级的iOS键盘管理工具，能够自动处理
 pod 'ZLKeyboardManager'
 ```
 
-开启键盘管理功能
+开启键盘管理功能,导入库的时候默认已开启
 ```objc
-    ZLKeyboardManager.share.enable = YES;
+    ZLKeyboardManager.share.enable = NO;//关闭键盘管理功能
 ```
 开启自动工具栏功能
 ```objc
