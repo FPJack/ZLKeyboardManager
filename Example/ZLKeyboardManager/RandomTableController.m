@@ -19,6 +19,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+
     self.title = @"TableView 随机控件";
     self.tableView.backgroundColor = [UIColor whiteColor];
     if (@available(iOS 11.0, *)) {
@@ -56,17 +58,20 @@
         UITextField *tf = [[UITextField alloc] initWithFrame:CGRectMake(15, 10, self.view.bounds.size.width - 30, 40)];
         tf.keyboardCfg.disableIQKeyboardManager = YES;
         tf.keyboardCfg.relativeToKeyboardTopView = cell;
+        tf.text = [NSString stringWithFormat:@"UITextField-%ld",idx.row];
         tf.placeholder = [NSString stringWithFormat:@"UITextField-%ld",idx.row];
         tf.borderStyle = UITextBorderStyleRoundedRect;
         [cell.contentView addSubview:tf];
 
     } else if ([type isEqualToString:@"textview"]) {
-        ZLTextView *tv = [[ZLTextView alloc] initWithFrame:CGRectMake(15, 10, self.view.bounds.size.width - 30, 100)];
+        ZLTextView *tv = [[UITextView alloc] initWithFrame:CGRectMake(15, 10, self.view.bounds.size.width - 30, 100)];
+        
         tv.layer.borderWidth = 1;
+        tv.font = [UIFont systemFontOfSize:16];
         tv.layer.borderColor = [UIColor lightGrayColor].CGColor;
         tv.text = [NSString stringWithFormat:@"UITextView-%ld",idx.row];
         [cell.contentView addSubview:tv];
-        tv.placeholder = [NSString stringWithFormat:@"UITextView-%ld Placeholder",idx.row];
+//        tv.placeholder = [NSString stringWithFormat:@"UITextView-%ld Placeholder",idx.row];
 //        tv.keyboardCfg.enable = NO;
 
     } else {

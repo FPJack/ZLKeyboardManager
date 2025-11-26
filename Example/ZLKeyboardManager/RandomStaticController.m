@@ -8,6 +8,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+
     self.title = @"静态页面随机控件";
     self.view.backgroundColor = [UIColor whiteColor];
 
@@ -27,7 +29,7 @@
         } else if ([type isEqualToString:@"textview"]) {
             ZLTextView *tv = [[ZLTextView alloc] initWithFrame:CGRectMake(20, y, self.view.bounds.size.width - 40, 120)];
             tv.placeholder = [NSString stringWithFormat:@"UITextView-%ld Placeholder",i];
-
+            tv.font = [UIFont systemFontOfSize:16];
             tv.text = @"UITextView";
             tv.layer.borderWidth = 1;
             tv.layer.cornerRadius = 5;

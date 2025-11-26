@@ -552,6 +552,13 @@ static NSHashTable<UIView *> *_tables;
     if (idx != NSNotFound && idx > 0) {
         UIView *view = sortArr[idx - 1];
         [view becomeFirstResponder];
+        if ([view isKindOfClass:UITextView.class]) {
+            UITextView *textView = (UITextView *)view;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                ///修复xr上光标位置不对的问题
+                textView.selectedRange = NSMakeRange(textView.text.length, 0);
+            });
+        }
         view.keyboardCfg.keyboardToolbar.previousBarButton.enabled = ![sortArr.firstObject isEqual:view];
         return YES;
     }
@@ -564,7 +571,15 @@ static NSHashTable<UIView *> *_tables;
     NSInteger idx = [sortArr indexOfObject:self.currentResponder];
     if (idx != NSNotFound && idx + 1 < sortArr.count) {
         UIView *view = sortArr[idx + 1];
+        
         [view becomeFirstResponder];
+        if ([view isKindOfClass:UITextView.class]) {
+            UITextView *textView = (UITextView *)view;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                ///修复xr上光标位置不对的问题
+                textView.selectedRange = NSMakeRange(textView.text.length, 0);
+            });
+        }
         view.keyboardCfg.keyboardToolbar.nextBarButton.enabled = ![sortArr.lastObject isEqual:view];
         return YES;
     }
