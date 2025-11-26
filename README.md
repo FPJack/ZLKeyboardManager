@@ -16,7 +16,10 @@ ZLKeyboardManager是一个轻量级的iOS键盘管理工具，只需要导入库
  5.无法精确到某个TextField设置是否启用键盘管理
 <p/>
  <p>
- 6.UITableViewController中使用键盘失效的问题
+ 6.UITableViewController中使用键盘失效
+<p/>
+ <p>
+ 7.页面有UISearchBar无法进行输入框前后切换
 <p/>
 
 ## Example

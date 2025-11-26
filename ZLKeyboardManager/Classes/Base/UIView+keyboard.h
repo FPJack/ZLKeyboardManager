@@ -44,9 +44,9 @@ NS_ASSUME_NONNULL_BEGIN
 ///禁用IQKeyboardManager
 @property (nonatomic, assign) BOOL disableIQKeyboardManager;
 
-///输入库失去第一响应者回调，可以手动适配IQKeyboardManager
+///输入框失去第一响应者回调，可以手动适配IQKeyboardManager
 @property (nonatomic, copy) void(^didResignedFirstResponder)(UIView<ZLKeyboardProtocol> *view);
-/// 输入库将要成为第一响应者回调，可以手动适配IQKeyboardManager
+/// 输入框将要成为第一响应者回调，可以手动适配IQKeyboardManager
 @property (nonatomic, copy) void(^willBecomeFirstResponder)(UIView<ZLKeyboardProtocol> *view);
 
 @end
