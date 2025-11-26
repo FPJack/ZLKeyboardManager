@@ -27,6 +27,7 @@
 
 -(void)initialize
 {
+    self.font = self.font;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshPlaceholder) name:UITextViewTextDidChangeNotification object:self];
 }
 
