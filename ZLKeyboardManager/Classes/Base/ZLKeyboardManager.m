@@ -65,7 +65,9 @@ static NSHashTable<UIView *> *_tables;
     return obj;
 }
 - (BOOL)_hook_becomeFirstResponder {
-    [self.keyboardCfg becomeFirstResponder];
+    if ([self canBecomeFirstResponder]) {
+        [self.keyboardCfg becomeFirstResponder];
+    }
     BOOL res = [self _hook_becomeFirstResponder];
     if (!res) [self.keyboardCfg resignFirstResponder];
     return res;
@@ -94,7 +96,9 @@ static NSHashTable<UIView *> *_tables;
     return obj;
 }
 - (BOOL)_hook_becomeFirstResponder {
-    [self.keyboardCfg becomeFirstResponder];
+    if ([self canBecomeFirstResponder]) {
+        [self.keyboardCfg becomeFirstResponder];
+    }
     BOOL res = [self _hook_becomeFirstResponder];
     if (!res) [self.keyboardCfg resignFirstResponder];
     return res;
@@ -123,7 +127,9 @@ static NSHashTable<UIView *> *_tables;
     return obj;
 }
 - (BOOL)_hook_becomeFirstResponder {
-    [self.keyboardCfg becomeFirstResponder];
+    if ([self canBecomeFirstResponder]) {
+        [self.keyboardCfg becomeFirstResponder];
+    }
     BOOL res = [self _hook_becomeFirstResponder];
     if (!res) [self.keyboardCfg resignFirstResponder];
     return res;
