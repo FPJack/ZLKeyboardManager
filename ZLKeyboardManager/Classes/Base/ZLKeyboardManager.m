@@ -570,8 +570,24 @@ static NSHashTable<UIView *> *_tables;
     }
     return NO;
 }
-
-
+- (BOOL)canGoNext {
+    NSArray *sortArr = [self allInputViews];
+    NSInteger idx = [sortArr indexOfObject:self.currentResponder];
+    if (idx != NSNotFound && idx + 1 < sortArr.count) {
+        UIView *view = sortArr[idx + 1];
+        return [view canBecomeFirstResponder];
+    }
+    return NO;
+}
+- (BOOL)canGoPrevious {
+    NSArray *sortArr = [self allInputViews];
+    NSInteger idx = [sortArr indexOfObject:self.currentResponder];
+    if (idx != NSNotFound && idx > 0) {
+        UIView *view = sortArr[idx - 1];
+        return [view canBecomeFirstResponder];
+    }
+    return NO;
+}
 - (BOOL)goNext {
     NSArray *sortArr = [self allInputViews];
     NSInteger idx = [sortArr indexOfObject:self.currentResponder];

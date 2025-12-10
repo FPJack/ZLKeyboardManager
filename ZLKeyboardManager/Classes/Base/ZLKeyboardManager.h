@@ -51,6 +51,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// 输入库将要成为第一响应者回调，可以手动适配IQKeyboardManager
 @property (nonatomic, copy) void(^willBecomeFirstResponder)(UIView<ZLKeyboardProtocol> *view);
 
+@property (nonatomic, readonly) BOOL canGoPrevious;
+
+@property (nonatomic, readonly) BOOL canGoNext;
 
 - (void)registerAllNotifications;
 
