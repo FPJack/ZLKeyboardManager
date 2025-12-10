@@ -12,8 +12,6 @@
 @interface ZLKeyboardConfig()
 @property (nonatomic,weak)UIView *view;
 @property (nonatomic,assign)CGRect convertFrame;
-@property (nonatomic, copy,readwrite) void(^enableIQKeyboardManagerBK)(void);
-@property (nonatomic, copy,readwrite) void(^disableIQKeyboardManagerBK)(void);
 @end
 @implementation ZLKeyboardConfig
 @synthesize enableAutoToolbar = _enableAutoToolbar;
