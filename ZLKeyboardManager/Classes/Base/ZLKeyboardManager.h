@@ -28,7 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)share;
 /// 启用/禁用键盘管理，defaults is YES
 @property(nonatomic, assign, getter = isEnabled) BOOL enable;
-/// 是否启用自动工具栏，defaults is YES
+/// 是否启用自动工具栏，defaults is NO
 @property(nonatomic, assign, getter = isEnableAutoToolbar) BOOL enableAutoToolbar;
 /// 点击背景是否收起键盘，defaults is YES
 @property (nonatomic,assign)BOOL shouldResignOnTouchOutside;

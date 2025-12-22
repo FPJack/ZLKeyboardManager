@@ -185,7 +185,7 @@ static NSHashTable<UIView *> *_tables;
     dispatch_once(&onceToken, ^{
         share = ZLKeyboardManager.new;
         share.shouldResignOnTouchOutside = YES;
-        share.enableAutoToolbar = YES;
+       // share.enableAutoToolbar = YES;
         share.shouldDismissKeyboardOnScrollViewDrag = YES;
     });
     return share;
